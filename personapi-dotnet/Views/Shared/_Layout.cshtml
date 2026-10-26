@@ -1,49 +1,40 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+@{
+    var current = ViewContext.RouteData.Values["controller"]?.ToString() ?? "Home";
+    var modules = new[] { ("Home", "Inicio"), ("Personas", "Personas"), ("Telefonos", "Teléfonos"), ("Profesiones", "Profesiones"), ("Estudios", "Estudios") };
+}
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - personapi_dotnet</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] · Gestión de personas</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/personapi_dotnet.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">personapi_dotnet</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <aside class="sidebar">
+        <a class="brand" asp-route-controller="Home" asp-route="default" asp-route-action="Index"><strong>GESTIÓN</strong><span>DE PERSONAS</span></a>
+        <nav aria-label="Navegación principal">
+            @foreach (var module in modules)
+            {
+                <a asp-route-controller="@module.Item1" asp-route="default" asp-route-action="Index" class="@(current == module.Item1 ? "active" : "")" aria-current="@(current == module.Item1 ? "page" : null)">@module.Item2</a>
+            }
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    </aside>
+    <main id="contenido" class="workspace">
+        <header class="page-heading">
+            <h1>@ViewData["Title"]</h1>
+            <p>@(ViewData["Subtitle"] ?? "Administración de registros")</p>
+        </header>
+        <section class="surface">
+            @if (TempData["Success"] is string success)
+            {
+                <p class="notice success" role="status">@success</p>
+            }
             @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - personapi_dotnet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+        </section>
+    </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,16 @@
+@model personapi_dotnet.Models.Dtos.TelefonoDto
+@{
+    ViewData["Title"] = "Teléfonos / Editar";
+    ViewData["Subtitle"] = "Administración de registros · Teléfonos";
+}
+
+<h2>Editar teléfono</h2>
+<form asp-route="default" asp-route-controller="Telefonos" asp-route-action="Edit" asp-route-originalNum="@Model.Num" method="post" class="record-form">
+    <div asp-validation-summary="All" role="alert"></div>
+    <partial name="_Fields" model="Model" view-data="ViewData" />
+    <div class="form-actions">
+        <button type="submit" class="button button-wide">Guardar cambios</button>
+        <a class="back-link" asp-route="default" asp-route-controller="Telefonos" asp-route-action="Index">Cancelar · Volver al listado</a>
+    </div>
+</form>
+@section Scripts { <partial name="_MvcValidationScriptsPartial" /> }

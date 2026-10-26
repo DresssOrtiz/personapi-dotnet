@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Panel principal";
+    ViewData["Subtitle"] = "Accede a los módulos de administración";
+    var modules = new[] { ("Personas", "Personas"), ("Telefonos", "Teléfonos"), ("Profesiones", "Profesiones"), ("Estudios", "Estudios") };
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2 class="home-title">Módulos del sistema</h2>
+<div class="module-grid">
+    @foreach (var module in modules)
+    {
+        <a class="module-card" asp-route-controller="@module.Item1" asp-route="default" asp-route-action="Index">
+            <h3>@module.Item2</h3>
+            <p>Ver y gestionar registros</p>
+        </a>
+    }
 </div>

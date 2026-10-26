@@ -1,0 +1,36 @@
+@model IEnumerable<personapi_dotnet.Models.Entities.Telefono>
+@{
+    ViewData["Title"] = "Teléfonos / Listado";
+    ViewData["Subtitle"] = "Administración de registros · Teléfonos";
+}
+
+<div class="toolbar">
+    <h2>Listado de teléfonos</h2>
+    <a class="button button-wide" asp-route="default" asp-route-controller="Telefonos" asp-route-action="Create">+ Nuevo registro</a>
+</div>
+<div class="table-scroll">
+<table>
+    <caption class="sr-only">Registros de teléfonos</caption>
+    <thead><tr><th scope="col">Número</th><th scope="col">Operador</th><th scope="col">Dueño</th><th scope="col">Acciones</th></tr></thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Num</td>
+            <td>@item.Oper</td>
+            <td>@( ((IReadOnlyDictionary<int, string>)ViewBag.Personas).GetValueOrDefault(item.Duenio, item.Duenio.ToString()) )</td>
+            <td class="row-actions">
+                <a asp-route="default" asp-route-controller="Telefonos" asp-route-action="Details" asp-route-num="@item.Num" aria-label="Ver registro">Ver</a> ·
+                <a asp-route="default" asp-route-controller="Telefonos" asp-route-action="Edit" asp-route-num="@item.Num" aria-label="Editar registro">Editar</a> ·
+                <a class="delete-link" asp-route="default" asp-route-controller="Telefonos" asp-route-action="Delete" asp-route-num="@item.Num" aria-label="Eliminar registro">Eliminar</a>
+            </td>
+        </tr>
+    }
+    @if (!Model.Any())
+    {
+        <tr><td class="empty" colspan="4">No hay registros. Puedes crear el primero con «Nuevo registro».</td></tr>
+    }
+    </tbody>
+</table>
+</div>
+<p class="table-note">Acciones por registro: Ver · Editar · Eliminar</p>

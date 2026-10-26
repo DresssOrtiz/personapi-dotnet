@@ -1,0 +1,6 @@
+@model personapi_dotnet.Models.Dtos.ProfesionDto
+<dl class="detail-grid">
+    <div><dt>Identificador (id)</dt><dd>@Model.Id</dd></div>
+    <div><dt>Nombre de profesión (nom)</dt><dd>@Model.Nom</dd></div>
+    <div><dt>Descripción (des)</dt><dd>@(Model.Des ?? "—")</dd></div>
+</dl>

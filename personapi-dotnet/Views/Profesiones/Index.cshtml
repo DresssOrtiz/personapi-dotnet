@@ -1,0 +1,36 @@
+@model IEnumerable<personapi_dotnet.Models.Entities.Profesion>
+@{
+    ViewData["Title"] = "Profesiones / Listado";
+    ViewData["Subtitle"] = "Administración de registros · Profesiones";
+}
+
+<div class="toolbar">
+    <h2>Listado de profesiones</h2>
+    <a class="button button-wide" asp-route="default" asp-route-controller="Profesiones" asp-route-action="Create">+ Nuevo registro</a>
+</div>
+<div class="table-scroll">
+<table>
+    <caption class="sr-only">Registros de profesiones</caption>
+    <thead><tr><th scope="col">ID</th><th scope="col">Nombre</th><th scope="col">Descripción</th><th scope="col">Acciones</th></tr></thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Nom</td>
+            <td>@(item.Des ?? "—")</td>
+            <td class="row-actions">
+                <a asp-route="default" asp-route-controller="Profesiones" asp-route-action="Details" asp-route-id="@item.Id" aria-label="Ver registro">Ver</a> ·
+                <a asp-route="default" asp-route-controller="Profesiones" asp-route-action="Edit" asp-route-id="@item.Id" aria-label="Editar registro">Editar</a> ·
+                <a class="delete-link" asp-route="default" asp-route-controller="Profesiones" asp-route-action="Delete" asp-route-id="@item.Id" aria-label="Eliminar registro">Eliminar</a>
+            </td>
+        </tr>
+    }
+    @if (!Model.Any())
+    {
+        <tr><td class="empty" colspan="4">No hay registros. Puedes crear el primero con «Nuevo registro».</td></tr>
+    }
+    </tbody>
+</table>
+</div>
+<p class="table-note">Acciones por registro: Ver · Editar · Eliminar</p>

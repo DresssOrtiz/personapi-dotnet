@@ -1,0 +1,14 @@
+@model personapi_dotnet.Models.Dtos.PersonaDto
+@{
+    ViewData["Title"] = "Personas / Detalles";
+    ViewData["Subtitle"] = "Administración de registros · Personas";
+}
+
+<h2>Detalles de persona</h2>
+<div class="detail-record">
+    <partial name="_Details" model="Model" />
+    <div class="form-actions">
+        <a class="button" asp-route="default" asp-route-controller="Personas" asp-route-action="Edit" asp-route-cc="@Model.Cc">Editar</a>
+        <a class="back-link" asp-route="default" asp-route-controller="Personas" asp-route-action="Index">Volver al listado</a>
+    </div>
+</div>

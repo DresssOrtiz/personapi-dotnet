@@ -1,0 +1,29 @@
+@model personapi_dotnet.Models.Dtos.PersonaDto
+@{ var editing = ViewContext.RouteData.Values["action"]?.ToString() == "Edit"; }
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="Cc">Cédula (cc)</label>
+        <input asp-for="Cc" type="number"  readonly="@(editing ? "readonly" : null)" min="1" max="2147483647"  placeholder="Introducir cédula (cc)" />
+        <span asp-validation-for="Cc"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Nombre">Nombre</label>
+        <input asp-for="Nombre" type="text"    maxlength="45" placeholder="Introducir nombre" />
+        <span asp-validation-for="Nombre"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Apellido">Apellido</label>
+        <input asp-for="Apellido" type="text"    maxlength="45" placeholder="Introducir apellido" />
+        <span asp-validation-for="Apellido"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Genero">Género (M/F)</label>
+        <select asp-for="Genero"><option value="">Selecciona el género</option><option value="M">M</option><option value="F">F</option></select>
+        <span asp-validation-for="Genero"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Edad">Edad</label>
+        <input asp-for="Edad" type="number"   min="0" max="150"  placeholder="Introducir edad" />
+        <span asp-validation-for="Edad"></span>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@model personapi_dotnet.Models.Dtos.ProfesionDto
+@{
+    ViewData["Title"] = "Profesiones / Crear";
+    ViewData["Subtitle"] = "Administración de registros · Profesiones";
+}
+
+<h2>Registrar profesión</h2>
+<form asp-route="default" asp-route-controller="Profesiones" asp-route-action="Create"  method="post" class="record-form">
+    <div asp-validation-summary="All" role="alert"></div>
+    <partial name="_Fields" model="Model" view-data="ViewData" />
+    <div class="form-actions">
+        <button type="submit" class="button button-wide">Guardar registro</button>
+        <a class="back-link" asp-route="default" asp-route-controller="Profesiones" asp-route-action="Index">Cancelar · Volver al listado</a>
+    </div>
+</form>
+@section Scripts { <partial name="_MvcValidationScriptsPartial" /> }
