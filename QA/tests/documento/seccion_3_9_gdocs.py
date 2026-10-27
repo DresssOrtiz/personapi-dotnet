@@ -71,6 +71,11 @@ def main(docx, branch):
         return re.sub(r"<tr[^>]*>.*?</tr>", size_row, table, flags=re.S)
     s = re.sub(r"<table.*?</table>", size_table, s, flags=re.S)
     s = re.sub(r"</?(thead|tbody)>", "", s)
+    # Cada celda en un parrafo propio sin sangria: Google Docs aplica a las celdas la sangria del
+    # parrafo anterior si el contenido no trae la suya.
+    s = re.sub(r"(<t[hd] [^>]*?text-align:(\w+)[^>]*>|<t[hd] [^>]*>)(.*?)(</t[hd]>)",
+               lambda m: f'{m.group(1)}<p style="margin:0;text-indent:0;{FONT}font-size:10pt;'
+                         f'text-align:{m.group(2) or "left"}">{m.group(3).strip()}</p>{m.group(4)}', s, flags=re.S)
     out = os.path.join(HERE, "seccion_3_9_gdocs.html")
     with open(out, "w", encoding="utf-8") as f:
         f.write("<meta charset=\"utf-8\">" + s)
