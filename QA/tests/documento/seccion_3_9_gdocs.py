@@ -48,7 +48,7 @@ def main(docx, branch):
     s = re.sub(r"<p>", f'<p style="{FONT}font-size:12pt;margin-left:36pt">', s)
     s = re.sub(r"<li>", f'<li style="{FONT}font-size:12pt">', s)
     s = re.sub(r"<h([23])>", lambda m: f'<h{m.group(1)} style="{FONT}font-size:12pt">', s)
-    s = re.sub(r"<table[^>]*>", '<table style="border-collapse:collapse;margin-left:36pt;width:430pt">', s)
+    s = re.sub(r"<table[^>]*>", '<table style="border-collapse:collapse;width:430pt">', s)
     s = re.sub(r"<colgroup>.*?</colgroup>", "", s, flags=re.S)
     cell = f"border:1px solid #808080;padding:2pt 4pt;{FONT}font-size:10pt;"
     s = re.sub(r"<th[^>]*>", f'<th style="{cell}background-color:#d9d9d9;text-align:center">', s)
