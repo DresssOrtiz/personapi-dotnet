@@ -1,0 +1,9 @@
+{
+  "id": "BD-18",
+  "estado": "Aprobado",
+  "obtenido": "par (1,1001) duplicado: rechazado; persona 1001 con profesion 2: aceptado; profesion 1 con persona 1005: aceptado.",
+  "evidencia": "EV-BD-18.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

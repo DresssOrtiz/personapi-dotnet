@@ -1,0 +1,12 @@
+Caso: API-PER-07
+Fecha: 2026-10-27 00:21:42
+
+> PUT /api/personas/2001 {"cc": 2001, "nombre": "Editada", "apellido": "QA", "genero": "F", "edad": 34}
+< 204 
+
+
+> GET /api/personas/2001 
+< 200 application/json; charset=utf-8
+{"cc":2001,"nombre":"Editada","apellido":"QA","genero":"F","edad":34}
+
+[OK] 204 y cambios visibles

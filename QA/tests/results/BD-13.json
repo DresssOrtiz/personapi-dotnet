@@ -1,0 +1,9 @@
+{
+  "id": "BD-13",
+  "estado": "Aprobado",
+  "obtenido": "genero X: rechazado; genero M: aceptado; genero F: aceptado (Msg 547, CK_persona_genero).",
+  "evidencia": "EV-BD-13.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

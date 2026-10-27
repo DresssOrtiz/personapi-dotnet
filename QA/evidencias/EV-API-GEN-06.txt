@@ -1,0 +1,7 @@
+Caso: API-GEN-06
+Fecha: 2026-10-27 00:22:13
+
+POST /api/personas cc 2090 -> 201
+Proceso detenido (puerto 5025 libre: True)
+Aplicacion reiniciada con dotnet run
+GET /api/personas/2090 -> 200 {"cc":2090,"nombre":"Persistente","apellido":"QA","genero":"F","edad":41}

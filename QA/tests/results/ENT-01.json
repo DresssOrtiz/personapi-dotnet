@@ -1,0 +1,9 @@
+{
+  "id": "ENT-01",
+  "estado": "Aprobado",
+  "obtenido": "La API de GitHub sin autenticacion responde 200: personapi-dotnet, visibilidad public; ramas main, feature/backend y feature/frontend-mvc.",
+  "evidencia": "EV-ENT-01.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,9 @@
+{
+  "id": "MVC-PER-01",
+  "estado": "Fallido",
+  "obtenido": "El menu abre /Personas; lista 5 registros (base: 5) con columnas Cédula, Nombre, Apellido, Género.",
+  "evidencia": "EV-MVC-PER-01.png, EV-MVC-PER-01.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "El listado no muestra la columna Edad; solo aparece en Detalles. El listado sin datos se revisa en MVC-GEN (base vacia)."
+}

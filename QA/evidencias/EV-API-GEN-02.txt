@@ -1,0 +1,102 @@
+Caso: API-GEN-02
+Fecha: 2026-10-27 00:21:46
+
+> POST /api/personas b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-a4bfc2a332b33b8eb07d1ab587b698b1-6aad15df17c80b73-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] POST /api/personas vacio
+
+> POST /api/personas b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-a4609d919860c294346596334ad76ce4-03ddaa18502bff0a-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] POST /api/personas mal formado
+
+> PUT /api/personas/1001 b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-65f1929305dde2513aa69c3c1a1d2559-7c721b3f2bc00ab9-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] PUT /api/personas/1001 vacio
+
+> PUT /api/personas/1001 b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-4c1a1abdada54bb6a8fe61b3c7a2b084-342fd8f7665969fe-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] PUT /api/personas/1001 mal formado
+
+> POST /api/telefonos b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-54d303ef337d811a488012b8f42e49fa-b2012d3731f2ffc3-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] POST /api/telefonos vacio
+
+> POST /api/telefonos b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-1efb1bfdc41d6189c3853a82a5ef5ccf-84b801dbdf5ed77b-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] POST /api/telefonos mal formado
+
+> PUT /api/telefonos/3001112233 b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-023d595656debba6a84d841eedc36c94-51508c6cba43af48-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] PUT /api/telefonos/3001112233 vacio
+
+> PUT /api/telefonos/3001112233 b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-dd7ea2942d5e4a5b6488d24a319d8064-8d85c4b2014a358f-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] PUT /api/telefonos/3001112233 mal formado
+
+> POST /api/profesiones b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-baba5b98b87fbe2ea5df5b81af0c8715-c96825bd084843c1-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] POST /api/profesiones vacio
+
+> POST /api/profesiones b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-6b4e3e5539798cb182a19fc09a0728fa-7f3a21b0b335902a-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] POST /api/profesiones mal formado
+
+> PUT /api/profesiones/1 b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-bca6dfae118753428a7c6e52158457d8-a902839a840ae94b-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] PUT /api/profesiones/1 vacio
+
+> PUT /api/profesiones/1 b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-28058993356e7ad46b606a7a78b2e568-ac91fde77b5fae3b-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] PUT /api/profesiones/1 mal formado
+
+> POST /api/estudios b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-47a11d98b1776115377240bab56433ca-be98ac320a5cfe99-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] POST /api/estudios vacio
+
+> POST /api/estudios b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-ac91fe2b1b144c6a333e6d4ff4778e5f-ce89ed404d105fc7-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] POST /api/estudios mal formado
+
+> PUT /api/estudios/1/1001 b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-31822cdc6a47d5607613a56e035345e1-7ffc5c1f4b59d881-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}
+
+[OK] PUT /api/estudios/1/1001 vacio
+
+> PUT /api/estudios/1/1001 b'{"cc": 1, "nombre": '
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-c2e8a5de9663d72e4e09d236574bd2d9-937cbccc6e1898aa-00","errors":{"dto":["The dto field is required."],"$.nombre":["Expected depth to be zero at the end of the JSON payload. There is an open JSON object or array that should be closed. Path: $.nombre | LineNumber: 0 | BytePositionInLine: 20."]}}
+
+[OK] PUT /api/estudios/1/1001 mal formado
+
+> POST /api/personas b''
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-db0bf22926721bedfb4c4deea5e93afd-aa9ffdce9998520f-00","errors":{"":["A non-empty request body is required."],"dto":["The dto field is required."]}}

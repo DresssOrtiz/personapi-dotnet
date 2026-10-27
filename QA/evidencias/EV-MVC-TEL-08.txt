@@ -1,0 +1,6 @@
+Caso: MVC-TEL-08
+Fecha: 2026-10-27 00:22:58
+
+Opciones del selector: ['Selecciona una persona', '1001 · Andres Ortiz', '1002 · Tomas Ramirez', '1003 · Santiago Hernandez', '1004 · Laura Gomez', '1005 · Camila Torres', '2301 · Valeria Editada Rojas']
+POST manipulado {'Num': '3990003099', 'Oper': 'Claro', 'Duenio': '999999'} -> 200; errores: [('Duenio', 'Selecciona una persona existente.')]
+Guardado: 0

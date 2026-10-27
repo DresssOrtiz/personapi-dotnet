@@ -1,0 +1,9 @@
+{
+  "id": "BD-02",
+  "estado": "Aprobado",
+  "obtenido": "INFORMATION_SCHEMA.TABLES lista 4 de 4 tablas en dbo: estudios, persona, profesion, telefono.",
+  "evidencia": "EV-BD-02.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

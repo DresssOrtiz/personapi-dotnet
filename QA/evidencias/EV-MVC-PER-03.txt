@@ -1,0 +1,7 @@
+Caso: MVC-PER-03
+Fecha: 2026-10-27 00:22:53
+
+POST vacio -> 200; errores por campo: [('Cc', 'Introduce un valor válido para este campo.'), ('Nombre', 'Este campo es obligatorio.'), ('Apellido', 'Este campo es obligatorio.'), ('Genero', 'Este campo es obligatorio.')]
+POST invalido {'Cc': '2399', 'Nombre': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'Apellido': 'A', 'Genero': 'X', 'Edad': '200'} -> 200; errores por campo: [('Nombre', 'El texto supera la longitud permitida.'), ('Genero', "El genero debe ser 'M' o 'F'."), ('Edad', 'Introduce un valor dentro del rango permitido.')]
+Registros antes/despues: 6/6
+Validacion en el navegador (formulario vacio): ['El campo «Cédula (cc)» es obligatorio.', 'El campo «Nombre» es obligatorio.', 'El campo «Apellido» es obligatorio.', 'El campo «Género (M/F)» es obligatorio.']

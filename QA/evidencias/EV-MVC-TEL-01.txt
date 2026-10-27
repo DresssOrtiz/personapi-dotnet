@@ -1,0 +1,8 @@
+Caso: MVC-TEL-01
+Fecha: 2026-10-27 00:22:55
+
+URL: http://localhost:5025/Telefonos
+Encabezados: ['Número', 'Operador', 'Dueño', 'Acciones']
+Filas: 5; filas en la base: 5
+Columnas esperadas no mostradas: []
+Captura: EV-MVC-TEL-01.png

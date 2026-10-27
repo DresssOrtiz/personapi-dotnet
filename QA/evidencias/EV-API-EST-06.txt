@@ -1,0 +1,42 @@
+Caso: API-EST-06
+Fecha: 2026-10-27 00:21:46
+
+> POST /api/personas {"cc": 2040, "nombre": "Est", "apellido": "QA", "genero": "M", "edad": 20}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/personas/2040
+{"cc":2040,"nombre":"Est","apellido":"QA","genero":"M","edad":20}
+
+> POST /api/estudios {"idProf": 2, "ccPer": 2040, "fecha": "2022-06-30", "univer": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-7d6abbe25a91e554706d7aa60ec5fdb6-7456ce873d5e736d-00","errors":{"Univer":["The field Univer must be a string with a maximum length of 50."]}}
+
+[OK] 400
+
+> POST /api/estudios {"idProf": 0, "ccPer": 1005, "fecha": "2022-06-30", "univer": "Universidad QA"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-35c9714bcb3033c813c6b90044cd4170-16c1aee94b4a7c64-00","errors":{"IdProf":["The field IdProf must be between 1 and 2147483647."]}}
+
+[OK] 400
+
+> POST /api/estudios {"idProf": 2, "ccPer": 0, "fecha": "2022-06-30", "univer": "Universidad QA"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-1dea3abdbf4a7b43d8890d8cbe0a6c58-f4424d4f782ba9c4-00","errors":{"CcPer":["The field CcPer must be between 1 and 2147483647."]}}
+
+[OK] 400
+
+> POST /api/estudios {"idProf": 2, "ccPer": 2040, "fecha": "2022-13-45", "univer": "Universidad QA"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-206133a6b2241295e91a08d2a185c389-04c6108fb893a548-00","errors":{"dto":["The dto field is required."],"$.fecha":["The JSON value could not be converted to System.Nullable`1[System.DateTime]. Path: $.fecha | LineNumber: 0 | BytePositionInLine: 50."]}}
+
+[OK] 400
+
+> POST /api/estudios {"idProf": 2, "ccPer": 2040, "fecha": "30/06/2022", "univer": "Universidad QA"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-b23bb35cfde5bb051e2d14eb874b4110-f6599926ee8ee449-00","errors":{"dto":["The dto field is required."],"$.fecha":["The JSON value could not be converted to System.Nullable`1[System.DateTime]. Path: $.fecha | LineNumber: 0 | BytePositionInLine: 50."]}}
+
+[OK] 400
+
+[OK] sin inserciones
+
+> POST /api/estudios {"idProf": 2, "ccPer": 2040, "fecha": "2099-01-01", "univer": "Universidad QA"}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/estudios/2/2040
+{"idProf":2,"ccPer":2040,"fecha":"2099-01-01T00:00:00","univer":"Universidad QA"}

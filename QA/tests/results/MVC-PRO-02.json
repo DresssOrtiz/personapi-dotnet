@@ -1,0 +1,9 @@
+{
+  "id": "MVC-PRO-02",
+  "estado": "Aprobado",
+  "obtenido": "Tras guardar redirige a /Profesiones con el aviso 'Registro creado correctamente.'; el registro aparece en el listado y en la base ('Arquitecto de Software').",
+  "evidencia": "EV-MVC-PRO-02-formulario.png, EV-MVC-PRO-02.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,12 @@
+Caso: API-TEL-13-frontend
+Fecha: 2026-10-27 00:22:28
+
+> POST /api/telefonos {"num": "3990000131", "oper": "Claro", "duenio": 1005}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/telefonos/3990000131
+{"num":"3990000131","oper":"Claro","duenio":1005}
+
+> POST /api/telefonos {"num": "3990000132", "oper": "Claro", "duenio": 1005}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/telefonos/3990000132
+{"num":"3990000132","oper":"Claro","duenio":1005}
+
+[OK] 2 x 201

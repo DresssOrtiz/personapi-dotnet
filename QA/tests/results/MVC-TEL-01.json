@@ -1,0 +1,9 @@
+{
+  "id": "MVC-TEL-01",
+  "estado": "Aprobado",
+  "obtenido": "El menu abre /Telefonos; lista 5 registros (base: 5) con columnas Número, Operador, Dueño.",
+  "evidencia": "EV-MVC-TEL-01.png, EV-MVC-TEL-01.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Sin datos: ver EV-MVC-LISTADO-VACIO.png."
+}

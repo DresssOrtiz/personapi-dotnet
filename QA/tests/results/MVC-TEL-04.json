@@ -1,0 +1,9 @@
+{
+  "id": "MVC-TEL-04",
+  "estado": "Aprobado",
+  "obtenido": "Mensaje: 'Ya existe un registro con ese identificador.'; sin error tecnico y sin guardar.",
+  "evidencia": "EV-MVC-TEL-04.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

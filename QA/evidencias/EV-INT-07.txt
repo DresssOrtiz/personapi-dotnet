@@ -1,0 +1,5 @@
+Caso: INT-07
+Fecha: 2026-10-27 00:23:19
+
+Aplicacion detenida (puerto libre: True) y reiniciada con dotnet run
+Listado contiene 2420 (vista) y 2421 (API): True

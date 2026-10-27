@@ -1,0 +1,9 @@
+{
+  "id": "BD-24",
+  "estado": "Aprobado",
+  "obtenido": "cc 2147483647: aceptado; cc 2147483648: rechazado; cc 1014857924 (10 digitos): aceptado. Tipo INT (maximo 2.147.483.647).",
+  "evidencia": "EV-BD-24.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "El INT cubre las cedulas de 10 digitos vigentes que empiezan por 1 (hasta 1.999.999.999) y equivale al INT(15) del modelo MySQL, que tambien es de 32 bits. No admite valores desde 2.147.483.648; si se requieren, conviene BIGINT o VARCHAR."
+}

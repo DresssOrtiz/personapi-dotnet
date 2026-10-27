@@ -1,0 +1,9 @@
+{
+  "id": "BD-25",
+  "estado": "Aprobado",
+  "obtenido": "fecha 2020-02-29: aceptado; fecha NULL: aceptado; fecha 2026-02-31: rechazado (Msg 241, conversion de fecha).",
+  "evidencia": "EV-BD-25.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Control adicional: la fecha futura 2099-01-01 es aceptada; no hay CHECK sobre fecha."
+}

@@ -1,0 +1,8 @@
+Caso: API-TEL-10-frontend
+Fecha: 2026-10-27 00:22:28
+
+> PUT /api/telefonos/3990009999 {"num": "3990009999", "oper": "Claro", "duenio": 1003}
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-331340140b64f4f1059aeac8f709d239-b23d8c0185bb0c09-00"}
+
+[OK] 404

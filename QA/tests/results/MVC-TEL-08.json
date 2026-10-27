@@ -1,0 +1,9 @@
+{
+  "id": "MVC-TEL-08",
+  "estado": "Aprobado",
+  "obtenido": "Los selectores listan las 6 opciones existentes; el envio manipulado con referencias inexistentes responde 200 con 'Selecciona una persona existente.' y no se guarda.",
+  "evidencia": "EV-MVC-TEL-08-selectores.png, EV-MVC-TEL-08.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,9 @@
+{
+  "id": "MVC-GEN-04",
+  "estado": "Pendiente",
+  "obtenido": "",
+  "evidencia": "",
+  "fecha": "2026-10-27",
+  "responsable": "",
+  "observaciones": "Revision manual pendiente. Apoyo automatizado en EV-MVC-GEN-04-apoyo.txt y capturas EV-MVC-GEN-04-*.png: movil (375px) inicio: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []; movil (375px) personas-listado: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: [True]; movil (375px) personas-crear: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []; movil (375px) estudios-listado: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: [True]; movil (375px) estudios-crear: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []"
+}

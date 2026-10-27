@@ -1,0 +1,10 @@
+Caso: BD-05
+Fecha: 2026-10-27 00:21:23
+
+name|tabla|columna|ref_tabla|ref_columna
+----|-----|-------|---------|-----------
+FK_estudios_persona|estudios|cc_per|persona|cc
+FK_estudios_profesion|estudios|id_prof|profesion|id
+FK_telefono_persona|telefono|duenio|persona|cc
+
+(3 rows affected)

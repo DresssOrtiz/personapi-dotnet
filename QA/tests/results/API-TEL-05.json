@@ -1,0 +1,9 @@
+{
+  "id": "API-TEL-05",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 409: \"Ya existe el telefono 3990000001.\"; original intacto.",
+  "evidencia": "EV-API-TEL-05.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

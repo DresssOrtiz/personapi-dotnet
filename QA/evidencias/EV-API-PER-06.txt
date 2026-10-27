@@ -1,0 +1,34 @@
+Caso: API-PER-06
+Fecha: 2026-10-27 00:21:42
+
+> POST /api/personas {"cc": 2010, "nombre": "", "apellido": "QA", "genero": "F", "edad": 33}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-b2625fdbf08ec3fed56461877f7d467c-20bb438be79acb74-00","errors":{"Nombre":["The Nombre field is required."]}}
+
+[OK] 400 con detalle
+
+> POST /api/personas {"cc": 2011, "nombre": "Prueba", "apellido": "QA", "genero": "X", "edad": 33}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-40b59873248e74f6d9acbc6de2413916-d2d8ba8d032aee3b-00","errors":{"Genero":["El genero debe ser 'M' o 'F'."]}}
+
+[OK] 400 con detalle
+
+> POST /api/personas {"cc": 2012, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 151}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-9276beb870cfc15efb1c89ab11c990a4-161a978455424210-00","errors":{"Edad":["The field Edad must be between 0 and 150."]}}
+
+[OK] 400 con detalle
+
+> POST /api/personas {"cc": 2013, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": -1}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-0f5fa4eddd78381733cf0925520404cc-cd998c940df83ca5-00","errors":{"Edad":["The field Edad must be between 0 and 150."]}}
+
+[OK] 400 con detalle
+
+> POST /api/personas {"cc": 0, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 33}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-20dbef56b8f4382ea3f4fecf7acc6251-89cb7d3f98836331-00","errors":{"Cc":["The field Cc must be between 1 and 2147483647."]}}
+
+[OK] 400 con detalle
+
+[OK] sin inserciones

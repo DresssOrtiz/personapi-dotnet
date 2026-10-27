@@ -1,0 +1,10 @@
+Caso: API-PRO-04
+Fecha: 2026-10-27 00:21:44
+
+> POST /api/profesiones {"id": 901, "nom": "Profesion QA", "des": "Descripcion de prueba"}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/profesiones/901
+{"id":901,"nom":"Profesion QA","des":"Descripcion de prueba"}
+
+[OK] 201 + Location
+
+[OK] en la base

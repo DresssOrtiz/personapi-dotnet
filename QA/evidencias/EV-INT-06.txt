@@ -1,0 +1,13 @@
+Caso: INT-06
+Fecha: 2026-10-27 00:23:10
+
+crear persona: sin errores
+crear telefono: sin errores
+crear profesion: sin errores
+crear estudio: sin errores
+eliminar estudio: sin errores
+eliminar telefono: sin errores
+eliminar profesion: sin errores
+eliminar persona: sin errores
+Consulta por la API: [200, 200, 200, 200]
+Registros restantes: 0

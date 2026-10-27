@@ -1,0 +1,9 @@
+{
+  "id": "API-PER-01",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 200, arreglo de 5 personas, igual a COUNT(*) de la tabla.",
+  "evidencia": "EV-API-PER-01.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,9 @@
+{
+  "id": "API-EST-14",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 201; la profesion 1 queda asociada a 4 personas.",
+  "evidencia": "EV-API-EST-14.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,6 @@
+Caso: MVC-GEN-07
+Fecha: 2026-10-27 00:23:05
+
+GET /RutaQueNoExiste/Accion -> 404
+Cuerpo (39 caracteres):
+<html><head></head><body></body></html>

@@ -1,0 +1,9 @@
+Caso: ENT-01
+Fecha: 2026-10-27 00:22:04
+
+GET api.github.com/repos/DresssOrtiz/personapi-dotnet sin token -> 200
+name=personapi-dotnet private=False visibility=public
+git ls-remote --heads (sin credenciales) -> 0
+850714f5a2b79d9d46cd8d14fd3f02f077e2e16c	refs/heads/feature/backend
+eea9ee879d724d6f53554544531086d7aa68119a	refs/heads/feature/frontend-mvc
+0595eab751a735d73dade5e3e18f53a84849628f	refs/heads/main

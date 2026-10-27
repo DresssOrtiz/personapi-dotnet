@@ -1,0 +1,8 @@
+Caso: API-EST-10
+Fecha: 2026-10-27 00:21:46
+
+> PUT /api/estudios/4/1003 {"idProf": 4, "ccPer": 1003, "fecha": "2022-06-30", "univer": "Universidad QA"}
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-9e67a2853109664d76c9dfe83f5ae1fd-091ccf16333c739d-00"}
+
+[OK] 404

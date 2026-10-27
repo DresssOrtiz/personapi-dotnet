@@ -1,0 +1,34 @@
+Caso: BD-03
+Fecha: 2026-10-27 00:21:23
+
+TABLE_NAME|COLUMN_NAME|DATA_TYPE|CHARACTER_MAXIMUM_LENGTH|IS_NULLABLE
+----------|-----------|---------|------------------------|-----------
+estudios|id_prof|int|NULL|NO
+estudios|cc_per|int|NULL|NO
+estudios|fecha|date|NULL|YES
+estudios|univer|varchar|50|YES
+persona|cc|int|NULL|NO
+persona|nombre|varchar|45|NO
+persona|apellido|varchar|45|NO
+persona|genero|char|1|NO
+persona|edad|int|NULL|YES
+profesion|id|int|NULL|NO
+profesion|nom|varchar|90|NO
+profesion|des|varchar|-1|YES
+telefono|num|varchar|15|NO
+telefono|oper|varchar|45|NO
+telefono|duenio|int|NULL|NO
+
+(15 rows affected)
+
+
+CHECK:
+name|definition
+----|----------
+CK_persona_genero|([genero]='F' OR [genero]='M')
+CK_persona_edad|([edad] IS NULL OR [edad]>=(0))
+
+(2 rows affected)
+
+
+Faltantes respecto al modelo: []

@@ -1,0 +1,8 @@
+Caso: API-PRO-05
+Fecha: 2026-10-27 00:21:44
+
+> POST /api/profesiones {"id": 901, "nom": "Otra", "des": "Descripcion de prueba"}
+< 409 application/json; charset=utf-8
+{"title":"Ya existe una profesion con id 901.","status":409}
+
+[OK] 409

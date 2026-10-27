@@ -1,0 +1,9 @@
+{
+  "id": "MVC-PER-07",
+  "estado": "Aprobado",
+  "obtenido": "Cancelar conserva el registro (1); confirmar lo elimina (0) y vuelve al listado.",
+  "evidencia": "EV-MVC-PER-07-confirmacion.png, EV-MVC-PER-07.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

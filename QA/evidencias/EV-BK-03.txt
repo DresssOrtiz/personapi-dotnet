@@ -1,0 +1,20 @@
+Caso: BK-03
+Fecha: 2026-10-27 00:22:00
+
+GET / -> 200
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page - personapi_dotnet</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c" />
+    <link rel="stylesheet" href="/personapi_dotnet.styles.css" />
+</head>
+<body>
+    <header>
+        <nav b-2mmqce7wem class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow
+
+GET /api/personas -> 200
+[{"cc":1001,"nombre":"Andres","apellido":"Ortiz","genero":"M","edad":21},{"cc":1002,"nombre":"Tomas","apellido":"Ramirez","genero":"M","edad":22},{"cc":1003,"nombre":"Santiago","apellido":"Hernandez","genero":"M","edad":21},{"cc":1004,"nombre":"Laura","apellido":"Gomez","genero":"F","edad":30},{"cc":1005,"nombre":"Camila","apellido":"Torres","genero":"F","edad":27}]

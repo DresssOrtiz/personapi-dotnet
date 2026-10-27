@@ -1,0 +1,9 @@
+{
+  "id": "BD-19",
+  "estado": "Aprobado",
+  "obtenido": "DELETE persona 1001: rechazado (Msg 547); la persona 1001 permanece (1 fila).",
+  "evidencia": "EV-BD-19.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,9 @@
+{
+  "id": "API-GEN-01",
+  "estado": "Aprobado",
+  "obtenido": "Los 4 GET devuelven 'application/json; charset=utf-8'.",
+  "evidencia": "EV-API-GEN-01.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

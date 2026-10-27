@@ -1,0 +1,56 @@
+Caso: API-GEN-05-frontend
+Fecha: 2026-10-27 00:22:32
+
+intento 1, cc 2050: [201, 409]
+
+intento 2, cc 2051: [201, 500]
+
+intento 3, cc 2052: [201, 500]
+
+intento 4, cc 2053: [201, 500]
+
+intento 5, cc 2054: [201, 500]
+
+intento 6, cc 2055: [201, 500]
+
+intento 7, cc 2056: [201, 500]
+
+intento 8, cc 2057: [201, 500]
+
+intento 9, cc 2058: [201, 500]
+
+intento 10, cc 2059: [201, 500]
+
+intento 11, cc 2060: [201, 500]
+
+intento 12, cc 2061: [201, 500]
+
+intento 13, cc 2062: [201, 500]
+
+intento 14, cc 2063: [201, 500]
+
+intento 15, cc 2064: [201, 500]
+
+intento 16, cc 2065: [201, 500]
+
+intento 17, cc 2066: [201, 500]
+
+intento 18, cc 2067: [201, 500]
+
+intento 19, cc 2068: [201, 500]
+
+intento 20, cc 2069: [201, 500]
+
+Ejemplo de respuesta 500 (Content-Type text/plain; charset=utf-8):
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_persona'. Cannot insert duplicate key in object 'dbo.persona'. The duplicate key value is (2069).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__189_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlo
+
+[FALLA] sin 500
+
+[OK] sin duplicados

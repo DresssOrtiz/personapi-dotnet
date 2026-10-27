@@ -1,0 +1,9 @@
+{
+  "id": "BD-23",
+  "estado": "Aprobado",
+  "obtenido": "Se guardan y leen sin alteracion: José Muñoz / Ángela Peña.",
+  "evidencia": "EV-BD-23.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Columnas VARCHAR con collation SQL_Latin1_General_CP1_CI_AS (codigo de pagina 1252): tildes y ñ se conservan; caracteres fuera de 1252 se alteran ('Nguyễn' -> 'Nguy?n', 'Łukasz' -> 'Lukasz'). Mejora sugerida: NVARCHAR."
+}

@@ -1,0 +1,16 @@
+Caso: BD-17
+Fecha: 2026-10-27 00:21:26
+
+-- cc_per inexistente
+INSERT INTO dbo.estudios VALUES (1, 999999, '2020-01-01', 'U')
+=> rechazado (esperado: rechazado)
+Msg 547, Level 16, State 1, Server 43ba5b875a51, Line 1
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_estudios_persona". The conflict occurred in database "persona_db", table "dbo.persona", column 'cc'.
+The statement has been terminated.
+
+-- id_prof inexistente
+INSERT INTO dbo.estudios VALUES (999, 1001, '2020-01-01', 'U')
+=> rechazado (esperado: rechazado)
+Msg 547, Level 16, State 1, Server 43ba5b875a51, Line 1
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_estudios_profesion". The conflict occurred in database "persona_db", table "dbo.profesion", column 'id'.
+The statement has been terminated.

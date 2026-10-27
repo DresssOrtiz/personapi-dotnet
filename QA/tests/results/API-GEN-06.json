@@ -1,0 +1,9 @@
+{
+  "id": "API-GEN-06",
+  "estado": "Aprobado",
+  "obtenido": "POST 201; tras detener y reiniciar la aplicacion, GET /api/personas/2090 responde 200 con los mismos datos.",
+  "evidencia": "EV-API-GEN-06.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

@@ -1,0 +1,9 @@
+{
+  "id": "API-EST-15",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 201; fecha y univer quedan en null.",
+  "evidencia": "EV-API-EST-15.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

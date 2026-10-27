@@ -1,0 +1,7 @@
+Caso: MVC-PRO-03
+Fecha: 2026-10-27 00:22:59
+
+POST vacio -> 200; errores por campo: [('Id', 'Introduce un valor válido para este campo.'), ('Nom', 'Este campo es obligatorio.')]
+POST invalido {'Id': '0', 'Nom': 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', 'Des': ''} -> 200; errores por campo: [('Id', 'Introduce un valor dentro del rango permitido.'), ('Nom', 'El texto supera la longitud permitida.')]
+Registros antes/despues: 5/5
+Validacion en el navegador (formulario vacio): ['El campo «Identificador (id)» es obligatorio.', 'El campo «Nombre de profesión (nom)» es obligatorio.']

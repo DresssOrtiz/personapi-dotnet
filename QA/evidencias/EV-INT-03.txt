@@ -1,0 +1,6 @@
+Caso: INT-03
+Fecha: 2026-10-27 00:23:09
+
+Edicion en vista -> API muestra nombre 'EditadaVista'
+PUT /api/personas/2401 -> 204
+Detalle en la vista muestra 'EditadaApi': True
