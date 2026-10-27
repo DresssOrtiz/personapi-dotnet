@@ -101,4 +101,42 @@ DEFECTOS = [
                          "EV-SW-01.png, EV-BD-09.txt, pantallas/EV-MVC-GEN-03-*.png) pueden usarse para los demas "
                          "marcadores. Numerar las figuras y tablas al cerrar el documento.",
     },
+    {
+        "id": "DEF-09", "casos": ["MVC-GEN-04"], "req": "R07", "area": "Frontend MVC",
+        "descripcion": "Los formularios de creacion de personas y profesiones muestran un recuadro de error vacio "
+                       "antes de enviar.",
+        "pasos": "1. Abrir /Personas/Create o /Profesiones/Create sin enviar datos.",
+        "esperado": "Esperado: sin resumen de errores hasta enviar. Obtenido: div de validacion con la clase "
+                    "validation-summary-errors y un recuadro rojo vacio de 24 px en los tres anchos.",
+        "severidad": "Baja", "responsable": "Andrés", "evidencia": "EV-MVC-GEN-04-resumen-vacio.png, EV-MVC-GEN-04.txt",
+        "observaciones": "Hallazgo visual durante MVC-GEN-04; no impide usar el formulario. Causa probable: el GET de "
+                         "Create llama a ModelState.SetModelValue para dejar la clave vacia y el estado queda sin "
+                         "validar. Propuesta: quitar esa llamada (por ejemplo, mostrar la clave vacia con un DTO de "
+                         "vista con clave nullable) o renderizar el resumen solo si hay errores.",
+    },
+    {
+        "id": "DEF-10", "casos": ["SW-09"], "req": "R06", "area": "Swagger",
+        "descripcion": "Swagger no muestra resumenes de las operaciones ni descripciones de parametros y campos.",
+        "pasos": "1. Abrir /swagger. 2. Revisar operaciones y esquemas (o swagger.json).",
+        "esperado": "Esperado: un tercero entiende y prueba la API sin explicacion adicional. Obtenido: 0 de 20 "
+                    "operaciones con resumen y 0 de 15 propiedades con descripcion; campos como duenio, oper, nom o "
+                    "univer no se explican.",
+        "severidad": "Baja", "responsable": "Tomás", "evidencia": "EV-SW-09.txt, EV-SW-01.png",
+        "observaciones": "Propuesta: <GenerateDocumentationFile>true</GenerateDocumentationFile> en el .csproj, "
+                         "options.IncludeXmlComments(...) en AddSwaggerGen y comentarios /// en controladores y DTO "
+                         "(ya existen 4 en los DTO).",
+    },
+    {
+        "id": "DEF-11", "casos": ["ENT-12"], "req": "R11", "area": "Repositorio y entrega",
+        "descripcion": "El documento mezcla estilos de titulo y cuerpo, tiene errores de mayusculas, menciona a Codex "
+                       "y sus referencias estan incompletas.",
+        "pasos": "1. Abrir el documento y revisar estilos de parrafo, redaccion y referencias.",
+        "esperado": "Esperado: formato uniforme, tercera persona y referencias completas. Obtenido: 39 parrafos de "
+                    "cuerpo con estilo Heading2, oraciones en minuscula tras punto en 1.2, mencion a Codex en 3.5 y "
+                    "3.7 y referencias marcadas como preliminares.",
+        "severidad": "Baja", "responsable": "Andrés", "evidencia": "EV-ENT-12.txt",
+        "observaciones": "Propuesta: aplicar Normal a los parrafos de cuerpo y un estilo de pie a las figuras, "
+                         "corregir las mayusculas de 1.2, decidir con el equipo si se menciona la herramienta usada y "
+                         "completar las referencias en APA (ASP.NET Core MVC, EF Core, SQL Server, Swashbuckle).",
+    },
 ]

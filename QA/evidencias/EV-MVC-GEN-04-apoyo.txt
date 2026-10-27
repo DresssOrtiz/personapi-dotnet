@@ -1,5 +1,5 @@
 Caso: MVC-GEN-04-apoyo
-Fecha: 2026-10-27 00:23:50
+Fecha: 2026-10-27 00:52:08
 
 escritorio (1366px) inicio: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []
 escritorio (1366px) personas-listado: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: [False]

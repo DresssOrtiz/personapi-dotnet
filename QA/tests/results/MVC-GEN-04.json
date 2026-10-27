@@ -1,9 +1,9 @@
 {
   "id": "MVC-GEN-04",
-  "estado": "Pendiente",
-  "obtenido": "",
-  "evidencia": "",
+  "estado": "Aprobado",
+  "obtenido": "En 1366, 768 y 375 px ninguna página desborda horizontalmente; en tableta y móvil el menú lateral pasa a la parte superior, los formularios quedan en una columna y las tablas se desplazan dentro de su contenedor. El texto es legible (letra mínima 12 px).",
+  "evidencia": "EV-MVC-GEN-04-*.png, EV-MVC-GEN-04-resumen-vacio.png, EV-MVC-GEN-04.txt",
   "fecha": "2026-10-27",
-  "responsable": "",
-  "observaciones": "Revision manual pendiente. Apoyo automatizado en EV-MVC-GEN-04-apoyo.txt y capturas EV-MVC-GEN-04-*.png: movil (375px) inicio: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []; movil (375px) personas-listado: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: [True]; movil (375px) personas-crear: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []; movil (375px) estudios-listado: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: [True]; movil (375px) estudios-crear: desborde horizontal de la pagina 0px; tabla con desplazamiento interno: []"
+  "responsable": "Automatizado",
+  "observaciones": "En móvil la columna Acciones de los listados queda fuera de la vista y requiere desplazar la tabla; no hay indicación visual de que se puede desplazar. Hallazgo visual en todos los anchos: /Personas/Create:, /Profesiones/Create: muestran un recuadro de error vacío antes de enviar el formulario. Revisión asistida: confirmar el criterio con el responsable de QA."
 }

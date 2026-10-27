@@ -1,5 +1,5 @@
 Caso: ENT-10
-Fecha: 2026-10-27 00:44:36
+Fecha: 2026-10-27 00:59:28
 
 1. Marco conceptual: presente
 2. Diseño: presente

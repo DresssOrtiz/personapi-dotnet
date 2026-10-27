@@ -7,7 +7,7 @@ patrón DAO). Responsable de QA: Santiago Hernández. Fecha de ejecución: 27 de
 
 | Archivo o carpeta | Descripción |
 |---|---|
-| `Matriz_Pruebas_Laboratorio1_QA.xlsx` | Matriz de 165 casos con estado, resultado obtenido, evidencia, fecha, responsable y observaciones; hoja Defectos con 8 defectos. |
+| `Matriz_Pruebas_Laboratorio1_QA.xlsx` | Matriz de 165 casos con estado, resultado obtenido, evidencia, fecha, responsable y observaciones; hoja Defectos con 11 defectos. |
 | `Laboratorio 1 — ..._QA.docx` | Copia del documento del laboratorio con la sección 3.9 "Pruebas de QA" completa. |
 | `evidencias/` | Salidas y capturas de cada caso (`EV-<ID>.txt` / `EV-<ID>.png`). `pantallas/` reúne las 21 vistas para comparar con Figma. |
 | `tests/` | Scripts de pruebas automatizadas y resultados por caso. Ver `tests/README.md`. |
@@ -26,13 +26,17 @@ patrón DAO). Responsable de QA: Santiago Hernández. Fecha de ejecución: 27 de
 | Base de datos | 25 | 23 | 1 | 1 | 0 |
 | Backend y DAO | 9 | 8 | 1 | 0 | 0 |
 | API REST | 62 | 61 | 1 | 0 | 0 |
-| Swagger | 9 | 8 | 0 | 0 | 1 |
-| Frontend MVC | 40 | 31 | 6 | 0 | 3 |
+| Swagger | 9 | 8 | 1 | 0 | 0 |
+| Frontend MVC | 40 | 33 | 6 | 1 | 0 |
 | Integración | 8 | 8 | 0 | 0 | 0 |
-| Repositorio y entrega | 12 | 8 | 2 | 1 | 1 |
-| **Total** | **165** | **147** | **11** | **2** | **5** |
+| Repositorio y entrega | 12 | 8 | 3 | 1 | 0 |
+| **Total** | **165** | **149** | **13** | **3** | **0** |
 
-Avance de ejecución: 95,8 %. Tasa de aprobación sobre ejecutados: 93,0 %.
+Avance de ejecución: 98,2 %. Tasa de aprobación sobre ejecutados: 92,0 %.
+
+Los casos de revisión (MVC-GEN-04, MVC-GEN-05, SW-09 y ENT-12) se ejecutaron sobre `main` integrada:
+MVC-GEN-05 con Playwright en Chromium (motor de Chrome y Edge), Firefox y WebKit; MVC-GEN-04, SW-09 y
+ENT-12 con mediciones automáticas y un criterio escrito en la matriz que el responsable de QA debe confirmar.
 
 ## Defectos
 
@@ -46,13 +50,16 @@ Avance de ejecución: 95,8 %. Tasa de aprobación sobre ejecutados: 93,0 %.
 | DEF-06 | MVC-*-05, MVC-GEN-07 | Baja | Las claves y rutas inexistentes devuelven 404 sin página propia. | Andrés |
 | DEF-07 | MVC-PER-01 | Baja | El listado de personas no muestra la edad. | Andrés |
 | DEF-08 | ENT-11 | Baja | El documento conserva marcadores de captura y figuras sin numerar. | Andrés |
+| DEF-09 | MVC-GEN-04 | Baja | Los formularios de creación de personas y profesiones muestran un recuadro de error vacío. | Andrés |
+| DEF-10 | SW-09 | Baja | Swagger no muestra resúmenes ni descripciones de operaciones y campos. | Tomás |
+| DEF-11 | ENT-12 | Baja | El documento mezcla estilos, tiene errores de mayúsculas y referencias incompletas. | Andrés |
 
 Los pasos para reproducir, el resultado esperado frente al obtenido y la corrección propuesta de cada
 defecto están en la hoja Defectos de la matriz.
 
 ## Pendientes
 
-- Casos manuales: MVC-GEN-03 (comparación con Figma), MVC-GEN-04 (tamaños de pantalla), MVC-GEN-05
-  (navegadores), SW-09 (claridad de Swagger) y ENT-12 (formato del documento).
-- Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB) y ENT-09 (TAG de entrega).
+- Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB), ENT-09 (TAG de entrega) y
+  MVC-GEN-03 (requiere el enlace o las exportaciones del diseño de Figma).
+- Confirmar el criterio de las revisiones asistidas MVC-GEN-04, SW-09 y ENT-12.
 - Antes del TAG: corregir DEF-01 y DEF-02 y repetir ENT-08 y ENT-09.

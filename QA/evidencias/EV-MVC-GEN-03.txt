@@ -1,0 +1,6 @@
+Caso: MVC-GEN-03
+Fecha: 2026-10-27 00:54:05
+
+Archivo de diseño citado en docs/frontend-mvc.md: Figma RuO1QF59HvUaUqZi41fAK3
+Intento de acceso sin sesión: HTTP 403, URL final https://www.figma.com/design/RuO1QF59HvUaUqZi41fAK3
+Capturas listas para comparar: evidencias/pantallas/EV-MVC-GEN-03-*.png (21)

@@ -112,6 +112,8 @@ def set_style(row_xml, ref, style):
 def load_results():
     res = {}
     for f in glob.glob(os.path.join(RESULTS, "*.json")):
+        if not re.fullmatch(r"[A-Z]+(-[A-Z0-9]+)+\.json", os.path.basename(f)):
+            continue  # ignora copias de sincronizacion como "BD-01 2.json"
         d = json.load(open(f, encoding="utf-8"))
         res[d["id"]] = d
     reg_path = os.path.join(RESULTS, "regresion-frontend.txt")

@@ -1,0 +1,9 @@
+Caso: SW-09
+Fecha: 2026-10-27 00:54:06
+
+Operaciones: 20; con summary o description: 0
+Parametros: 15; con descripcion: 0
+Propiedades de los DTO: 15; con descripcion: 0
+Nombres abreviados sin descripcion: ['idProf', 'ccPer', 'univer', 'cc', 'nom', 'des', 'num', 'oper', 'duenio']
+Comentarios /// <summary> en los DTO: 4; GenerateDocumentationFile: False
+Codigos de respuesta documentados: si (ver SW-06)
