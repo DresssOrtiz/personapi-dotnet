@@ -55,6 +55,21 @@ def main(docx, branch):
     s = re.sub(r"<td style=\"text-align: center;\">", f'<td style="{cell}text-align:center">', s)
     s = re.sub(r"<td>", f'<td style="{cell}">', s)
     s = s.replace("<td style=\"text-align: left;\">", f'<td style="{cell}">')
+    # Anchos fijos por columna (pt); el ancho util con la sangria de 36 pt es de unos 415 pt.
+    widths = iter([[130, 285], [105, 40, 55, 50, 60, 60, 45], [45, 75, 50, 185, 60]])
+
+    def size_table(m):
+        cols = next(widths)
+        table = m.group(0).replace("width:430pt", f"width:{sum(cols)}pt;table-layout:fixed")
+
+        def size_row(r):
+            k = iter(range(len(cols)))
+            return re.sub(r"<(t[hd]) style=\"",
+                          lambda c: (lambda i: f'<{c.group(1)} width="{round(cols[i] * 4 / 3)}" '
+                                               f'style="width:{cols[i]}pt;')(next(k)), r.group(0))
+        return re.sub(r"<tr[^>]*>.*?</tr>", size_row, table, flags=re.S)
+    s = re.sub(r"<table.*?</table>", size_table, s, flags=re.S)
+    s = re.sub(r"</?(thead|tbody)>", "", s)
     out = os.path.join(HERE, "seccion_3_9_gdocs.html")
     with open(out, "w", encoding="utf-8") as f:
         f.write("<meta charset=\"utf-8\">" + s)
