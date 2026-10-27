@@ -9,7 +9,7 @@ patrón DAO). Responsable de QA: Santiago Hernández. Fecha de ejecución: 27 de
 |---|---|
 | `Matriz_Pruebas_Laboratorio1_QA.xlsx` | Matriz de 165 casos con estado, resultado obtenido, evidencia, fecha, responsable y observaciones; hoja Defectos con 11 defectos. |
 | `Laboratorio 1 — ..._QA.docx` | Copia del documento del laboratorio con la sección 3.9 "Pruebas de QA" completa. |
-| `evidencias/` | Salidas y capturas de cada caso (`EV-<ID>.txt` / `EV-<ID>.png`). `pantallas/` reúne las 21 vistas para comparar con Figma. |
+| `evidencias/` | Salidas y capturas de cada caso (`EV-<ID>.txt` / `EV-<ID>.png`). `pantallas/` reúne las 21 vistas implementadas y `figma/` los marcos del diseño con un comparativo por pantalla. |
 | `tests/` | Scripts de pruebas automatizadas y resultados por caso. Ver `tests/README.md`. |
 
 ## Alcance
@@ -27,16 +27,18 @@ patrón DAO). Responsable de QA: Santiago Hernández. Fecha de ejecución: 27 de
 | Backend y DAO | 9 | 8 | 1 | 0 | 0 |
 | API REST | 62 | 61 | 1 | 0 | 0 |
 | Swagger | 9 | 8 | 1 | 0 | 0 |
-| Frontend MVC | 40 | 33 | 6 | 1 | 0 |
+| Frontend MVC | 40 | 34 | 6 | 0 | 0 |
 | Integración | 8 | 8 | 0 | 0 | 0 |
 | Repositorio y entrega | 12 | 8 | 3 | 1 | 0 |
-| **Total** | **165** | **149** | **13** | **3** | **0** |
+| **Total** | **165** | **150** | **13** | **2** | **0** |
 
-Avance de ejecución: 98,2 %. Tasa de aprobación sobre ejecutados: 92,0 %.
+Avance de ejecución: 98,8 %. Tasa de aprobación sobre ejecutados: 92,0 %.
 
-Los casos de revisión (MVC-GEN-04, MVC-GEN-05, SW-09 y ENT-12) se ejecutaron sobre `main` integrada:
-MVC-GEN-05 con Playwright en Chromium (motor de Chrome y Edge), Firefox y WebKit; MVC-GEN-04, SW-09 y
-ENT-12 con mediciones automáticas y un criterio escrito en la matriz que el responsable de QA debe confirmar.
+Los casos de revisión (MVC-GEN-03, MVC-GEN-04, MVC-GEN-05, SW-09 y ENT-12) se ejecutaron sobre `main`
+integrada: MVC-GEN-03 comparando las 21 pantallas con los marcos del diseño de Figma; MVC-GEN-05 con
+Playwright en Chromium (motor de Chrome y Edge), Firefox y WebKit; MVC-GEN-04, SW-09 y ENT-12 con
+mediciones automáticas. En las revisiones queda escrito en la matriz un criterio que el responsable de QA
+debe confirmar.
 
 ## Defectos
 
@@ -59,7 +61,6 @@ defecto están en la hoja Defectos de la matriz.
 
 ## Pendientes
 
-- Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB), ENT-09 (TAG de entrega) y
-  MVC-GEN-03 (requiere el enlace o las exportaciones del diseño de Figma).
-- Confirmar el criterio de las revisiones asistidas MVC-GEN-04, SW-09 y ENT-12.
+- Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB) y ENT-09 (TAG de entrega).
+- Confirmar el criterio de las revisiones asistidas MVC-GEN-03, MVC-GEN-04, SW-09 y ENT-12.
 - Antes del TAG: corregir DEF-01 y DEF-02 y repetir ENT-08 y ENT-09.

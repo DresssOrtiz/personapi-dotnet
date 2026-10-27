@@ -167,7 +167,8 @@ def build_section(st, rows, tot, rids):
     fe_defs = fe[0] if len(fe) == 1 else ", ".join(fe[:-1]) + " y " + fe[-1]
     pend = [k for k, v in st.items() if v == "Pendiente"]
     cierre = (f"completar los {len(pend)} casos manuales pendientes" if pend else
-              "completar la comparación con Figma (MVC-GEN-03) cuando el diseño esté disponible")
+              "ejecutar BD-07 en un equipo Windows con SQL Server Express o LocalDB" if st.get("BD-07") == "Bloqueado" else
+              "crear el TAG de entrega")
     sev = {s: sum(1 for d in DEFECTOS if d["severidad"] == s) for s in ("Crítica", "Alta", "Media", "Baja")}
     x = []
     x.append(heading("3.9. Pruebas de QA", 2))
@@ -291,8 +292,8 @@ def build_section(st, rows, tot, rids):
               "La concurrencia se evaluó con 20 pares de solicitudes simultáneas sobre la creación de personas. No se "
               "realizaron pruebas de rendimiento, carga ni seguridad más allá de la protección antifalsificación, la "
               "exposición de errores y las credenciales versionadas.",
-              "No se tuvo acceso al diseño de Figma, por lo que la comparación de MVC-GEN-03 quedó bloqueada. Las "
-              "revisiones de MVC-GEN-04, SW-09 y ENT-12 aplican criterios escritos en la matriz que el responsable "
+              "La comparación con el diseño de Figma (MVC-GEN-03) se hizo con el enlace compartido, sin sesión, a "
+              "partir de capturas de cada marco. Las revisiones de MVC-GEN-03, MVC-GEN-04, SW-09 y ENT-12 aplican criterios escritos en la matriz que el responsable "
               "de QA debe confirmar."]:
         x.append(para(t, num=True))
 

@@ -1,6 +1,33 @@
 Caso: MVC-GEN-03
-Fecha: 2026-10-27 00:54:05
+Fecha: 2026-10-27 16:11:22
 
-Archivo de diseño citado en docs/frontend-mvc.md: Figma RuO1QF59HvUaUqZi41fAK3
-Intento de acceso sin sesión: HTTP 403, URL final https://www.figma.com/design/RuO1QF59HvUaUqZi41fAK3
-Capturas listas para comparar: evidencias/pantallas/EV-MVC-GEN-03-*.png (21)
+Diseño: https://www.figma.com/design/RuO1QF59HvUaUqZi41fAK3 (enlace compartido, sin sesión)
+Marcos comparados (pantalla, nodo):
+  Inicio: node-id=3-2
+  Personas-Index: node-id=3-28
+  Personas-Create: node-id=3-70
+  Personas-Details: node-id=3-102
+  Personas-Edit: node-id=3-129
+  Personas-Delete: node-id=3-161
+  Telefonos-Index: node-id=3-182
+  Telefonos-Create: node-id=3-220
+  Telefonos-Details: node-id=3-246
+  Telefonos-Edit: node-id=3-269
+  Telefonos-Delete: node-id=3-295
+  Profesiones-Index: node-id=4-2
+  Profesiones-Create: node-id=4-40
+  Profesiones-Details: node-id=4-66
+  Profesiones-Edit: node-id=4-89
+  Profesiones-Delete: node-id=4-115
+  Estudios-Index: node-id=4-135
+  Estudios-Create: node-id=4-177
+  Estudios-Details: node-id=4-207
+  Estudios-Edit: node-id=4-232
+  Estudios-Delete: node-id=4-262
+Diferencias:
+- Listados: la aplicación agrega el enlace Eliminar en cada fila (el diseño muestra solo Ver · Editar) y omite la nota de datos ilustrativos del boceto.
+- Listado de personas: ni el diseño ni la aplicación muestran la edad (ver DEF-07).
+- Eliminar personas y teléfonos: el diseño titula la tarjeta 'Eliminar registro' y pregunta '¿Deseas eliminar este registro de ...?'; la aplicación usa 'Eliminar registro de ...' y '¿Confirmas la eliminación de este registro?', y además muestra la clave del registro.
+- Títulos de tarjeta: 'Registrar profesiones' y 'Editar registro de profesiones' en el diseño frente a 'Registrar profesión' y 'Editar profesión'; 'Editar registro de estudios' frente a 'Editar estudios'.
+- Formularios: la aplicación usa listas desplegables para género, dueño, profesión y persona y un selector de fecha donde el diseño dibuja campos de texto con la indicación 'seleccionar'.
+- Crear persona y crear profesión: la aplicación muestra un recuadro de error vacío que no está en el diseño (DEF-09).
