@@ -23,20 +23,51 @@ from lib import BASE_URL, EVID, ROOT, record, write_evidence  # noqa: E402
 NOTA = " Revisión asistida: confirmar el criterio con el responsable de QA."
 
 
+FIGMA = "https://www.figma.com/design/RuO1QF59HvUaUqZi41fAK3"
+# Marcos del diseño (nodo de Figma) por pantalla. Las capturas de Figma se tomaron con el enlace compartido,
+# cargando cada nodo; los comparativos ponen el marco de Figma a la izquierda y la pantalla implementada a la derecha.
+FRAMES = {"Inicio": "3-2", "Personas-Index": "3-28", "Personas-Create": "3-70", "Personas-Details": "3-102",
+          "Personas-Edit": "3-129", "Personas-Delete": "3-161", "Telefonos-Index": "3-182",
+          "Telefonos-Create": "3-220", "Telefonos-Details": "3-246", "Telefonos-Edit": "3-269",
+          "Telefonos-Delete": "3-295", "Profesiones-Index": "4-2", "Profesiones-Create": "4-40",
+          "Profesiones-Details": "4-66", "Profesiones-Edit": "4-89", "Profesiones-Delete": "4-115",
+          "Estudios-Index": "4-135", "Estudios-Create": "4-177", "Estudios-Details": "4-207",
+          "Estudios-Edit": "4-232", "Estudios-Delete": "4-262"}
+DIFERENCIAS = [
+    "Listados: la aplicación agrega el enlace Eliminar en cada fila (el diseño muestra solo Ver · Editar) y omite "
+    "la nota de datos ilustrativos del boceto.",
+    "Listado de personas: ni el diseño ni la aplicación muestran la edad (ver DEF-07).",
+    "Eliminar personas y teléfonos: el diseño titula la tarjeta 'Eliminar registro' y pregunta '¿Deseas eliminar "
+    "este registro de ...?'; la aplicación usa 'Eliminar registro de ...' y '¿Confirmas la eliminación de este "
+    "registro?', y además muestra la clave del registro.",
+    "Títulos de tarjeta: 'Registrar profesiones' y 'Editar registro de profesiones' en el diseño frente a "
+    "'Registrar profesión' y 'Editar profesión'; 'Editar registro de estudios' frente a 'Editar estudios'.",
+    "Formularios: la aplicación usa listas desplegables para género, dueño, profesión y persona y un selector de "
+    "fecha donde el diseño dibuja campos de texto con la indicación 'seleccionar'.",
+    "Crear persona y crear profesión: la aplicación muestra un recuadro de error vacío que no está en el diseño "
+    "(DEF-09).",
+]
+
+
 def gen03():
-    try:
-        r = requests.get("https://www.figma.com/design/RuO1QF59HvUaUqZi41fAK3", timeout=20, allow_redirects=True)
-        acceso = f"HTTP {r.status_code}, URL final {r.url}"
-    except requests.RequestException as exc:
-        acceso = f"sin acceso: {exc.__class__.__name__}"
-    ev = write_evidence("MVC-GEN-03", "Archivo de diseño citado en docs/frontend-mvc.md: Figma RuO1QF59HvUaUqZi41fAK3\n"
-                                      f"Intento de acceso sin sesión: {acceso}\n"
-                                      "Capturas listas para comparar: evidencias/pantallas/EV-MVC-GEN-03-*.png (21)")
-    record("MVC-GEN-03", "Bloqueado",
-           "No se pudo abrir el diseño de Figma desde el entorno de pruebas (requiere sesión o permiso del autor).",
-           f"pantallas/EV-MVC-GEN-03-*.png, {ev}",
-           "Las 21 capturas de las pantallas implementadas están listas. Falta el enlace compartido de Figma o las "
-           "exportaciones de Andrés para completar la comparación.")
+    faltan = [k for k in FRAMES if not os.path.exists(os.path.join(EVID, "figma", f"EV-MVC-GEN-03-figma-{k}.png"))]
+    if faltan:
+        record("MVC-GEN-03", "Bloqueado", f"Faltan capturas del diseño de Figma: {', '.join(faltan)}.",
+               "pantallas/EV-MVC-GEN-03-*.png")
+        return
+    ev = write_evidence("MVC-GEN-03", f"Diseño: {FIGMA} (enlace compartido, sin sesión)\n"
+                                      "Marcos comparados (pantalla, nodo):\n"
+                                      + "\n".join(f"  {k}: node-id={v}" for k, v in FRAMES.items())
+                                      + "\nDiferencias:\n" + "\n".join(f"- {d}" for d in DIFERENCIAS))
+    record("MVC-GEN-03", "Aprobado",
+           f"Las {len(FRAMES)} pantallas siguen el diseño de Figma: menú lateral oscuro con la opción activa, título "
+           "'Módulo / Acción' con subtítulo, tarjeta blanca, campos en dos columnas, botón principal azul y "
+           "confirmación de eliminación en recuadro rojo claro. Las diferencias son de texto y de controles de "
+           "formulario.",
+           f"figma/EV-MVC-GEN-03-comparacion-*.png, figma/EV-MVC-GEN-03-figma-*.png, {ev}",
+           "Diferencias registradas en la evidencia: enlace Eliminar en los listados, títulos y preguntas de "
+           "eliminación, títulos de tarjeta en singular y listas desplegables en lugar de campos de texto. El "
+           "recuadro de error vacío ya está registrado como DEF-09." + NOTA)
 
 
 def gen04():

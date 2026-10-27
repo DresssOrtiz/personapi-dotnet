@@ -87,8 +87,9 @@ DEFECTOS = [
         "esperado": "Esperado: columnas cc, nombre, apellido, genero y edad. Obtenido: Cedula, Nombre, Apellido, "
                     "Genero y Acciones; la edad solo aparece en Detalles.",
         "severidad": "Baja", "responsable": "Andrés", "evidencia": "EV-MVC-PER-01.png",
-        "observaciones": "Propuesta: agregar <th>Edad</th> y <td>@item.Edad</td> en Views/Personas/Index.cshtml, o "
-                         "ajustar el caso si la omision fue una decision de diseno (comparar con Figma).",
+        "observaciones": "El diseno de Figma (Personas · Listado) tampoco incluye la edad, asi que la omision "
+                         "sigue el diseno. Propuesta: agregar <th>Edad</th> y <td>@item.Edad</td> en "
+                         "Views/Personas/Index.cshtml, o ajustar el caso MVC-PER-01 si el equipo mantiene el diseno.",
     },
     {
         "id": "DEF-08", "casos": ["ENT-11"], "req": "R11", "area": "Repositorio y entrega",
