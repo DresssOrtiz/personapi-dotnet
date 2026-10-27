@@ -1,0 +1,9 @@
+{
+  "id": "API-PER-05",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 409: \"Ya existe una persona con cc 2001.\"; el registro original no cambia.",
+  "evidencia": "EV-API-PER-05.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

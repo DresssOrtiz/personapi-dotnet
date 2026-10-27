@@ -1,0 +1,11 @@
+Caso: ENT-05
+Fecha: 2026-10-27 00:22:05
+
+Archivos de compilacion o temporales versionados: []
+.gitignore excluye bin/obj: True
+
+Credenciales encontradas:
+main:README.md:60:Server=localhost,1433;Database=persona_db;User Id=sa;Password=Persona_Lab1#2026;TrustServerCertificate=true
+main:personapi-dotnet/appsettings.json:3:    "PersonaDb": "Server=localhost,1433;Database=persona_db;User Id=sa;Password=Persona_Lab1#2026;TrustServerCertificate=true"
+origin/feature/frontend-mvc:README.md:60:Server=localhost,1433;Database=persona_db;User Id=sa;Password=Persona_Lab1#2026;TrustServerCertificate=true
+origin/feature/frontend-mvc:personapi-dotnet/appsettings.json:3:    "PersonaDb": "Server=localhost,1433;Database=persona_db;User Id=sa;Password=Persona_Lab1#2026;TrustServerCertificate=true"

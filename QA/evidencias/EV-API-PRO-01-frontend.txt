@@ -1,0 +1,8 @@
+Caso: API-PRO-01-frontend
+Fecha: 2026-10-27 00:22:29
+
+> GET /api/profesiones 
+< 200 application/json; charset=utf-8
+[{"id":1,"nom":"Ingeniero de Sistemas","des":"Diseno, desarrollo y mantenimiento de sistemas de software"},{"id":2,"nom":"Administrador de Empresas","des":"Gestion y direccion de organizaciones"},{"id":3,"nom":"Disenador Grafico","des":"Creacion de piezas visuales y comunicacion grafica"},{"id":4,"nom":"Medico","des":"Prevencion, diagnostico y tratamiento de enfermedades"}]
+
+[OK] 200 y conteo

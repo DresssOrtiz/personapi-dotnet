@@ -1,0 +1,9 @@
+{
+  "id": "API-EST-06",
+  "estado": "Aprobado",
+  "obtenido": "univer de 51, idProf 0, ccPer 0 y fechas '2022-13-45' y '30/06/2022' responden [400, 400, 400, 400, 400]; no se inserta nada.",
+  "evidencia": "EV-API-EST-06.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Control adicional: una fecha futura (2099-01-01) responde 201; no hay validacion de fechas futuras."
+}

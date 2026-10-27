@@ -1,0 +1,19 @@
+Caso: ENT-07
+Fecha: 2026-10-27 00:44:35
+
+gh pr view 2 -> {"headRefOid":"eea9ee879d724d6f53554544531086d7aa68119a","mergeCommit":{"oid":"8fc7d805abb57ab422d6f5b9a176b79c89a4a652"},"mergeStateStatus":"UNKNOWN","mergedAt":"2026-10-27T05:37:06Z","reviewDecision":"APPROVED","state":"MERGED"}
+git clone main -> 0
+HEAD de main: 8fc7d80 Merge pull request #2 from DresssOrtiz/feature/frontend-mvc
+Contiene eea9ee8: True
+dotnet build -> 0 ['0 Advertencia(s)', '0 Errores']
+Respuestas de la aplicacion compilada desde main:
+  GET / -> 200
+  GET /Personas -> 200
+  GET /Telefonos -> 200
+  GET /Profesiones -> 200
+  GET /Estudios -> 200
+  GET /Personas/Create -> 200
+  GET /api/personas -> 200
+  GET /api/estudios -> 200
+  GET /swagger/index.html -> 200
+Listado MVC presente: True

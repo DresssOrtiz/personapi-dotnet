@@ -1,0 +1,8 @@
+Caso: API-TEL-01-frontend
+Fecha: 2026-10-27 00:22:27
+
+> GET /api/telefonos 
+< 200 application/json; charset=utf-8
+[{"num":"3001112233","oper":"Claro","duenio":1001},{"num":"3015550011","oper":"Claro","duenio":1003},{"num":"3104445566","oper":"Movistar","duenio":1001},{"num":"3126663344","oper":"WOM","duenio":1004},{"num":"3207778899","oper":"Tigo","duenio":1002}]
+
+[OK] 200 y conteo

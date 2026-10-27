@@ -1,0 +1,16 @@
+Caso: API-PER-10
+Fecha: 2026-10-27 00:21:42
+
+> POST /api/personas {"cc": 2020, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 33}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/personas/2020
+{"cc":2020,"nombre":"Prueba","apellido":"QA","genero":"F","edad":33}
+
+> DELETE /api/personas/2020 
+< 204 
+
+
+> GET /api/personas/2020 
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-11644069fd41d8744a73ca0280247be1-5cd650b95732289c-00"}
+
+[OK] 204 y luego 404

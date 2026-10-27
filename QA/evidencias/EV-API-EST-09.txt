@@ -1,0 +1,8 @@
+Caso: API-EST-09
+Fecha: 2026-10-27 00:21:46
+
+> PUT /api/estudios/2/1005 {"idProf": 1, "ccPer": 1001, "fecha": "2022-06-30", "univer": "Universidad QA"}
+< 400 application/json; charset=utf-8
+{"title":"La clave de la ruta no coincide con la del cuerpo.","status":400}
+
+[OK] 400

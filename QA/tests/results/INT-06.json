@@ -1,0 +1,9 @@
+{
+  "id": "INT-06",
+  "estado": "Aprobado",
+  "obtenido": "Persona, telefono, profesion y estudio creados desde las vistas, consultados por la API (4 x 200) y eliminados en orden inverso sin errores; no quedan registros.",
+  "evidencia": "EV-INT-06.png, EV-INT-06.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

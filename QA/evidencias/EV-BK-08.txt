@@ -1,0 +1,10 @@
+Caso: BK-08
+Fecha: 2026-10-27 00:22:00
+
+Controladores revisados: 5
+Referencias a DbContext: []
+Controllers/Api/EstudiosController.cs: ['IEstudioRepository', 'IPersonaRepository', 'IProfesionRepository']
+Controllers/Api/PersonasController.cs: ['IPersonaRepository']
+Controllers/Api/ProfesionesController.cs: ['IProfesionRepository']
+Controllers/Api/TelefonosController.cs: ['IPersonaRepository', 'ITelefonoRepository']
+Controllers/HomeController.cs: []

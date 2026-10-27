@@ -1,0 +1,22 @@
+Caso: API-PRO-06-frontend
+Fecha: 2026-10-27 00:22:29
+
+> POST /api/profesiones {"id": 910, "nom": "", "des": "Descripcion de prueba"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-c820e1a61638bca95bf456acd7c7fab7-10d7c39e275e8364-00","errors":{"Nom":["The Nom field is required."]}}
+
+[OK] 400
+
+> POST /api/profesiones {"id": 911, "nom": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "des": "Descripcion de prueba"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-fc1d571f0c676c37001a96774e413626-7a5efe272d3c03c5-00","errors":{"Nom":["The field Nom must be a string with a maximum length of 90."]}}
+
+[OK] 400
+
+> POST /api/profesiones {"id": 0, "nom": "Profesion QA", "des": "Descripcion de prueba"}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-d0337aabac6ea3c591a829a52c105914-7d4437399168cf21-00","errors":{"Id":["The field Id must be between 1 and 2147483647."]}}
+
+[OK] 400
+
+[OK] sin inserciones

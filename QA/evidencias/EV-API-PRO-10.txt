@@ -1,0 +1,16 @@
+Caso: API-PRO-10
+Fecha: 2026-10-27 00:21:45
+
+> POST /api/profesiones {"id": 920, "nom": "Profesion QA", "des": "Descripcion de prueba"}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/profesiones/920
+{"id":920,"nom":"Profesion QA","des":"Descripcion de prueba"}
+
+> DELETE /api/profesiones/920 
+< 204 
+
+
+> GET /api/profesiones/920 
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-abc702a7876761d02e9cb664099abb89-b4c5e8b1bd4c4d44-00"}
+
+[OK] 204 y 404

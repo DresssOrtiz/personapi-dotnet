@@ -1,0 +1,9 @@
+Caso: MVC-GEN-01
+Fecha: 2026-10-27 00:23:05
+
+Inicio -> / -> 200
+Personas -> /Personas -> 200
+Teléfonos -> /Telefonos -> 200
+Profesiones -> /Profesiones -> 200
+Estudios -> /Estudios -> 200
+Marca (Inicio) -> / -> 200

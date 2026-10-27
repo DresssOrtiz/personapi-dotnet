@@ -1,0 +1,13 @@
+Caso: BK-01
+Fecha: 2026-10-27 00:22:00
+
+TargetFramework: net6.0
+Sdk: Microsoft.NET.Sdk.Web
+Paquetes:
+  Microsoft.EntityFrameworkCore 6.0.36
+  Microsoft.EntityFrameworkCore.Design 6.0.36
+  Microsoft.EntityFrameworkCore.SqlServer 6.0.36
+  Swashbuckle.AspNetCore 6.5.0
+
+README, tabla Stack:
+| .NET / ASP.NET Core | 6.0 (el enunciado menciona 7 en el stack y 6 en el procedimiento; se usa 6.0) |

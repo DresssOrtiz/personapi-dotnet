@@ -1,0 +1,12 @@
+Caso: BD-04
+Fecha: 2026-10-27 00:21:23
+
+TABLE_NAME|CONSTRAINT_NAME|COLUMN_NAME|ORDINAL_POSITION
+----------|---------------|-----------|----------------
+estudios|PK_estudios|id_prof|1
+estudios|PK_estudios|cc_per|2
+persona|PK_persona|cc|1
+profesion|PK_profesion|id|1
+telefono|PK_telefono|num|1
+
+(5 rows affected)

@@ -1,0 +1,20 @@
+Caso: API-PER-13-frontend
+Fecha: 2026-10-27 00:22:27
+
+> POST /api/personas {"cc": 2031, "nombre": "Prueba", "apellido": "QA", "genero": "F"}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/personas/2031
+{"cc":2031,"nombre":"Prueba","apellido":"QA","genero":"F","edad":null}
+
+> POST /api/personas {"cc": 2032, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 0}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/personas/2032
+{"cc":2032,"nombre":"Prueba","apellido":"QA","genero":"F","edad":0}
+
+> POST /api/personas {"cc": 2033, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 150}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/personas/2033
+{"cc":2033,"nombre":"Prueba","apellido":"QA","genero":"F","edad":150}
+
+> POST /api/personas {"cc": 2034, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 151}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-ba6c8a030ee024890b8a07e97ea319d2-9e99e828e1fd0c15-00","errors":{"Edad":["The field Edad must be between 0 and 150."]}}
+
+[OK] 201 x3 y 400

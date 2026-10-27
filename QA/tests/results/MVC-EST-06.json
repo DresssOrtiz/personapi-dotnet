@@ -1,0 +1,9 @@
+{
+  "id": "MVC-EST-06",
+  "estado": "Aprobado",
+  "obtenido": "Formulario precargado ('Universidad QA'), clave no editable; el cambio a 'Universidad QA Editada' se guarda y se ve en el listado.",
+  "evidencia": "EV-MVC-EST-06-formulario.png, EV-MVC-EST-06.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

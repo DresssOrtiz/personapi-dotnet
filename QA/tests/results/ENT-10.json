@@ -1,0 +1,9 @@
+{
+  "id": "ENT-10",
+  "estado": "Aprobado",
+  "obtenido": "La copia _QA incluye marco conceptual, diseño, procedimiento, pruebas con evidencias (3.9), conclusiones y referencias.",
+  "evidencia": "EV-ENT-10.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Las referencias están marcadas como preliminares. Sin el enunciado oficial, la lista de secciones exigidas se tomó de R11."
+}

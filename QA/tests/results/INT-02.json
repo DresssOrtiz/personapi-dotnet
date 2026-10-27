@@ -1,0 +1,9 @@
+{
+  "id": "INT-02",
+  "estado": "Aprobado",
+  "obtenido": "POST 201; la persona 2402 aparece en el listado de la vista.",
+  "evidencia": "EV-INT-02.png, EV-INT-02.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

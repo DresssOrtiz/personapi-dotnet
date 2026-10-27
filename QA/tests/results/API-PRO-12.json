@@ -1,0 +1,9 @@
+{
+  "id": "API-PRO-12",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 409: \"No se puede eliminar la profesion porque tiene estudios asociados.\"; la profesion 1 y sus estudios permanecen.",
+  "evidencia": "EV-API-PRO-12.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

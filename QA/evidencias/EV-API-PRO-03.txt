@@ -1,0 +1,8 @@
+Caso: API-PRO-03
+Fecha: 2026-10-27 00:21:44
+
+> GET /api/profesiones/9999 
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-bf8d3a455b189ece9f2c05132dc1ec1d-27c37e62384c2d85-00"}
+
+[OK] 404

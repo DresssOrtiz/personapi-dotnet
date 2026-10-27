@@ -1,0 +1,9 @@
+{
+  "id": "BD-04",
+  "estado": "Aprobado",
+  "obtenido": "PK_persona(cc), PK_profesion(id), PK_telefono(num) y PK_estudios(id_prof, cc_per) compuesta.",
+  "evidencia": "EV-BD-04.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

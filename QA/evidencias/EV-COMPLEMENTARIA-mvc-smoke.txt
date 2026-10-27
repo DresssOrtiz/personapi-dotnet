@@ -1,0 +1,6 @@
+Evidencia complementaria (no es un caso de la matriz)
+Script del equipo tests/mvc-smoke.ps1 (rama feature/frontend-mvc, eea9ee8) sin modificaciones
+Comando: docker run mcr.microsoft.com/powershell:lts-7.4-ubuntu-22.04 pwsh -File mvc-smoke.ps1 -BaseUrl http://host.docker.internal:5025
+Codigo de salida: 0
+
+CORRECTO: 213 comprobaciones HTTP. CRUD de las cuatro entidades, validación, CSRF, duplicados, relaciones, claves y limpieza de datos.

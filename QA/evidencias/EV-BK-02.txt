@@ -1,0 +1,14 @@
+Caso: BK-02
+Fecha: 2026-10-27 00:22:00
+
+SDK: 6.0.428
+$ dotnet build personapi-dotnet.sln
+  Determinando los proyectos que se van a restaurar...
+  Todos los proyectos están actualizados para la restauración.
+  personapi-dotnet -> /Users/santiagohernandezbarbosa/Desktop/Universidad/8 semestre/Arqui Lab 1/personapi-dotnet/personapi-dotnet/bin/Debug/net6.0/personapi-dotnet.dll
+
+Compilación correcta.
+    0 Advertencia(s)
+    0 Errores
+
+Tiempo transcurrido 00:00:00.60

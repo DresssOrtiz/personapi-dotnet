@@ -1,0 +1,9 @@
+{
+  "id": "API-EST-04",
+  "estado": "Aprobado",
+  "obtenido": "HTTP 201, Location http://localhost:5025/api/estudios/2/1005; registro guardado.",
+  "evidencia": "EV-API-EST-04.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

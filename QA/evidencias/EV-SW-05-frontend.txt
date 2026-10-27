@@ -1,0 +1,8 @@
+Caso: SW-05-frontend
+Fecha: 2026-10-27 00:22:32
+
+EstudioDto: required=None props={'idProf': 'integer/int32', 'ccPer': 'integer/int32', 'fecha': 'string/date-time', 'univer': 'string'}
+PersonaDto: required=['apellido', 'genero', 'nombre'] props={'cc': 'integer/int32', 'nombre': 'string', 'apellido': 'string', 'genero': 'string', 'edad': 'integer/int32'}
+ProblemDetails: required=None props={'type': 'string', 'title': 'string', 'status': 'integer/int32', 'detail': 'string', 'instance': 'string'}
+ProfesionDto: required=['nom'] props={'id': 'integer/int32', 'nom': 'string', 'des': 'string'}
+TelefonoDto: required=['num', 'oper'] props={'num': 'string', 'oper': 'string', 'duenio': 'integer/int32'}

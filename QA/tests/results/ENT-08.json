@@ -1,0 +1,9 @@
+{
+  "id": "ENT-08",
+  "estado": "Fallido",
+  "obtenido": "dotnet publish termina bien. Con el comando literal del README desde la raiz, GET /api/personas responde 500; ejecutando desde la carpeta publish responde 200. Swagger responde 200 en Production.",
+  "evidencia": "EV-ENT-08.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Swagger queda expuesto fuera de Development porque UseSwagger/UseSwaggerUI no estan condicionados al entorno en Program.cs."
+}

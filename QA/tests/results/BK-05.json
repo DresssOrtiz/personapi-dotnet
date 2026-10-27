@@ -1,0 +1,9 @@
+{
+  "id": "BK-05",
+  "estado": "Aprobado",
+  "obtenido": "Con ConnectionStrings__PersonaDb apuntando a otra base, la aplicacion devuelve la persona 7777 (200); la instancia con appsettings.json responde 404. No se modifico codigo.",
+  "evidencia": "EV-BK-05.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

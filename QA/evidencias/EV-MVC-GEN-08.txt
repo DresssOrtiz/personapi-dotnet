@@ -1,0 +1,7 @@
+Caso: MVC-GEN-08
+Fecha: 2026-10-27 00:23:08
+
+Personas: mensajes del navegador ['El campo «Cédula (cc)» es obligatorio.', 'El campo «Nombre» es obligatorio.', 'El campo «Apellido» es obligatorio.', 'El campo «Género (M/F)» es obligatorio.', 'Introduce un valor menor o igual a 150.']; envio al servidor: False; mensajes del servidor para los mismos datos: ['Introduce un valor válido para este campo.', 'Este campo es obligatorio.', 'Este campo es obligatorio.', 'Este campo es obligatorio.', 'Introduce un valor dentro del rango permitido.']
+Telefonos: mensajes del navegador ['El campo «Número (num)» es obligatorio.', 'El campo «Operador (oper)» es obligatorio.', 'El campo «Propietario (duenio / persona)» es obligatorio.']; envio al servidor: False; mensajes del servidor para los mismos datos: ['Este campo es obligatorio.', 'Este campo es obligatorio.', 'Introduce un valor dentro del rango permitido.']
+Profesiones: mensajes del navegador ['Introduce un valor mayor o igual a 1.', 'El campo «Nombre de profesión (nom)» es obligatorio.']; envio al servidor: False; mensajes del servidor para los mismos datos: ['Introduce un valor dentro del rango permitido.', 'Este campo es obligatorio.']
+Estudios: mensajes del navegador ['El campo «Profesión (id_prof)» es obligatorio.', 'El campo «Persona (cc_per)» es obligatorio.']; envio al servidor: False; mensajes del servidor para los mismos datos: ['Introduce un valor dentro del rango permitido.', 'Introduce un valor dentro del rango permitido.']

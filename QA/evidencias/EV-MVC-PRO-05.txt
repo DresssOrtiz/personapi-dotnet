@@ -1,0 +1,19 @@
+Caso: MVC-PRO-05
+Fecha: 2026-10-27 00:23:00
+
+Detalle: http://localhost:5025/Profesiones/Details/9999
+Profesiones / Detalles
+
+Administración de registros · Profesiones
+
+Detalles del registro
+Identificador (id)
+1
+Nombre de profesión (nom)
+Ingeniero de Sistemas
+Descripción (des)
+Diseno, desarrollo y mantenimiento de sistemas de software
+Editar
+Volver al listado
+
+Clave inexistente /Profesiones/Details/9999 -> 404; longitud del cuerpo 39; pagina propia de la aplicacion: False

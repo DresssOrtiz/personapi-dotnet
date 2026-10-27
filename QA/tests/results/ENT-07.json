@@ -1,0 +1,9 @@
+{
+  "id": "ENT-07",
+  "estado": "Aprobado",
+  "obtenido": "PR #2 aprobado por QA y fusionado en main (merge commit 8fc7d80). main contiene eea9ee8, compila (0 Advertencia(s) 0 Errores) y la aplicacion responde 200 en inicio, los 4 listados MVC, el formulario de creacion, la API y Swagger.",
+  "evidencia": "EV-ENT-07.png, EV-ENT-07.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "Repetido despues del merge sobre un clon limpio de main."
+}

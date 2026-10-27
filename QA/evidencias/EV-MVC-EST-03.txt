@@ -1,0 +1,7 @@
+Caso: MVC-EST-03
+Fecha: 2026-10-27 00:23:03
+
+POST vacio -> 200; errores por campo: [('IdProf', 'Introduce un valor válido para este campo.'), ('CcPer', 'Introduce un valor válido para este campo.')]
+POST invalido {'IdProf': '3', 'CcPer': '1002', 'Fecha': '', 'Univer': 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'} -> 200; errores por campo: [('Univer', 'El texto supera la longitud permitida.')]
+Registros antes/despues: 7/7
+Validacion en el navegador (formulario vacio): ['El campo «Profesión (id_prof)» es obligatorio.', 'El campo «Persona (cc_per)» es obligatorio.']

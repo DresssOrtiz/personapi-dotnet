@@ -1,0 +1,9 @@
+{
+  "id": "MVC-TEL-06",
+  "estado": "Aprobado",
+  "obtenido": "Formulario precargado ('Claro'), clave no editable; el cambio a 'Movistar' se guarda y se ve en el listado.",
+  "evidencia": "EV-MVC-TEL-06-formulario.png, EV-MVC-TEL-06.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

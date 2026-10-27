@@ -1,0 +1,7 @@
+Caso: ENT-02
+Fecha: 2026-10-27 00:22:05
+
+gh api repos/DresssOrtiz/personapi-dotnet/collaborators -> 0
+santiagohb2830 write
+DresssOrtiz admin
+ElTomi016 write

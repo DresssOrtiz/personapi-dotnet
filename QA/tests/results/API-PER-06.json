@@ -1,0 +1,9 @@
+{
+  "id": "API-PER-06",
+  "estado": "Aprobado",
+  "obtenido": "Nombre vacio, genero X, edad 151, edad -1 y cc 0 responden [400, 400, 400, 400, 400] con el detalle en 'errors'; no se inserta nada.",
+  "evidencia": "EV-API-PER-06.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

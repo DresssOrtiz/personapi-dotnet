@@ -1,0 +1,5 @@
+Caso: INT-01
+Fecha: 2026-10-27 00:23:09
+
+Creada en /Personas/Create: 2401 Desde Vista F 31
+GET /api/personas/2401 -> 200 {"cc":2401,"nombre":"Desde","apellido":"Vista","genero":"F","edad":31}

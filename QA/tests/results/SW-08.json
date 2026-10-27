@@ -1,0 +1,9 @@
+{
+  "id": "SW-08",
+  "estado": "Aprobado",
+  "obtenido": "Las 8 rutas documentadas empiezan por /api/; no aparecen acciones MVC.",
+  "evidencia": "EV-SW-08.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

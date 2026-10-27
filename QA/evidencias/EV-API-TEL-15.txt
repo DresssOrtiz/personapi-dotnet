@@ -1,0 +1,16 @@
+Caso: API-TEL-15
+Fecha: 2026-10-27 00:21:44
+
+> POST /api/telefonos {"num": "3990000150", "oper": "Claro", "duenio": 1003}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/telefonos/3990000150
+{"num":"3990000150","oper":"Claro","duenio":1003}
+
+> POST /api/telefonos {"num": "ABC123", "oper": "Claro", "duenio": 1003}
+< 201 application/json; charset=utf-8 Location: http://localhost:5025/api/telefonos/ABC123
+{"num":"ABC123","oper":"Claro","duenio":1003}
+
+> POST /api/telefonos {"num": "3333333333333333", "oper": "Claro", "duenio": 1003}
+< 400 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-75a63d23af7468729879a53530d9fa4b-6a5d40c00c04744e-00","errors":{"Num":["The field Num must be a string with a maximum length of 15."]}}
+
+[OK] 10 digitos 201 y 16 caracteres 400

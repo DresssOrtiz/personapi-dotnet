@@ -1,0 +1,9 @@
+{
+  "id": "SW-07",
+  "estado": "Aprobado",
+  "obtenido": "swagger.json se descarga (HTTP 200, OpenAPI 3.0.1) y openapi-spec-validator lo declara valido.",
+  "evidencia": "EV-SW-07.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}

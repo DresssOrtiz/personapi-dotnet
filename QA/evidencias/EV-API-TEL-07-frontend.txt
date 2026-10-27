@@ -1,0 +1,8 @@
+Caso: API-TEL-07-frontend
+Fecha: 2026-10-27 00:22:28
+
+> POST /api/telefonos {"num": "3990000070", "oper": "Claro", "duenio": 999999}
+< 400 application/json; charset=utf-8
+{"title":"No existe una persona con cc 999999.","status":400}
+
+[OK] 400

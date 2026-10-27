@@ -1,0 +1,9 @@
+Caso: BD-16
+Fecha: 2026-10-27 00:21:26
+
+-- duenio 999999
+INSERT INTO dbo.telefono VALUES ('3999999999', 'Claro', 999999)
+=> rechazado (esperado: rechazado)
+Msg 547, Level 16, State 1, Server 43ba5b875a51, Line 1
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_telefono_persona". The conflict occurred in database "persona_db", table "dbo.persona", column 'cc'.
+The statement has been terminated.

@@ -1,0 +1,9 @@
+{
+  "id": "MVC-PER-08",
+  "estado": "Aprobado",
+  "obtenido": "Se muestra 'No se pudo guardar: hay registros relacionados o una referencia que ya no existe.' y el registro 1001 permanece.",
+  "evidencia": "EV-MVC-PER-08.png",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "El texto dice 'No se pudo guardar' en una eliminacion y no nombra los telefonos o estudios relacionados; la API usa un mensaje especifico. Mejora sugerida: mensaje propio para eliminar."
+}

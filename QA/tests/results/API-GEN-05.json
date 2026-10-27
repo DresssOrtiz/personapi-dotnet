@@ -1,0 +1,9 @@
+{
+  "id": "API-GEN-05",
+  "estado": "Fallido",
+  "obtenido": "20 pares de POST simultaneos: 1 con [201, 409] y 19 con un 500 en el segundo; sin registros duplicados (0).",
+  "evidencia": "EV-API-GEN-05.txt",
+  "fecha": "2026-10-27",
+  "responsable": "Automatizado",
+  "observaciones": "El POST consulta ExistsAsync y luego inserta; si ambas solicitudes pasan la consulta, la segunda falla por PK y la excepcion no se controla. Propuesta: capturar DbUpdateException (error 2627) y responder 409."
+}

@@ -1,0 +1,9 @@
+{
+  "id": "SW-09",
+  "estado": "Pendiente",
+  "obtenido": "",
+  "evidencia": "",
+  "fecha": "2026-10-27",
+  "responsable": "",
+  "observaciones": "Revision manual pendiente. Dato para la revision: las operaciones no tienen summary ni descripciones porque el proyecto no genera el archivo XML de documentacion."
+}

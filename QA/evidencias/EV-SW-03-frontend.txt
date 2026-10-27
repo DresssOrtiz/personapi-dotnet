@@ -1,0 +1,90 @@
+Caso: SW-03-frontend
+Fecha: 2026-10-27 00:22:37
+
+GET /api/personas  -> 200
+[
+  {
+    "cc": 1001,
+    "nombre": "Andres",
+    "apellido": "Ortiz",
+    "genero": "M",
+    "edad": 21
+  },
+  {
+    "cc": 1002,
+    "nombre": "Tomas",
+    "apellido": "Ramirez",
+    "genero": "M",
+ 
+
+GET /api/personas/{cc} {'cc': 1001} -> 200
+{
+  "cc": 1001,
+  "nombre": "Andres",
+  "apellido": "Ortiz",
+  "genero": "M",
+  "edad": 21
+}
+
+GET /api/telefonos  -> 200
+[
+  {
+    "num": "3001112233",
+    "oper": "Claro",
+    "duenio": 1001
+  },
+  {
+    "num": "3015550011",
+    "oper": "Claro",
+    "duenio": 1003
+  },
+  {
+    "num": "3104445566",
+    "oper": "Movistar
+
+GET /api/telefonos/{num} {'num': '3001112233'} -> 200
+{
+  "num": "3001112233",
+  "oper": "Claro",
+  "duenio": 1001
+}
+
+GET /api/profesiones  -> 200
+[
+  {
+    "id": 1,
+    "nom": "Ingeniero de Sistemas",
+    "des": "Diseno, desarrollo y mantenimiento de sistemas de software"
+  },
+  {
+    "id": 2,
+    "nom": "Administrador de Empresas",
+    "des": 
+
+GET /api/profesiones/{id} {'id': 1} -> 200
+{
+  "id": 1,
+  "nom": "Ingeniero de Sistemas",
+  "des": "Diseno, desarrollo y mantenimiento de sistemas de software"
+}
+
+GET /api/estudios  -> 200
+[
+  {
+    "idProf": 1,
+    "ccPer": 1001,
+    "fecha": "2026-06-15T00:00:00",
+    "univer": "Pontificia Universidad Javeriana"
+  },
+  {
+    "idProf": 1,
+    "ccPer": 1002,
+    "fecha": "2026-06-15T00:
+
+GET /api/estudios/{idProf}/{ccPer} {'idProf': 1, 'ccPer': 1001} -> 200
+{
+  "idProf": 1,
+  "ccPer": 1001,
+  "fecha": "2026-06-15T00:00:00",
+  "univer": "Pontificia Universidad Javeriana"
+}

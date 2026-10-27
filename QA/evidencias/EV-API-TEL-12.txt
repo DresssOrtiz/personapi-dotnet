@@ -1,0 +1,8 @@
+Caso: API-TEL-12
+Fecha: 2026-10-27 00:21:43
+
+> DELETE /api/telefonos/3990009999 
+< 404 application/json; charset=utf-8
+{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-3b0993ef1c7c94469eeb26e814d2e9e2-c69f94077aac4f8d-00"}
+
+[OK] 404

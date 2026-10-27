@@ -1,0 +1,7 @@
+Caso: MVC-TEL-03
+Fecha: 2026-10-27 00:22:56
+
+POST vacio -> 200; errores por campo: [('Num', 'Este campo es obligatorio.'), ('Oper', 'Este campo es obligatorio.'), ('Duenio', 'Introduce un valor válido para este campo.')]
+POST invalido {'Num': '3333333333333333', 'Oper': 'oooooooooooooooooooooooooooooooooooooooooooooo', 'Duenio': '0'} -> 200; errores por campo: [('Num', 'El texto supera la longitud permitida.'), ('Oper', 'El texto supera la longitud permitida.'), ('Duenio', 'Introduce un valor dentro del rango permitido.')]
+Registros antes/despues: 6/6
+Validacion en el navegador (formulario vacio): ['El campo «Número (num)» es obligatorio.', 'El campo «Operador (oper)» es obligatorio.', 'El campo «Propietario (duenio / persona)» es obligatorio.']
