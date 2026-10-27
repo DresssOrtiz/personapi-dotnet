@@ -1,9 +1,9 @@
 {
   "id": "ENT-12",
-  "estado": "Pendiente",
-  "obtenido": "",
-  "evidencia": "",
+  "estado": "Fallido",
+  "obtenido": "La redacción está en tercera persona y sin voseo, pero 39 párrafos de cuerpo usan el estilo de título Heading2, hay 3 oraciones que empiezan en minúscula tras punto (sección 1.2), las secciones 3.5 y 3.7 mencionan a Codex y las referencias están marcadas como preliminares.",
+  "evidencia": "EV-ENT-12.txt",
   "fecha": "2026-10-27",
-  "responsable": "",
-  "observaciones": "Revision manual pendiente sobre el documento final (estilos, ortografia, tercera persona y referencias)."
+  "responsable": "Automatizado",
+  "observaciones": "Las referencias no incluyen las fuentes usadas de ASP.NET Core MVC, EF Core, SQL Server ni Swagger; la de Microsoft Learn corresponde a Entity Data Model (EF 6). Revisado sobre la copia _QA. Revisión asistida: confirmar el criterio con el responsable de QA."
 }

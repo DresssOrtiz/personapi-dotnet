@@ -1,0 +1,41 @@
+Caso: MVC-GEN-05
+Fecha: 2026-10-27 00:51:56
+
+== Chromium (Chrome/Edge) 156.0.8078.4
+[OK] inicio HTTP 200
+[OK] menu personas 
+[OK] validacion en el navegador 4 mensajes
+[OK] crear persona 
+[OK] crear telefono con selector 
+[OK] crear estudio con fecha fecha guardada 2024-11-20
+[OK] editar persona 
+[OK] detalle 
+[OK] eliminar persona con dependientes es rechazado 
+[OK] eliminar en orden inverso 
+Errores de consola o de pagina: []
+
+== Firefox 157.0
+[OK] inicio HTTP 200
+[OK] menu personas 
+[OK] validacion en el navegador 4 mensajes
+[OK] crear persona 
+[OK] crear telefono con selector 
+[OK] crear estudio con fecha fecha guardada 2024-11-20
+[OK] editar persona 
+[OK] detalle 
+[OK] eliminar persona con dependientes es rechazado 
+[OK] eliminar en orden inverso 
+Errores de consola o de pagina: []
+
+== WebKit (Safari) 27.2
+[OK] inicio HTTP 200
+[OK] menu personas 
+[OK] validacion en el navegador 4 mensajes
+[OK] crear persona 
+[OK] crear telefono con selector 
+[OK] crear estudio con fecha fecha guardada 2024-11-20
+[OK] editar persona 
+[OK] detalle 
+[OK] eliminar persona con dependientes es rechazado 
+[OK] eliminar en orden inverso 
+Errores de consola o de pagina: []

@@ -1,5 +1,5 @@
 Caso: ENT-11
-Fecha: 2026-10-27 00:44:36
+Fecha: 2026-10-27 00:59:28
 
 Marcadores sin completar:
 *[Captura de Swagger con los endpoints REST]*

@@ -29,9 +29,10 @@ backend como regresión.
 | `db/` | BD-01 a BD-25 (sqlcmd dentro del contenedor) |
 | `backend/` | BK-01 a BK-08 |
 | `api/` | API-*, SW-01 a SW-08 (requests, openapi-spec-validator, Playwright) |
-| `mvc/` | MVC-*, INT-01 a INT-08, BK-09 (Playwright) y apoyo para casos manuales |
+| `mvc/` | MVC-*, INT-01 a INT-08, BK-09 (Playwright), navegadores (MVC-GEN-05) y apoyo visual |
+| `revision/` | MVC-GEN-03, MVC-GEN-04, SW-09 y ENT-12 (revisiones asistidas) |
 | `entrega/` | ENT-01 a ENT-09, API-GEN-06 (`--solo ENT-07` repite solo ese caso) |
 | `documento/` | Sección 3.9 del documento, ENT-10 y ENT-11 |
 | `matriz/` | Defectos y actualización de la matriz conservando validaciones y fórmulas |
 
-Casos manuales (quedan en Pendiente): MVC-GEN-03, MVC-GEN-04, MVC-GEN-05, SW-09 y ENT-12.
+Requiere además `python -m playwright install firefox webkit` para `mvc/navegadores.py`.

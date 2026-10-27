@@ -111,7 +111,8 @@ def caption(text):
 
 def stats():
     st = {json.load(open(f, encoding="utf-8"))["id"]: json.load(open(f, encoding="utf-8"))["estado"]
-          for f in glob.glob(os.path.join(RESULTS, "*.json"))}
+          for f in glob.glob(os.path.join(RESULTS, "*.json"))
+          if re.fullmatch(r"[A-Z]+(-[A-Z0-9]+)+\.json", os.path.basename(f))}
     st.setdefault("ENT-10", "Aprobado")
     st.setdefault("ENT-11", "Fallido")
     rows, tot = [], {"Total": 0, "Aprobado": 0, "Fallido": 0, "Bloqueado": 0, "Pendiente": 0}
@@ -135,7 +136,8 @@ def pct(x):
 def blocked_text(st):
     reasons = {"BD-07": "BD-07 requiere un equipo Windows con SQL Server Express o LocalDB",
                "ENT-07": "ENT-07 depende de la integración del Pull Request",
-               "ENT-09": "ENT-09 depende de la creación del TAG de entrega"}
+               "ENT-09": "ENT-09 depende de la creación del TAG de entrega",
+               "MVC-GEN-03": "MVC-GEN-03 requiere acceso al diseño de Figma"}
     items = [reasons.get(k, k) for k in sorted(k for k, v in st.items() if v == "Bloqueado")]
     if not items:
         return "No quedaron casos bloqueados."
@@ -144,12 +146,28 @@ def blocked_text(st):
     return f"{plural} de condiciones externas a las pruebas: {joined}."
 
 
+def pending_text(st):
+    names = {"MVC-GEN-03": "comparación con Figma (MVC-GEN-03)", "MVC-GEN-04": "tamaños de pantalla (MVC-GEN-04)",
+             "MVC-GEN-05": "navegadores (MVC-GEN-05)", "SW-09": "claridad de Swagger (SW-09)",
+             "ENT-12": "formato del documento (ENT-12)"}
+    items = [names.get(k, k) for k in sorted(k for k, v in st.items() if v == "Pendiente")]
+    if not items:
+        return "No quedan casos pendientes de ejecución."
+    joined = items[0] if len(items) == 1 else ", ".join(items[:-1]) + " y " + items[-1]
+    return f"Los pendientes son revisiones visuales y de redacción: {joined}."
+
+
 def build_section(st, rows, tot, rids):
     merged = st.get("ENT-07") == "Aprobado"
     ejecutados = tot["Aprobado"] + tot["Fallido"]
     mvc = [v for k, v in st.items() if k.startswith("MVC")]
     mvc_ex = sum(1 for v in mvc if v in ("Aprobado", "Fallido"))
     mvc_ok = mvc.count("Aprobado")
+    fe = [d["id"] for d in DEFECTOS if d["area"] == "Frontend MVC"]
+    fe_defs = fe[0] if len(fe) == 1 else ", ".join(fe[:-1]) + " y " + fe[-1]
+    pend = [k for k, v in st.items() if v == "Pendiente"]
+    cierre = (f"completar los {len(pend)} casos manuales pendientes" if pend else
+              "completar la comparación con Figma (MVC-GEN-03) cuando el diseño esté disponible")
     sev = {s: sum(1 for d in DEFECTOS if d["severidad"] == s) for s in ("Crítica", "Alta", "Media", "Baja")}
     x = []
     x.append(heading("3.9. Pruebas de QA", 2))
@@ -175,7 +193,8 @@ def build_section(st, rows, tot, rids):
                            + ("; main integrada (8fc7d80) para ENT-07" if merged else "")],
         ["Ejecución", "dotnet run en http://localhost:5025 (entorno Development); swagger en /swagger"],
         ["Herramientas de prueba", "sqlcmd (mssql-tools18) dentro del contenedor; Python 3.14 con requests, "
-                                   "openapi-spec-validator y Playwright (Chromium); PowerShell 7.4 en contenedor"],
+                                   "openapi-spec-validator y Playwright (Chromium 156, Firefox 157 y WebKit 27.2); "
+                                   "PowerShell 7.4 en contenedor"],
     ], [2600, 5709]))
     x.append(caption("Tabla X. Entorno de ejecución de las pruebas de QA. Fuente: elaboración propia."))
 
@@ -197,19 +216,26 @@ def build_section(st, rows, tot, rids):
                   "integración se probaron en la rama del Pull Request, que es la que contiene el frontend. Como "
                   "evidencia complementaria se ejecutó sin cambios el script tests/mvc-smoke.ps1 del equipo, que "
                   "terminó con 213 comprobaciones HTTP correctas."))
+    if st.get("MVC-GEN-05") in ("Aprobado", "Fallido"):
+        x.append(para("Los casos de revisión se ejecutaron después sobre main integrada. MVC-GEN-05 repitió un flujo "
+                      "completo con Playwright en Chromium (motor de Chrome y Edge), Firefox y WebKit (motor de "
+                      "Safari). MVC-GEN-04, SW-09 y ENT-12 se apoyaron en mediciones automáticas (desbordes y tamaño "
+                      "de letra en tres anchos de pantalla, descripciones del documento OpenAPI y estilos y redacción "
+                      "del documento); el criterio aplicado quedó escrito en la matriz para su confirmación por el "
+                      "responsable de QA."))
 
     x.append(heading("3.9.3. Resultados por área", 3))
     x.append(para("La Tabla X resume el estado de los casos por área, según la hoja Resumen de la matriz.", keep=True))
     x.append(table([["Área", "Total", "Aprobados", "Fallidos", "Bloqueados", "Pendientes", "% aprobado"]] + rows,
                    [1909, 700, 1150, 1000, 1200, 1200, 1150], align=["left"] + ["center"] * 6))
     x.append(caption("Tabla X. Resultados de la matriz de pruebas por área. Fuente: elaboración propia."))
-    x.append(para(f"De los {tot['Total']} casos, {tot['Aprobado']} fueron aprobados, {tot['Fallido']} fallidos, "
-                  f"{tot['Bloqueado']} bloqueados y {tot['Pendiente']} quedaron pendientes de revisión manual. El "
+    conteo = (f"{tot['Aprobado']} fueron aprobados, {tot['Fallido']} fallidos, {tot['Bloqueado']} bloqueados y "
+              f"{tot['Pendiente']} quedaron pendientes de revisión manual" if tot["Pendiente"] else
+              f"{tot['Aprobado']} fueron aprobados, {tot['Fallido']} fallidos y {tot['Bloqueado']} bloqueados")
+    x.append(para(f"De los {tot['Total']} casos, {conteo}. El "
                   f"avance de ejecución fue de {pct(ejecutados / tot['Total'])} % y la tasa de aprobación sobre los "
                   f"casos ejecutados, de {pct(tot['Aprobado'] / ejecutados)} %. " + blocked_text(st) + " "
-                  "Los pendientes son revisiones visuales y de redacción: comparación con Figma (MVC-GEN-03), tamaños "
-                  "de pantalla (MVC-GEN-04), navegadores (MVC-GEN-05), claridad de Swagger (SW-09) y formato del "
-                  "documento (ENT-12)."))
+                  + pending_text(st)))
     x.append(para("Las figuras siguientes muestran algunas de las evidencias registradas.", keep=True))
     x.append(image(rids[0], os.path.join(EVID, "EV-SW-01.png"), 101, crop_h=900))
     x.append(caption("Figura X. Swagger UI con los endpoints CRUD de las cuatro entidades (caso SW-01). Fuente: "
@@ -238,6 +264,9 @@ def build_section(st, rows, tot, rids):
         "DEF-06": "Las claves y rutas inexistentes devuelven 404 sin página propia.",
         "DEF-07": "El listado de personas no muestra la edad.",
         "DEF-08": "El documento conserva marcadores de captura y figuras sin numerar.",
+        "DEF-09": "Los formularios de creación de personas y profesiones muestran un recuadro de error vacío.",
+        "DEF-10": "Swagger no muestra resúmenes ni descripciones de operaciones y campos.",
+        "DEF-11": "El documento mezcla estilos, tiene errores de mayúsculas y referencias incompletas.",
     }
     rows_d = [["ID", "Caso(s)", "Severidad", "Descripción", "Responsable"]]
     for d in DEFECTOS:
@@ -257,20 +286,21 @@ def build_section(st, rows, tot, rids):
     x.append(heading("3.9.5. Limitaciones", 3))
     for t in ["Solo se dispuso de SQL Server 2022 en Docker. No se probaron SQL Server Express ni LocalDB; el fallo de "
               "ALTER AUTHORIZATION se reprodujo con un login sin rol sysadmin.",
-              "Las pruebas de interfaz se ejecutaron en Chromium sin interfaz gráfica. Las pruebas en Edge y Firefox y "
-              "la revisión visual en distintos tamaños de pantalla quedan para la revisión manual.",
+              "Chrome y Edge no estaban instalados en el equipo de pruebas. Las pruebas de interfaz usaron los "
+              "motores de Playwright sin interfaz gráfica: Chromium (el de Chrome y Edge), Firefox y WebKit.",
               "La concurrencia se evaluó con 20 pares de solicitudes simultáneas sobre la creación de personas. No se "
               "realizaron pruebas de rendimiento, carga ni seguridad más allá de la protección antifalsificación, la "
               "exposición de errores y las credenciales versionadas.",
-              "La comparación con el diseño de Figma y la revisión de redacción del documento dependen de revisión "
-              "manual."]:
+              "No se tuvo acceso al diseño de Figma, por lo que la comparación de MVC-GEN-03 quedó bloqueada. Las "
+              "revisiones de MVC-GEN-04, SW-09 y ENT-12 aplican criterios escritos en la matriz que el responsable "
+              "de QA debe confirmar."]:
         x.append(para(t, num=True))
 
     x.append(heading("3.9.6. Conclusión de QA sobre el Pull Request #2", 3))
     x.append(para("La rama feature/frontend-mvc compila sin errores ni advertencias con el SDK 6.0.428, no modifica la "
                   "API REST ni los scripts de base de datos y mantiene los resultados de main en la API, Swagger y el "
-                  f"backend. En ella se aprobaron {mvc_ok} de los {mvc_ex} casos MVC ejecutados y los 8 casos de "
-                  "integración. Los defectos del frontend (DEF-06 y DEF-07) son de severidad baja y no impiden el uso "
+                  f"backend. En el frontend se aprobaron {mvc_ok} de los {mvc_ex} casos MVC ejecutados y los 8 casos de "
+                  f"integración. Los defectos del frontend ({fe_defs}) son de severidad baja y no impiden el uso "
                   "de las operaciones CRUD."))
     if merged:
         x.append(para("Por lo anterior, QA aprobó el Pull Request #2, que se integró en main el 27 de octubre de 2026 "
@@ -278,12 +308,12 @@ def build_section(st, rows, tot, rids):
                       "rama integrada compila sin errores ni advertencias y la aplicación responde correctamente en "
                       "las vistas MVC, la API REST y Swagger. Antes de crear el TAG de entrega conviene corregir los "
                       "defectos de severidad media DEF-01 y DEF-02, que corresponden al backend y al README, repetir "
-                      "ENT-08 y ENT-09 y completar los cinco casos manuales pendientes."))
+                      f"ENT-08 y ENT-09 y {cierre}."))
     else:
         x.append(para("Por lo anterior, QA recomienda aprobar e integrar el Pull Request #2 en main. Antes de crear el "
                       "TAG de entrega conviene corregir los defectos de severidad media DEF-01 y DEF-02, que "
                       "corresponden al backend y al README, repetir ENT-07, ENT-08 y ENT-09 sobre main con el "
-                      "frontend integrado y completar los cinco casos manuales pendientes."))
+                      f"frontend integrado y {cierre}."))
     return "".join(x)
 
 
