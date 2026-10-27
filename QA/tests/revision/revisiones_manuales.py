@@ -12,6 +12,7 @@ import os
 import re
 import sys
 import zipfile
+from html import unescape
 
 import requests
 from playwright.sync_api import sync_playwright
@@ -105,40 +106,52 @@ def sw09():
            "XML de documentación, por lo que Swagger no los muestra." + NOTA)
 
 
+DOC_URL = os.environ.get("QA_DOC_URL", "https://docs.google.com/document/d/"
+                         "13DG_OrgAsdtPDkLJCvZ_NUBVqjz0jledaNNFK01oUHE/mobilebasic")
+
+
 def ent12():
-    docs = glob.glob(os.path.join(ROOT, "*_QA.docx"))
-    d = zipfile.ZipFile(docs[0]).read("word/document.xml").decode("utf-8")
-    rows = []
-    for p in re.findall(r"<w:p[ >].*?</w:p>", d, re.S):
-        st = re.search(r'<w:pStyle w:val="([^"]+)"', p)
-        t = "".join(re.findall(r"<w:t[^>]*>([^<]*)</w:t>", p)).strip()
-        if t:
-            rows.append((st.group(1) if st else "Normal", t))
-    i0 = next(i for i, (_, t) in enumerate(rows) if t.startswith("3.9. Pruebas"))
-    i1 = next(i for i, (_, t) in enumerate(rows) if t.startswith("4. Conclusiones"))
-    body = [r for i, r in enumerate(rows) if not i0 <= i < i1]
-    h2_body = [t for s, t in body if s == "Heading2" and len(t) > 110]
-    lower = [t[max(0, m.start() - 30):m.end() + 15] for s, t in body if not t.startswith(("Material", "Microsoft"))
-             for m in re.finditer(r"[a-zóé]\. (la|los|y|el) ", t)]
-    person = [t[:80] for s, t in body if re.search(r"(?i)\b(nosotros|nuestr[oa]s?|realizamos|hicimos|vos|podés|tenés)\b", t)]
-    tools = [t[:90] for s, t in body if "Codex" in t]
-    refs = [t for s, t in body if t.startswith(("Material", "Microsoft", "Nota:"))]
-    ev = write_evidence("ENT-12", f"Párrafos de cuerpo con estilo Heading2 (secciones 1 a 3 y pies de figura): {len(h2_body)}\n"
+    """Revisa la version en linea del documento (Google Docs, vista HTML publica)."""
+    html = requests.get(DOC_URL, timeout=30).text
+    blocks = [(tag, unescape(re.sub(r"<[^>]+>", "", body)).strip())
+              for tag, body in re.findall(r"<(h[1-6]|p)\b[^>]*>(.*?)</\1>", html, re.S)]
+    blocks = [(t, x) for t, x in blocks if x]
+    i0 = next((i for i, (_, x) in enumerate(blocks) if x.startswith("3.9. Pruebas")), None)
+    i1 = next(i for i, (_, x) in enumerate(blocks) if x.startswith("4. Conclusiones"))
+    body = [b for i, b in enumerate(blocks) if i0 is None or not i0 <= i < i1]
+    h2_body = [x for t, x in body if t == "h2" and len(x) > 110]
+    lower = [x[max(0, m.start() - 30):m.end() + 15] for t, x in body if not x.startswith(("Material", "Microsoft"))
+             for m in re.finditer(r"[a-zóé]\. (la|los|y|el) ", x)]
+    person = [x[:80] for t, x in body if re.search(r"(?i)\b(nosotros|nuestr[oa]s?|realizamos|hicimos|vos|podés|tenés)\b", x)]
+    tools = [x[:90] for t, x in body if re.search(r"Codex|ChatGPT|Claude", x)]
+    refs = [x for t, x in body if x.startswith(("Material", "Microsoft", "Nota:"))]
+    prelim = any("referencias preliminares" in x for x in refs)
+    ev = write_evidence("ENT-12", f"Documento revisado: {DOC_URL}\n"
+                                   f"Párrafos de cuerpo con estilo de título 2: {len(h2_body)}\n"
                                    f"Oraciones que empiezan en minúscula tras punto: {lower}\n"
                                    f"Primera persona o voseo: {person}\n"
                                    f"Menciones a herramientas de IA: {tools}\n"
                                    "Referencias:\n" + "\n".join(refs))
-    record("ENT-12", "Fallido",
-           f"La redacción está en tercera persona y sin voseo, pero {len(h2_body)} párrafos de cuerpo usan el estilo de "
-           f"título Heading2, hay {len(lower)} oraciones que empiezan en minúscula tras punto (sección 1.2), las "
-           f"secciones 3.5 y 3.7 mencionan a Codex y las referencias están marcadas como preliminares.",
+    issues = []
+    if h2_body:
+        issues.append(f"{len(h2_body)} párrafos de cuerpo usan el estilo Título 2 (aparecen como títulos en el esquema)")
+    if lower:
+        issues.append(f"{len(lower)} oraciones empiezan en minúscula tras punto")
+    if tools:
+        issues.append("se mencionan herramientas de IA")
+    if prelim:
+        issues.append("las referencias están marcadas como preliminares")
+    record("ENT-12", "Fallido" if issues else "Aprobado",
+           "La redacción está en tercera persona, sin voseo" + ("" if lower else " y sin errores de mayúsculas")
+           + (", pero " + "; ".join(issues) + "." if issues else "; el formato es uniforme."),
            ev,
-           "Las referencias no incluyen las fuentes usadas de ASP.NET Core MVC, EF Core, SQL Server ni Swagger; la de "
-           "Microsoft Learn corresponde a Entity Data Model (EF 6). Revisado sobre la copia _QA." + NOTA)
+           "Revisado sobre la versión en línea del documento (Google Docs). Las referencias no incluyen las fuentes "
+           "de ASP.NET Core MVC, EF Core, SQL Server ni Swagger; la de Microsoft Learn corresponde a Entity Data "
+           "Model (EF 6)." + NOTA)
 
 
 if __name__ == "__main__":
-    gen03()
-    gen04()
-    sw09()
-    ent12()
+    solo = sys.argv[sys.argv.index("--solo") + 1] if "--solo" in sys.argv else None
+    for name, fn in (("MVC-GEN-03", gen03), ("MVC-GEN-04", gen04), ("SW-09", sw09), ("ENT-12", ent12)):
+        if solo in (None, name):
+            fn()

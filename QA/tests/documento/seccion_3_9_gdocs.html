@@ -1,0 +1,386 @@
+<meta charset="utf-8"><h2 style="font-family:'Times New Roman',serif;font-size:12pt">3.9. Pruebas de QA</h2>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Santiago Hernández realizó la validación independiente de QA sobre la
+rama main (commit 0595eab) y sobre la rama feature/frontend-mvc del Pull
+Request #2 (commit eea9ee8). Tras la aprobación de QA, el Pull Request
+se integró en main (merge commit 8fc7d80) y el caso ENT-07 se repitió
+sobre la rama integrada. La matriz de pruebas reúne 165 casos derivados
+de los requisitos R01 a R12 y distribuidos en siete áreas. Los casos se
+ejecutaron el 27 de octubre de 2026 y sus resultados, evidencias y
+defectos quedaron registrados en el archivo
+Matriz_Pruebas_Laboratorio1_QA.xlsx.</p>
+
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.1. Entorno de pruebas</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Las pruebas se ejecutaron en un equipo macOS con procesador Apple
+Silicon, siguiendo la opción A del README (SQL Server en Docker). La
+Tabla X describe el entorno utilizado.</p>
+
+<table style="border-collapse:collapse;margin-left:36pt;width:430pt">
+
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center">
+<tr>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Componente</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Versión o detalle</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Sistema operativo</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">macOS sobre Apple Silicon (arm64)</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Contenedores</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Docker Desktop, motor 29.8.1</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Base de datos</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Microsoft SQL Server 2022 Developer
+(RTM-CU27-GDR) 16.0.4305.5 en contenedor linux/amd64; intercalación
+SQL_Latin1_General_CP1_CI_AS</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Plataforma .NET</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">SDK 6.0.428; ASP.NET Core Runtime y .NET
+Runtime 6.0.36</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Paquetes del proyecto</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Entity Framework Core 6.0.36 (SqlServer y
+Design); Swashbuckle.AspNetCore 6.5.0</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Ramas probadas</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">main (0595eab) y feature/frontend-mvc
+(eea9ee8, Pull Request #2); main integrada (8fc7d80) para ENT-07</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Ejecución</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">dotnet run en http://localhost:5025
+(entorno Development); swagger en /swagger</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Herramientas de prueba</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">sqlcmd (mssql-tools18) dentro del
+contenedor; Python 3.14 con requests, openapi-spec-validator y
+Playwright (Chromium 156, Firefox 157 y WebKit 27.2); PowerShell 7.4 en
+contenedor</td>
+</tr>
+</tbody>
+</table>
+
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Tabla X. Entorno de ejecución de las pruebas de QA. Fuente:
+elaboración propia.</p>
+
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.2. Alcance y procedimiento</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Los casos de base de datos se ejecutaron con sqlcmd sobre los scripts
+db/01_ddl.sql y db/02_dml.sql del repositorio, sin modificarlos y
+partiendo de una instancia sin la base persona_db. Los casos de la API
+REST y de Swagger se automatizaron con Python, y los de las vistas MVC y
+la integración, con Playwright, que recorre la interfaz y guarda
+capturas. Las validaciones del servidor y los envíos con datos alterados
+se comprobaron además con solicitudes HTTP que incluyen el token
+antifalsificación del formulario.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">La documentación de QA se conserva en la carpeta QA/ del repositorio:
+la matriz, esta copia del documento, las evidencias y los scripts. Los
+scripts están en QA/tests/, fuera del código de la aplicación, y
+QA/tests/run_all.sh repite la corrida completa desde un contenedor
+limpio. Cada evidencia se guardó en QA/evidencias/ con el identificador
+del caso en el nombre, por ejemplo EV-API-PER-04.txt o
+EV-MVC-PER-02.png. Los registros creados durante las pruebas se
+eliminaron al terminar cada script.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">La API, Swagger y la revisión del backend se ejecutaron primero en
+main y luego en la rama del Pull Request como prueba de regresión, con
+los mismos resultados en ambas ramas. Las vistas MVC y la integración se
+probaron en la rama del Pull Request, que es la que contiene el
+frontend. Como evidencia complementaria se ejecutó sin cambios el script
+tests/mvc-smoke.ps1 del equipo, que terminó con 213 comprobaciones HTTP
+correctas.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Los casos de revisión se ejecutaron después sobre main integrada.
+MVC-GEN-05 repitió un flujo completo con Playwright en Chromium (motor
+de Chrome y Edge), Firefox y WebKit (motor de Safari). MVC-GEN-04, SW-09
+y ENT-12 se apoyaron en mediciones automáticas (desbordes y tamaño de
+letra en tres anchos de pantalla, descripciones del documento OpenAPI y
+estilos y redacción del documento); el criterio aplicado quedó escrito
+en la matriz para su confirmación por el responsable de QA.</p>
+
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.3. Resultados por área</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">La Tabla X resume el estado de los casos por área, según la hoja
+Resumen de la matriz.</p>
+
+<table style="border-collapse:collapse;margin-left:36pt;width:430pt">
+
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center">
+<tr>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Área</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Total</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Aprobados</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Fallidos</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Bloqueados</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Pendientes</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>% aprobado</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Base de datos</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">25</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">23</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">92,0 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Backend y DAO</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">9</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">8</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">88,9 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">API REST</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">62</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">61</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">98,4 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Swagger</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">9</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">8</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">88,9 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Frontend MVC</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">40</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">33</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">6</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">82,5 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Integración</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">8</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">8</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">100,0 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Repositorio y entrega</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">12</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">8</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">3</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">1</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">0</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">66,7 %</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><strong>Total</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>165</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>149</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>13</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>3</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>0</strong></td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>90,3 %</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Tabla X. Resultados de la matriz de pruebas por área. Fuente:
+elaboración propia.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">De los 165 casos, 149 fueron aprobados, 13 fallidos y 3 bloqueados.
+El avance de ejecución fue de 98,2 % y la tasa de aprobación sobre los
+casos ejecutados, de 92,0 %. Los casos bloqueados dependen de
+condiciones externas a las pruebas: BD-07 requiere un equipo Windows con
+SQL Server Express o LocalDB, ENT-09 depende de la creación del TAG de
+entrega y MVC-GEN-03 requiere acceso al diseño de Figma. No quedan casos
+pendientes de ejecución.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Las figuras siguientes muestran algunas de las evidencias
+registradas.</p>
+<p style="text-align:center;margin-left:36pt"><img src="https://raw.githubusercontent.com/DresssOrtiz/personapi-dotnet/qa/google-doc/QA/evidencias/figuras/FIG-3.9-1-SW-01.png" style="width:430pt;height:auto"></p>
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Figura X. Swagger UI con los endpoints CRUD de las cuatro entidades
+(caso SW-01). Fuente: elaboración propia.</p>
+<p style="text-align:center;margin-left:36pt"><img src="https://raw.githubusercontent.com/DresssOrtiz/personapi-dotnet/qa/google-doc/QA/evidencias/figuras/FIG-3.9-2-MVC-PER-02.png" style="width:430pt;height:auto"></p>
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Figura X. Listado de personas tras registrar un nuevo registro desde
+la vista (caso MVC-PER-02). Fuente: elaboración propia.</p>
+<p style="text-align:center;margin-left:36pt"><img src="https://raw.githubusercontent.com/DresssOrtiz/personapi-dotnet/qa/google-doc/QA/evidencias/figuras/FIG-3.9-3-MVC-PER-08.png" style="width:430pt;height:auto"></p>
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Figura X. Intento de eliminar una persona con teléfonos y estudios
+asociados (caso MVC-PER-08). Fuente: elaboración propia.</p>
+<p style="text-align:center;margin-left:36pt"><img src="https://raw.githubusercontent.com/DresssOrtiz/personapi-dotnet/qa/google-doc/QA/evidencias/figuras/FIG-3.9-4-BK-09.png" style="width:430pt;height:auto"></p>
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Figura X. Mensaje controlado de la vista con SQL Server detenido
+(casos BK-09 e INT-08). Fuente: elaboración propia.</p>
+
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.4. Defectos encontrados</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Se registraron 11 defectos en la hoja Defectos: 2 de severidad media
+y 9 de severidad baja, sin defectos críticos ni altos. La Tabla X los
+resume; la matriz incluye los pasos para reproducirlos, el resultado
+esperado frente al obtenido, la evidencia y la corrección propuesta. El
+código del repositorio no se modificó.</p>
+
+<table style="border-collapse:collapse;margin-left:36pt;width:430pt">
+
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center">
+<tr>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>ID</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Caso(s)</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Severidad</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Descripción</strong></th>
+<th style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><strong>Responsable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-01</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">API-GEN-05</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Media</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Dos POST simultáneos con la misma clave
+devuelven 500 en lugar de 409.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-02</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">ENT-08</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Media</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">El comando de despliegue del README no
+carga appsettings.json y la aplicación responde 500.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-03</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">BK-09</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Con SQL Server detenido, la API devuelve
+la traza de la excepción.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-04</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">BD-08</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Re-ejecutar el DDL borra las tablas y sus
+datos sin advertencia en el README.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-05</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">BD-07</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">ALTER AUTHORIZATION ... TO sa falla sin
+permisos sobre sa; el ajuste para LocalDB no está documentado.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-06</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">MVC-PER-05 y 4 más</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Las claves y rutas inexistentes devuelven
+404 sin página propia.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Andrés</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-07</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">MVC-PER-01</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">El listado de personas no muestra la
+edad.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Andrés</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-08</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">ENT-11</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">El documento conserva marcadores de
+captura y figuras sin numerar.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Andrés</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-09</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">MVC-GEN-04</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Los formularios de creación de personas y
+profesiones muestran un recuadro de error vacío.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Andrés</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-10</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">SW-09</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Swagger no muestra resúmenes ni
+descripciones de operaciones y campos.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Tomás</td>
+</tr>
+<tr>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">DEF-11</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">ENT-12</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;text-align:center">Baja</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">El documento aplica el estilo Título 2 a
+párrafos de cuerpo y sus referencias están incompletas.</td>
+<td style="border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;">Andrés</td>
+</tr>
+</tbody>
+</table>
+
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Tabla X. Defectos registrados durante la ejecución de la matriz.
+Fuente: elaboración propia.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Las pruebas también confirmaron comportamientos que no incumplen los
+resultados esperados, pero se registran como oportunidades de mejora.
+Las columnas de texto son VARCHAR: conservan las tildes y la ñ, pero
+alteran caracteres fuera del código de página 1252 (por ejemplo,
+«Nguyễn» se guarda como «Nguy?n»). La cédula es de tipo INT, admite las
+cédulas de 10 dígitos que comienzan por 1 y rechaza valores desde
+2.147.483.648. La API acepta números de teléfono con letras y fechas de
+estudio futuras. El archivo appsettings.json contiene la contraseña de
+ejemplo del usuario sa, Swagger permanece disponible fuera del entorno
+Development y el bloque catch de DELETE atribuye cualquier
+DbUpdateException a la existencia de registros dependientes.</p>
+
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.5. Limitaciones</h3>
+<ul>
+<li style="font-family:'Times New Roman',serif;font-size:12pt"><p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Solo se dispuso de SQL Server 2022 en Docker. No se probaron SQL
+Server Express ni LocalDB; el fallo de ALTER AUTHORIZATION se reprodujo
+con un login sin rol sysadmin.</p></li>
+<li style="font-family:'Times New Roman',serif;font-size:12pt"><p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Chrome y Edge no estaban instalados en el equipo de pruebas. Las
+pruebas de interfaz usaron los motores de Playwright sin interfaz
+gráfica: Chromium (el de Chrome y Edge), Firefox y WebKit.</p></li>
+<li style="font-family:'Times New Roman',serif;font-size:12pt"><p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">La concurrencia se evaluó con 20 pares de solicitudes simultáneas
+sobre la creación de personas. No se realizaron pruebas de rendimiento,
+carga ni seguridad más allá de la protección antifalsificación, la
+exposición de errores y las credenciales versionadas.</p></li>
+<li style="font-family:'Times New Roman',serif;font-size:12pt"><p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">No se tuvo acceso al diseño de Figma, por lo que la comparación
+de MVC-GEN-03 quedó bloqueada. Las revisiones de MVC-GEN-04, SW-09 y
+ENT-12 aplican criterios escritos en la matriz que el responsable de QA
+debe confirmar.</p></li>
+</ul>
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.6. Conclusión de
+QA sobre el Pull Request #2</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">La rama feature/frontend-mvc compila sin errores ni advertencias con
+el SDK 6.0.428, no modifica la API REST ni los scripts de base de datos
+y mantiene los resultados de main en la API, Swagger y el backend. En el
+frontend se aprobaron 33 de los 39 casos MVC ejecutados y los 8 casos de
+integración. Los defectos del frontend (DEF-06, DEF-07 y DEF-09) son de
+severidad baja y no impiden el uso de las operaciones CRUD.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Por lo anterior, QA aprobó el Pull Request #2, que se integró en main
+el 27 de octubre de 2026 mediante el merge commit 8fc7d80. El caso
+ENT-07 se repitió sobre un clon limpio de main: la rama integrada
+compila sin errores ni advertencias y la aplicación responde
+correctamente en las vistas MVC, la API REST y Swagger. Antes de crear
+el TAG de entrega conviene corregir los defectos de severidad media
+DEF-01 y DEF-02, que corresponden al backend y al README, repetir ENT-08
+y ENT-09 y completar la comparación con Figma (MVC-GEN-03) cuando el
+diseño esté disponible.</p>
+

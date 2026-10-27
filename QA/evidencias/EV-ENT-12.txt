@@ -1,10 +1,11 @@
 Caso: ENT-12
-Fecha: 2026-10-27 00:54:06
+Fecha: 2026-10-27 01:03:10
 
-Párrafos de cuerpo con estilo Heading2 (secciones 1 a 3 y pies de figura): 39
-Oraciones que empiezan en minúscula tras punto: ['senta los datos y su estructura. la Vista presenta ', 'n los que interactúa el usuario. y el Controlador ', 'tas suelen ser archivos .cshtml. los controladores s']
+Documento revisado: https://docs.google.com/document/d/13DG_OrgAsdtPDkLJCvZ_NUBVqjz0jledaNNFK01oUHE/mobilebasic
+Párrafos de cuerpo con estilo de título 2: 38
+Oraciones que empiezan en minúscula tras punto: []
 Primera persona o voseo: []
-Menciones a herramientas de IA: ['Se publicaron cuatro controladores REST y cuatro controladores MVC. Andrés implementó inic', 'El sistema se ejecutó localmente en el puerto 5025 y Swagger mostró los endpoints REST. Lo']
+Menciones a herramientas de IA: []
 Referencias:
 Material de clase. (s. f.). 8.1 Intro DotNet [Diapositivas]. Arquitectura de Software, Pontificia Universidad Javeriana.
 Material de clase. (s. f.). 8.2 Laboratorio DotNet [Diapositivas]. Arquitectura de Software, Pontificia Universidad Javeriana.

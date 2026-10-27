@@ -52,7 +52,7 @@ ENT-12 con mediciones automáticas y un criterio escrito en la matriz que el res
 | DEF-08 | ENT-11 | Baja | El documento conserva marcadores de captura y figuras sin numerar. | Andrés |
 | DEF-09 | MVC-GEN-04 | Baja | Los formularios de creación de personas y profesiones muestran un recuadro de error vacío. | Andrés |
 | DEF-10 | SW-09 | Baja | Swagger no muestra resúmenes ni descripciones de operaciones y campos. | Tomás |
-| DEF-11 | ENT-12 | Baja | El documento mezcla estilos, tiene errores de mayúsculas y referencias incompletas. | Andrés |
+| DEF-11 | ENT-12 | Baja | El documento aplica el estilo Título 2 a párrafos de cuerpo y sus referencias están incompletas. | Andrés |
 
 Los pasos para reproducir, el resultado esperado frente al obtenido y la corrección propuesta de cada
 defecto están en la hoja Defectos de la matriz.

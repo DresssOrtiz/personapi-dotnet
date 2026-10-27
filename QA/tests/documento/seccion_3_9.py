@@ -266,7 +266,7 @@ def build_section(st, rows, tot, rids):
         "DEF-08": "El documento conserva marcadores de captura y figuras sin numerar.",
         "DEF-09": "Los formularios de creación de personas y profesiones muestran un recuadro de error vacío.",
         "DEF-10": "Swagger no muestra resúmenes ni descripciones de operaciones y campos.",
-        "DEF-11": "El documento mezcla estilos, tiene errores de mayúsculas y referencias incompletas.",
+        "DEF-11": "El documento aplica el estilo Título 2 a párrafos de cuerpo y sus referencias están incompletas.",
     }
     rows_d = [["ID", "Caso(s)", "Severidad", "Descripción", "Responsable"]]
     for d in DEFECTOS:
