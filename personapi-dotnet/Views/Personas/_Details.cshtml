@@ -1,0 +1,8 @@
+@model personapi_dotnet.Models.Dtos.PersonaDto
+<dl class="detail-grid">
+    <div><dt>Cédula (cc)</dt><dd>@Model.Cc</dd></div>
+    <div><dt>Nombre</dt><dd>@Model.Nombre</dd></div>
+    <div><dt>Apellido</dt><dd>@Model.Apellido</dd></div>
+    <div><dt>Género (M/F)</dt><dd>@Model.Genero</dd></div>
+    <div><dt>Edad</dt><dd>@(Model.Edad?.ToString() ?? "—")</dd></div>
+</dl>

@@ -1,0 +1,7 @@
+@model personapi_dotnet.Models.Dtos.EstudioDto
+<dl class="detail-grid">
+    <div><dt>Profesión (id_prof)</dt><dd>@( ((IReadOnlyDictionary<int, string>)ViewBag.Profesiones).GetValueOrDefault(Model.IdProf, Model.IdProf.ToString()) )</dd></div>
+    <div><dt>Persona (cc_per)</dt><dd>@( ((IReadOnlyDictionary<int, string>)ViewBag.Personas).GetValueOrDefault(Model.CcPer, Model.CcPer.ToString()) )</dd></div>
+    <div><dt>Fecha</dt><dd>@(Model.Fecha?.ToString("yyyy-MM-dd") ?? "—")</dd></div>
+    <div><dt>Universidad (univer)</dt><dd>@(Model.Univer ?? "—")</dd></div>
+</dl>

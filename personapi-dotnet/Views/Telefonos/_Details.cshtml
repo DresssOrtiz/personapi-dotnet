@@ -1,0 +1,6 @@
+@model personapi_dotnet.Models.Dtos.TelefonoDto
+<dl class="detail-grid">
+    <div><dt>Número (num)</dt><dd>@Model.Num</dd></div>
+    <div><dt>Operador (oper)</dt><dd>@Model.Oper</dd></div>
+    <div><dt>Propietario (duenio / persona)</dt><dd>@( ((IReadOnlyDictionary<int, string>)ViewBag.Personas).GetValueOrDefault(Model.Duenio, Model.Duenio.ToString()) )</dd></div>
+</dl>

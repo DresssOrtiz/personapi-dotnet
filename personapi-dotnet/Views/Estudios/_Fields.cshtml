@@ -1,0 +1,57 @@
+@model personapi_dotnet.Models.Dtos.EstudioDto
+@{ var editing = ViewContext.RouteData.Values["action"]?.ToString() == "Edit"; }
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="IdProf">Profesión (id_prof)</label>
+        @if (editing)
+        {
+            <input type="hidden" asp-for="IdProf" id="IdProf-key" />
+            <select id="IdProf" disabled aria-describedby="IdProf-help">
+            <option>@( ((IReadOnlyDictionary<int, string>)ViewBag.Profesiones).GetValueOrDefault(Model.IdProf, Model.IdProf.ToString()) )</option></select>
+            <span class="field-help" id="IdProf-help">Identificador del registro; no se modifica.</span>
+        }
+        else
+        {
+            <select asp-for="IdProf">
+                <option value="">Selecciona una profesión</option>
+                @foreach (var option in (IReadOnlyDictionary<int, string>)ViewBag.Profesiones)
+                {
+                    <option value="@option.Key">@option.Value</option>
+                }
+            </select>
+        }
+        <span asp-validation-for="IdProf"></span>
+    </div>
+    <div class="field">
+        <label asp-for="CcPer">Persona (cc_per)</label>
+        @if (editing)
+        {
+            <input type="hidden" asp-for="CcPer" id="CcPer-key" />
+            <select id="CcPer" disabled aria-describedby="CcPer-help">
+            <option>@( ((IReadOnlyDictionary<int, string>)ViewBag.Personas).GetValueOrDefault(Model.CcPer, Model.CcPer.ToString()) )</option></select>
+            <span class="field-help" id="CcPer-help">Identificador del registro; no se modifica.</span>
+        }
+        else
+        {
+            <select asp-for="CcPer">
+                <option value="">Selecciona una persona</option>
+                @foreach (var option in (IReadOnlyDictionary<int, string>)ViewBag.Personas)
+                {
+                    <option value="@option.Key">@option.Value</option>
+                }
+            </select>
+        }
+        <span asp-validation-for="CcPer"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Fecha">Fecha</label>
+        <input asp-for="Fecha" type="date" asp-format="{0:yyyy-MM-dd}"    placeholder="Introducir fecha" />
+        <span asp-validation-for="Fecha"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Univer">Universidad (univer)</label>
+        <input asp-for="Univer" type="text"    maxlength="50" placeholder="Introducir universidad (univer)" />
+        <span asp-validation-for="Univer"></span>
+    </div>
+</div>
+<p class="help">id_prof y cc_per identifican conjuntamente cada registro.</p>

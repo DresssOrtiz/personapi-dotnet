@@ -1,0 +1,19 @@
+@model personapi_dotnet.Models.Dtos.TelefonoDto
+@{
+    ViewData["Title"] = "Teléfonos / Eliminar";
+    ViewData["Subtitle"] = "Administración de registros · Teléfonos";
+}
+
+<h2>Eliminar registro de teléfonos</h2>
+<div asp-validation-summary="All" role="alert"></div>
+<div class="confirmation">
+    <h3>¿Confirmas la eliminación de este registro?</h3>
+    <p>Esta acción podría estar restringida por registros relacionados en la base de datos.</p>
+    <p class="record-identity">Número (num): @Model.Num</p>
+</div>
+<form asp-route="default" asp-route-controller="Telefonos" asp-route-action="Delete" asp-route-originalNum="@Model.Num" method="post" class="delete-form">
+    <div class="form-actions">
+        <button class="button button-danger" type="submit">Sí, eliminar</button>
+        <a class="back-link" asp-route="default" asp-route-controller="Telefonos" asp-route-action="Index">Cancelar · Volver al listado</a>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+@model personapi_dotnet.Models.Dtos.TelefonoDto
+@{ var editing = ViewContext.RouteData.Values["action"]?.ToString() == "Edit"; }
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="Num">Número (num)</label>
+        <input asp-for="Num" type="text"  readonly="@(editing ? "readonly" : null)"  maxlength="15" placeholder="Introducir número (num)" />
+        <span asp-validation-for="Num"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Oper">Operador (oper)</label>
+        <input asp-for="Oper" type="text"    maxlength="45" placeholder="Introducir operador (oper)" />
+        <span asp-validation-for="Oper"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Duenio">Propietario (duenio / persona)</label>
+        <select asp-for="Duenio">
+
+                <option value="">Selecciona una persona</option>
+                @foreach (var option in (IReadOnlyDictionary<int, string>)ViewBag.Personas)
+                {
+                    <option value="@option.Key">@option.Value</option>
+                }
+            </select>
+        <span asp-validation-for="Duenio"></span>
+    </div>
+</div>

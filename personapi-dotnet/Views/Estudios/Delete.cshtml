@@ -1,0 +1,19 @@
+@model personapi_dotnet.Models.Dtos.EstudioDto
+@{
+    ViewData["Title"] = "Estudios / Eliminar";
+    ViewData["Subtitle"] = "Administración de registros · Estudios";
+}
+
+<h2>Eliminar registro de estudios</h2>
+<div asp-validation-summary="All" role="alert"></div>
+<div class="confirmation">
+    <h3>¿Confirmas la eliminación de este registro?</h3>
+    <p>Esta acción podría estar restringida por registros relacionados en la base de datos.</p>
+    <p class="record-identity">Profesión (id_prof): @Model.IdProf · Persona (cc_per): @Model.CcPer</p>
+</div>
+<form asp-route="default" asp-route-controller="Estudios" asp-route-action="Delete" asp-route-originalIdProf="@Model.IdProf" asp-route-originalCcPer="@Model.CcPer" method="post" class="delete-form">
+    <div class="form-actions">
+        <button class="button button-danger" type="submit">Sí, eliminar</button>
+        <a class="back-link" asp-route="default" asp-route-controller="Estudios" asp-route-action="Index">Cancelar · Volver al listado</a>
+    </div>
+</form>

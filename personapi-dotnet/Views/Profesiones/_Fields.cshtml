@@ -1,0 +1,19 @@
+@model personapi_dotnet.Models.Dtos.ProfesionDto
+@{ var editing = ViewContext.RouteData.Values["action"]?.ToString() == "Edit"; }
+<div class="form-grid">
+    <div class="field">
+        <label asp-for="Id">Identificador (id)</label>
+        <input asp-for="Id" type="number"  readonly="@(editing ? "readonly" : null)" min="1" max="2147483647"  placeholder="Introducir identificador (id)" />
+        <span asp-validation-for="Id"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Nom">Nombre de profesión (nom)</label>
+        <input asp-for="Nom" type="text"    maxlength="90" placeholder="Introducir nombre de profesión (nom)" />
+        <span asp-validation-for="Nom"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Des">Descripción (des)</label>
+        <textarea asp-for="Des" rows="1" placeholder="Introducir descripción (des)"></textarea>
+        <span asp-validation-for="Des"></span>
+    </div>
+</div>
