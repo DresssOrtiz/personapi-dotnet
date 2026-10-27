@@ -128,15 +128,14 @@ DEFECTOS = [
     },
     {
         "id": "DEF-11", "casos": ["ENT-12"], "req": "R11", "area": "Repositorio y entrega",
-        "descripcion": "El documento mezcla estilos de titulo y cuerpo, tiene errores de mayusculas, menciona a Codex "
-                       "y sus referencias estan incompletas.",
-        "pasos": "1. Abrir el documento y revisar estilos de parrafo, redaccion y referencias.",
-        "esperado": "Esperado: formato uniforme, tercera persona y referencias completas. Obtenido: 39 parrafos de "
-                    "cuerpo con estilo Heading2, oraciones en minuscula tras punto en 1.2, mencion a Codex en 3.5 y "
-                    "3.7 y referencias marcadas como preliminares.",
+        "descripcion": "El documento aplica el estilo Titulo 2 a parrafos de cuerpo y sus referencias estan "
+                       "incompletas.",
+        "pasos": "1. Abrir el documento en Google Docs y revisar el esquema, los estilos de parrafo y las referencias.",
+        "esperado": "Esperado: formato uniforme y referencias completas. Obtenido: 38 parrafos de cuerpo con estilo "
+                    "Titulo 2 (aparecen en el esquema como titulos) y referencias marcadas como preliminares.",
         "severidad": "Baja", "responsable": "Andrés", "evidencia": "EV-ENT-12.txt",
-        "observaciones": "Propuesta: aplicar Normal a los parrafos de cuerpo y un estilo de pie a las figuras, "
-                         "corregir las mayusculas de 1.2, decidir con el equipo si se menciona la herramienta usada y "
-                         "completar las referencias en APA (ASP.NET Core MVC, EF Core, SQL Server, Swashbuckle).",
+        "observaciones": "La version en linea ya corrigio las mayusculas de 1.2 y no menciona a Codex. Propuesta: "
+                         "aplicar Texto normal a los parrafos de cuerpo y un estilo de pie a las figuras, y completar "
+                         "las referencias en APA (ASP.NET Core MVC, EF Core, SQL Server, Swashbuckle).",
     },
 ]
