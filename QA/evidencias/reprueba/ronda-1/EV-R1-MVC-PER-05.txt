@@ -1,0 +1,23 @@
+Caso: MVC-PER-05
+Fecha: 2026-10-28 18:51:50
+
+Detalle: http://localhost:5025/Personas/Details?cc=999999
+Personas / Detalles
+
+Administración de registros · Personas
+
+Detalles de persona
+Cédula (cc)
+1001
+Nombre
+Andres
+Apellido
+Ortiz
+Género (M/F)
+M
+Edad
+21
+Editar
+Volver al listado
+
+Clave inexistente /Personas/Details?cc=999999 -> 404; longitud del cuerpo 1516; pagina propia de la aplicacion: True

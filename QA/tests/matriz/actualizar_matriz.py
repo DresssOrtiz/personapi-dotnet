@@ -26,6 +26,7 @@ import openpyxl
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.dirname(__file__))
+from correcciones import casos_reprobados, verificados  # noqa: E402
 from defectos import DEFECTOS  # noqa: E402
 from lib import RESULTS  # noqa: E402
 
@@ -148,6 +149,8 @@ def update_cases(sheet_xml, strings, res, reg):
                     f"Regresión en feature/frontend-mvc (eea9ee8): {reg[cid]}.")
             if cid in case_def:
                 obs = (obs + " " if obs else "") + f"Defecto {case_def[cid]}."
+            if cid in casos_reprobados():
+                obs += " " + nota_reprueba(cid, casos_reprobados()[cid])
             body = set_cell(body, f"K{rnum}", r["estado"])
             body = set_cell(body, f"L{rnum}", accent(r["obtenido"]))
             body = set_cell(body, f"M{rnum}", r["evidencia"])
@@ -161,6 +164,15 @@ def update_cases(sheet_xml, strings, res, reg):
     return "".join(out), n
 
 
+def nota_reprueba(cid, ronda):
+    """Nota de re-prueba para Observaciones; el estado de la primera ejecucion no cambia."""
+    f = os.path.join(RESULTS, "..", "reprueba", f"ronda-{ronda['ronda']}", f"{cid}.json")
+    estado = json.load(open(f, encoding="utf-8"))["estado"]
+    d = datetime.date.fromisoformat(ronda["fecha"])
+    return (f"Re-prueba ronda {ronda['ronda']} ({d:%d/%m/%Y}, Pull Request #{ronda['pr']}): {estado}. "
+            f"Evidencia en reprueba/ronda-{ronda['ronda']}/EV-R{ronda['ronda']}-{cid}.*.")
+
+
 def update_defects(sheet_xml, today):
     rows = build_rows(sheet_xml)
     normal = {c: re.search(rf'<c r="{c}3" s="(\d+)"', rows[3].group(2)).group(1) for c in "ABCDEFGHIJKLM"}
@@ -171,12 +183,18 @@ def update_defects(sheet_xml, today):
         idx = rnum - 2
         if 0 <= idx < len(DEFECTOS):
             d = DEFECTOS[idx]
+            ver = verificados().get(d["id"])
+            obs = accent(d["observaciones"])
+            if ver:
+                f = datetime.date.fromisoformat(ver["fecha"])
+                obs += (f" Corregido por {ver['responsable']} en el Pull Request #{ver['pr']} (commit {ver['commit']}) "
+                        f"y verificado por QA el {f:%d/%m/%Y} en la re-prueba ronda {ver['ronda']}.")
             for c in "ABCDEFGHIJKLM":
                 body = set_style(body, f"{c}{rnum}", normal[c])
             vals = {"A": d["id"], "C": ", ".join(d["casos"]), "D": d["req"], "E": d["area"],
                     "F": accent(d["descripcion"]), "G": accent(d["pasos"]), "H": accent(d["esperado"]),
-                    "I": d["severidad"], "J": "Abierto", "K": d["responsable"], "L": d["evidencia"],
-                    "M": accent(d["observaciones"])}
+                    "I": d["severidad"], "J": "Verificado" if ver else "Abierto", "K": d["responsable"],
+                    "L": d["evidencia"], "M": obs}
             body = set_cell(body, f"B{rnum}", excel_serial(today), "num")
             for c, v in vals.items():
                 body = set_cell(body, f"{c}{rnum}", v)

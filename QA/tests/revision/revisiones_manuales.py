@@ -104,8 +104,9 @@ def gen04():
            f"El texto es legible (letra mínima {min_font:g} px).",
            f"EV-MVC-GEN-04-*.png, {extra}, {ev}",
            "En móvil la columna Acciones de los listados queda fuera de la vista y requiere desplazar la tabla; no hay "
-           "indicación visual de que se puede desplazar. Hallazgo visual en todos los anchos: "
-           f"{', '.join(vacios)} muestran un recuadro de error vacío antes de enviar el formulario." + NOTA)
+           "indicación visual de que se puede desplazar. " + (
+               f"Hallazgo visual en todos los anchos: {', '.join(vacios)} muestran un recuadro de error vacío antes "
+               "de enviar el formulario." if vacios else "Ningún formulario muestra un recuadro de error vacío.") + NOTA)
 
 
 def sw09():

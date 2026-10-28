@@ -1,0 +1,24 @@
+Caso: MVC-GEN-04
+Fecha: 2026-10-28 18:53:05
+
+escritorio 1366px /: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+escritorio 1366px /Personas: desborde de pagina 0px; tabla desplazable [0]; letra minima 12px; resumen de errores vacio visible: False
+escritorio 1366px /Personas/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+escritorio 1366px /Estudios: desborde de pagina 0px; tabla desplazable [0]; letra minima 12px; resumen de errores vacio visible: False
+escritorio 1366px /Estudios/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+escritorio 1366px /Telefonos/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+escritorio 1366px /Profesiones/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+tableta 768px /: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+tableta 768px /Personas: desborde de pagina 0px; tabla desplazable [254]; letra minima 12px; resumen de errores vacio visible: False
+tableta 768px /Personas/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+tableta 768px /Estudios: desborde de pagina 0px; tabla desplazable [254]; letra minima 12px; resumen de errores vacio visible: False
+tableta 768px /Estudios/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+tableta 768px /Telefonos/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+tableta 768px /Profesiones/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+movil 375px /: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+movil 375px /Personas: desborde de pagina 0px; tabla desplazable [393]; letra minima 12px; resumen de errores vacio visible: False
+movil 375px /Personas/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+movil 375px /Estudios: desborde de pagina 0px; tabla desplazable [393]; letra minima 12px; resumen de errores vacio visible: False
+movil 375px /Estudios/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+movil 375px /Telefonos/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False
+movil 375px /Profesiones/Create: desborde de pagina 0px; tabla desplazable []; letra minima 13px; resumen de errores vacio visible: False

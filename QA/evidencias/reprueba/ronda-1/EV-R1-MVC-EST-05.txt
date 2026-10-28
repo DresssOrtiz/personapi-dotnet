@@ -1,0 +1,21 @@
+Caso: MVC-EST-05
+Fecha: 2026-10-28 18:52:00
+
+Detalle: http://localhost:5025/Estudios/Details?idProf=4&ccPer=1003
+Estudios / Detalles
+
+Administración de registros · Estudios
+
+Detalles del registro
+Profesión (id_prof)
+Ingeniero de Sistemas
+Persona (cc_per)
+1001 · Andres Ortiz
+Fecha
+2026-06-15
+Universidad (univer)
+Pontificia Universidad Javeriana
+Editar
+Volver al listado
+
+Clave inexistente /Estudios/Details?idProf=4&ccPer=1003 -> 404; longitud del cuerpo 1516; pagina propia de la aplicacion: True

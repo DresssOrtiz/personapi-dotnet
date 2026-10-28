@@ -1,0 +1,9 @@
+{
+  "id": "MVC-EST-05",
+  "estado": "Aprobado",
+  "obtenido": "El detalle muestra todos los campos. La clave inexistente responde 404 con pagina propia.",
+  "evidencia": "EV-MVC-EST-05.png, EV-MVC-EST-05-inexistente.png, EV-MVC-EST-05.txt",
+  "fecha": "2026-10-28",
+  "responsable": "Automatizado",
+  "observaciones": ""
+}
