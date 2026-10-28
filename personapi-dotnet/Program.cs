@@ -34,6 +34,20 @@ if (!app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), mvc =>
+{
+    mvc.UseStatusCodePagesWithReExecute("/Home/PageNotFound");
+    mvc.Use(async (context, next) =>
+    {
+        await next();
+        if (context.Response.StatusCode != StatusCodes.Status404NotFound)
+        {
+            var statusPages = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature>();
+            if (statusPages != null) statusPages.Enabled = false;
+        }
+    });
+});
+
 app.UseStaticFiles();
 
 app.UseRouting();

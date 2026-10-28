@@ -11,7 +11,7 @@
 <div class="table-scroll">
 <table>
     <caption class="sr-only">Registros de personas</caption>
-    <thead><tr><th scope="col">Cédula</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">Género</th><th scope="col">Acciones</th></tr></thead>
+    <thead><tr><th scope="col">Cédula</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">Género</th><th scope="col">Edad</th><th scope="col">Acciones</th></tr></thead>
     <tbody>
     @foreach (var item in Model)
     {
@@ -20,6 +20,7 @@
             <td>@item.Nombre</td>
             <td>@item.Apellido</td>
             <td>@item.Genero</td>
+            <td>@(item.Edad?.ToString() ?? "—")</td>
             <td class="row-actions">
                 <a asp-route="default" asp-route-controller="Personas" asp-route-action="Details" asp-route-cc="@item.Cc" aria-label="Ver registro">Ver</a> ·
                 <a asp-route="default" asp-route-controller="Personas" asp-route-action="Edit" asp-route-cc="@item.Cc" aria-label="Editar registro">Editar</a> ·
@@ -29,7 +30,7 @@
     }
     @if (!Model.Any())
     {
-        <tr><td class="empty" colspan="5">No hay registros. Puedes crear el primero con «Nuevo registro».</td></tr>
+        <tr><td class="empty" colspan="6">No hay registros. Puedes crear el primero con «Nuevo registro».</td></tr>
     }
     </tbody>
 </table>

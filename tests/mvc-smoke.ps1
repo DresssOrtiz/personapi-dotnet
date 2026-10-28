@@ -110,6 +110,10 @@ try {
     Post-Form "/Estudios/Edit?idProf=$id&ccPer=$id" "/Estudios/Edit?originalIdProf=$id&originalCcPer=$id" $study | Out-Null
     $readPerson = Get-Page "/api/personas/$id" | ConvertFrom-Json
     Assert-True ($readPerson.nombre -eq $person.Nombre -and $null -eq $readPerson.edad) "Edición de persona y edad opcional"
+    $personList = Get-Page "/Personas"
+    $personRow = [regex]::Match($personList, '(?s)<tr>\s*<td>' + $id + '</td>.*?</tr>').Value
+    $personCells = @([regex]::Matches($personRow, '(?s)<td[^>]*>(.*?)</td>') | ForEach-Object { [System.Net.WebUtility]::HtmlDecode($_.Groups[1].Value).Trim() })
+    Assert-True ($personCells.Count -eq 6 -and $personCells[4] -eq '—') "Listado de personas muestra edad nula sin errores"
     Assert-True ((Get-Page "/api/profesiones/$id" | ConvertFrom-Json).nom -eq $profession.Nom) "Edición de profesión persistida"
     Assert-True ((Get-Page "/api/telefonos/$num" | ConvertFrom-Json).oper -eq $phone.Oper) "Edición de teléfono persistida"
     $readStudy = Get-Page "/api/estudios/$id/$id" | ConvertFrom-Json
