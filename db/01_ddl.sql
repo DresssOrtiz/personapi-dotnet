@@ -11,8 +11,14 @@ GO
 USE persona_db;
 GO
 
--- La propiedad de la base de datos pertenece al usuario sa
-ALTER AUTHORIZATION ON DATABASE::persona_db TO sa;
+-- La propiedad de la base de datos pertenece al usuario sa. Si el usuario actual no tiene permisos
+-- sobre sa o el login no existe (p. ej. LocalDB), el ajuste se omite y el script continúa.
+BEGIN TRY
+    ALTER AUTHORIZATION ON DATABASE::persona_db TO sa;
+END TRY
+BEGIN CATCH
+    PRINT N'Aviso: no se asigno la propiedad de persona_db a sa (' + ERROR_MESSAGE() + N'). Se omite.';
+END CATCH
 GO
 
 IF OBJECT_ID(N'dbo.estudios', N'U') IS NOT NULL DROP TABLE dbo.estudios;

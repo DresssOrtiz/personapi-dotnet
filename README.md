@@ -49,7 +49,19 @@ docker exec -i persona-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '
 
 **Opción B - SQL Server Express + SSMS (Windows):** abrir `db/01_ddl.sql` y luego `db/02_dml.sql`
 en SSMS conectado a `localhost\SQLEXPRESS` y ejecutarlos en ese orden. El DDL crea `persona_db`
-y le asigna la propiedad al usuario `sa`.
+y, cuando es posible, le asigna la propiedad al usuario `sa`.
+
+**Opción C - SQL Server LocalDB (Windows):** iniciar la instancia y ejecutar los scripts con autenticación de Windows:
+
+```bash
+sqllocaldb start MSSQLLocalDB
+sqlcmd -S "(localdb)\MSSQLLocalDB" -E -b -i db\01_ddl.sql
+sqlcmd -S "(localdb)\MSSQLLocalDB" -E -b -i db\02_dml.sql
+```
+
+> En LocalDB y en cualquier instalación donde el usuario no tenga permisos sobre `sa`, el DDL omite la
+> asignación de propiedad (`ALTER AUTHORIZATION`) e imprime un aviso en lugar de detenerse; no hay que
+> editar el script.
 
 > **Advertencia:** `db/01_ddl.sql` elimina y vuelve a crear las tablas `estudios`, `telefono`, `profesion` y
 > `persona`, por lo que **borra todos los datos que contengan**. Ejecútalo solo en una instalación nueva o cuando
@@ -67,6 +79,7 @@ Server=localhost,1433;Database=persona_db;User Id=sa;Password=Persona_Lab1#2026;
 
 Con SQL Server Express en Windows usar, por ejemplo:
 `Server=localhost\SQLEXPRESS;Database=persona_db;Trusted_Connection=True;TrustServerCertificate=true`.
+Con LocalDB: `Server=(localdb)\MSSQLLocalDB;Database=persona_db;Trusted_Connection=True;TrustServerCertificate=true`.
 También se puede sobrescribir sin editar el archivo con la variable de entorno
 `ConnectionStrings__PersonaDb`.
 
