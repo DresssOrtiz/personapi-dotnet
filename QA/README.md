@@ -7,7 +7,7 @@ patrón DAO). Responsable de QA: Santiago Hernández. Fecha de ejecución: 27 de
 
 | Archivo o carpeta | Descripción |
 |---|---|
-| `Matriz_Pruebas_Laboratorio1_QA.xlsx` | Matriz de 165 casos con estado, resultado obtenido, evidencia, fecha, responsable y observaciones; hoja Defectos con 11 defectos. |
+| `Matriz_Pruebas_Laboratorio1_QA.xlsx` | Matriz de 165 casos con estado, resultado obtenido, evidencia, fecha, responsable y observaciones; hoja Defectos con 12 defectos. |
 | `Laboratorio 1 — ..._QA.docx` | Copia del documento del laboratorio con la sección 3.9 "Pruebas de QA" completa. |
 | `evidencias/` | Salidas y capturas de cada caso (`EV-<ID>.txt` / `EV-<ID>.png`). `pantallas/` reúne las 21 vistas implementadas y `figma/` los marcos del diseño con un comparativo por pantalla. |
 | `tests/` | Scripts de pruebas automatizadas y resultados por caso. Ver `tests/README.md`. |
@@ -55,6 +55,7 @@ debe confirmar.
 | DEF-09 | MVC-GEN-04 | Baja | Los formularios de creación de personas y profesiones muestran un recuadro de error vacío. | Andrés |
 | DEF-10 | SW-09 | Baja | Swagger no muestra resúmenes ni descripciones de operaciones y campos. | Tomás |
 | DEF-11 | ENT-12 | Baja | El documento aplica el estilo Título 2 a párrafos de cuerpo y sus referencias están incompletas. | Andrés |
+| DEF-12 | BK-01 | Baja | Falta el paquete `Microsoft.EntityFrameworkCore.Tools` que exige el enunciado (registrado después de la primera ejecución). | Tomás |
 
 Los pasos para reproducir, el resultado esperado frente al obtenido y la corrección propuesta de cada
 defecto están en la hoja Defectos de la matriz.
@@ -69,6 +70,7 @@ Observaciones y los defectos verificados pasan a Verificado. Las evidencias est�
 |---|---|---|---|---|---|
 | 1 (28/10/2026) | Andrés | #7 (6a0edac) | DEF-06, DEF-07, DEF-09 | MVC-PER-01, MVC-*-05, MVC-GEN-07, MVC-GEN-04 | Aprobados; defectos verificados, sin regresiones |
 | 2 (28/10/2026) | Tomás | #9, #10, #11 (main a05612c) | DEF-01, DEF-02, DEF-03, DEF-04, DEF-05, DEF-10 | API-GEN-05, ENT-08, BK-09, INT-08, BD-08, BD-07, SW-09 | Aprobados salvo BD-07 (bloqueado, requiere Windows); DEF-05 en Corregido, los demás verificados, sin regresiones |
+| 3 (29/10/2026) | Tomás | #13 (1aba298, merge f68b6a5) | DEF-12 | BK-01 (criterio ampliado al enunciado) | Aprobado; defecto verificado, sin regresiones |
 
 Los Pull Request #9, #10 y #11 se integraron en main antes de la revisión de QA; la re-prueba se hizo sobre main
 integrada. DEF-08 y DEF-11 (documento, Andrés) siguen abiertos.

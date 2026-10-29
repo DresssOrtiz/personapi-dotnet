@@ -198,7 +198,8 @@ def update_defects(sheet_xml, today):
                     "F": accent(d["descripcion"]), "G": accent(d["pasos"]), "H": accent(d["esperado"]),
                     "I": d["severidad"], "J": estado, "K": d["responsable"],
                     "L": d["evidencia"], "M": obs}
-            body = set_cell(body, f"B{rnum}", excel_serial(today), "num")
+            # Fecha de deteccion: la primera ejecucion o la que indique el defecto.
+            body = set_cell(body, f"B{rnum}", excel_serial(d.get("fecha", "2026-10-27")), "num")
             for c, v in vals.items():
                 body = set_cell(body, f"{c}{rnum}", v)
         out.append(head + body + tail)

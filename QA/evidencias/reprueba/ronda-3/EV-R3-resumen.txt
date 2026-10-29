@@ -1,0 +1,27 @@
+Re-prueba ronda 3: correccion de Tomas Ramirez (Pull Request #13, commit 1aba298)
+Fecha: 2026-10-29. Responsable de QA: Santiago Hernandez
+
+DEF-12 (registrado tras contrastar el repositorio con el enunciado oficial): falta
+Microsoft.EntityFrameworkCore.Tools, exigido en el paso 8.8 del procedimiento.
+BK-01 se amplio para exigir los tres paquetes del enunciado.
+
+BK-01 con el criterio nuevo:
+  main antes de la correccion (6d26734): Fallido, falta Microsoft.EntityFrameworkCore.Tools (EV-R3-BK-01-antes.txt)
+  main con el Pull Request #13 (f68b6a5): Aprobado (EV-R3-BK-01.txt)
+
+Comprobaciones sobre la rama del Pull Request (1aba298):
+  dotnet build desde una copia limpia (sin bin/obj): 0 Advertencia(s), 0 Errores
+  dotnet list package: EntityFrameworkCore, Design, SqlServer y Tools 6.0.36
+  El paquete Tools incluye tools/EntityFrameworkCore.psd1 con Scaffold-DbContext
+  dotnet ef dbcontext scaffold (dotnet-ef 6.0.36) contra persona_db: Estudio, Persona, Profesion y
+  Telefono identicas a Models/Entities (sin contar la linea de namespace)
+
+Regresion (QA/tests/run_all.sh con contenedor limpio, revisiones y navegadores): 161 aprobados,
+0 fallidos y 2 bloqueados (BD-07 requiere Windows; ENT-09, TAG de entrega). Detalle en
+EV-R3-regresion.txt. MVC-GEN-05 aprobado en Chromium, Firefox y WebKit.
+
+Scripts del equipo (PowerShell 7.4 en contenedor):
+  tests/mvc-defects.ps1: CORRECTO: 62 comprobaciones de DEF-06, DEF-07 y DEF-09.
+  tests/mvc-smoke.ps1: CORRECTO: 215 comprobaciones HTTP.
+
+Pull Request #13 aprobado por QA y fusionado en main (merge commit f68b6a5).

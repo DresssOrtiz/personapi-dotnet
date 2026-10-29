@@ -46,10 +46,16 @@ def main():
     ev = write_evidence("BK-01" + SFX, f"TargetFramework: {tf}\nSdk: Microsoft.NET.Sdk.Web\nPaquetes:\n" +
                         "\n".join(f"  {n} {v}" for n, v in pkgs) +
                         f"\n\nREADME, tabla Stack:\n{readme[readme.find('| .NET'):readme.find('| Entity')]}")
-    ok = tf == "net6.0" and any(n == "Microsoft.EntityFrameworkCore.SqlServer" for n, _ in pkgs) and justified
+    # Paquetes que exige el paso 8.8 del enunciado
+    req = ["Microsoft.EntityFrameworkCore", "Microsoft.EntityFrameworkCore.SqlServer", "Microsoft.EntityFrameworkCore.Tools"]
+    names = [n for n, _ in pkgs]
+    missing = [n for n in req if n not in names]
+    ef = [n.replace("Microsoft.EntityFrameworkCore.", "") for n in names if n.startswith("Microsoft.EntityFrameworkCore.")]
+    ok = tf == "net6.0" and not missing and justified
     rec("BK-01", "Aprobado" if ok else "Fallido",
-        f"{tf}, Microsoft.NET.Sdk.Web (ASP.NET Core MVC), EF Core 6.0.36 con SqlServer y Design, Swashbuckle 6.5.0. "
-        "El README justifica .NET 6 frente al 7 del stack del enunciado.", ev,
+        f"{tf}, Microsoft.NET.Sdk.Web (ASP.NET Core MVC), EF Core 6.0.36 con {', '.join(ef)}, Swashbuckle 6.5.0. "
+        "El README justifica .NET 6 frente al 7 del stack del enunciado." +
+        (f" Falta {', '.join(missing)}, exigido por el enunciado." if missing else ""), ev,
         ".NET 6 esta fuera de soporte desde noviembre de 2024; con SDK recientes se emite la advertencia "
         "NETSDK1138.")
 

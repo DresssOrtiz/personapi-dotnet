@@ -527,4 +527,48 @@ elaboración propia.</p>
 sysadmin el DDL termina sin error y muestra el aviso, pero BD-07 sigue
 bloqueado hasta ejecutarlo en Windows con SQL Server Express o
 LocalDB.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt"><strong>Ronda 3. Correcciones de Tomás Ramírez (Pull Request
+#13)</strong></p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Después de la ronda 2, QA contrastó el repositorio con el enunciado
+oficial del laboratorio y registró DEF-12: el procedimiento exige el
+paquete Microsoft.EntityFrameworkCore.Tools y el proyecto no lo incluía.
+En la primera ejecución BK-01 se había aprobado con un criterio que no
+lo exigía; desde esta ronda BK-01 verifica los tres paquetes que pide el
+enunciado.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Tomás Ramírez corrigió DEF-12 en el Pull Request #13 (commit
+1aba298). El 29 de octubre de 2026, QA repitió sobre la rama del Pull
+Request la suite completa desde un contenedor limpio y los casos de
+revisión. El caso asociado, BK-01, quedó aprobado. La compilación desde
+una copia limpia terminó con 0 advertencias y 0 errores, y dotnet ef
+dbcontext scaffold generó las 4 entidades idénticas a las del
+repositorio. Los demás casos mantuvieron su resultado, sin regresiones,
+y los scripts del equipo terminaron con 62 y 215 comprobaciones
+correctas. La Tabla X resume los cambios y su verificación.</p>
+
+<table style="border-collapse:collapse;width:415pt;table-layout:fixed">
+
+
+<tr>
+<th width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Defecto</strong></p></th>
+<th width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Corrección</strong></p></th>
+<th width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Casos repetidos</strong></p></th>
+<th width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Resultado</strong></p></th>
+</tr>
+
+
+<tr>
+<td width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">DEF-12</p></td>
+<td width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Microsoft.EntityFrameworkCore.Tools 6.0.36
+en el csproj y nota en el README sobre el paquete que usa cada forma de
+regenerar las entidades.</p></td>
+<td width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">BK-01</p></td>
+<td width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Aprobado; defecto verificado</p></td>
+</tr>
+
+</table>
+
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Tabla X. Defectos corregidos en la ronda 3 y casos repetidos. Fuente:
+elaboración propia.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Por lo anterior, QA aprobó el Pull Request #13, que se integró en
+main mediante el merge commit f68b6a5.</p>
 

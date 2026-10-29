@@ -166,13 +166,14 @@ def build_section(st, rows, tot, rids):
     mvc = [v for k, v in st.items() if k.startswith("MVC")]
     mvc_ex = sum(1 for v in mvc if v in ("Aprobado", "Fallido"))
     mvc_ok = mvc.count("Aprobado")
-    fe = [d["id"] for d in DEFECTOS if d["area"] == "Frontend MVC"]
+    iniciales = [d for d in DEFECTOS if not d.get("posterior")]  # 3.9.4 describe la primera ejecucion
+    fe = [d["id"] for d in iniciales if d["area"] == "Frontend MVC"]
     fe_defs = fe[0] if len(fe) == 1 else ", ".join(fe[:-1]) + " y " + fe[-1]
     pend = [k for k, v in st.items() if v == "Pendiente"]
     cierre = (f"completar los {len(pend)} casos manuales pendientes" if pend else
               "ejecutar BD-07 en un equipo Windows con SQL Server Express o LocalDB" if st.get("BD-07") == "Bloqueado" else
               "crear el TAG de entrega")
-    sev = {s: sum(1 for d in DEFECTOS if d["severidad"] == s) for s in ("Crítica", "Alta", "Media", "Baja")}
+    sev = {s: sum(1 for d in iniciales if d["severidad"] == s) for s in ("Crítica", "Alta", "Media", "Baja")}
     x = []
     x.append(heading("3.9. Pruebas de QA", 2))
     x.append(para("Santiago Hernández realizó la validación independiente de QA sobre la rama main (commit 0595eab) y "
@@ -255,7 +256,7 @@ def build_section(st, rows, tot, rids):
                      "Fuente: elaboración propia."))
 
     x.append(heading("3.9.4. Defectos encontrados", 3))
-    x.append(para(f"Se registraron {len(DEFECTOS)} defectos en la hoja Defectos: {sev['Media']} de severidad media y "
+    x.append(para(f"Se registraron {len(iniciales)} defectos en la hoja Defectos: {sev['Media']} de severidad media y "
                   f"{sev['Baja']} de severidad baja, sin defectos críticos ni altos. La Tabla X los resume; la matriz "
                   "incluye los pasos para reproducirlos, el resultado esperado frente al obtenido, la evidencia y la "
                   "corrección propuesta. El código del repositorio no se modificó.", keep=True))
@@ -273,7 +274,7 @@ def build_section(st, rows, tot, rids):
         "DEF-11": "El documento aplica el estilo Título 2 a párrafos de cuerpo y sus referencias están incompletas.",
     }
     rows_d = [["ID", "Caso(s)", "Severidad", "Descripción", "Responsable"]]
-    for d in DEFECTOS:
+    for d in iniciales:
         casos = ", ".join(d["casos"]) if len(d["casos"]) < 3 else f"{d['casos'][0]} y {len(d['casos']) - 1} más"
         rows_d.append([d["id"], casos, d["severidad"], short[d["id"]], d["responsable"]])
     x.append(table(rows_d, [850, 1450, 1050, 3709, 1250], size=20, align=["left", "left", "center", "left", "left"]))
@@ -353,10 +354,14 @@ def correcciones_section():
         resto = [k for k in casos if k not in aprobados]
         x.append(para([(f"Ronda {r['ronda']}. Correcciones de {r['responsable']} ({prs_texto(r['prs'])})", True)],
                       keep=True))
-        x.append(para(f"{r['responsable']} corrigió {', '.join(defs[:-1])} y {defs[-1]} {r['origen']}. El {fecha}, "
+        if r.get("nota"):
+            x.append(para(r["nota"], keep=True))
+        lista = defs[0] if len(defs) == 1 else f"{', '.join(defs[:-1])} y {defs[-1]}"
+        x.append(para(f"{r['responsable']} corrigió {lista} {r['origen']}. El {fecha}, "
                       f"QA repitió {r['probado']} la suite completa desde un contenedor limpio y los casos de "
-                      f"revisión. De los {len(casos)} casos asociados a los defectos, {len(aprobados)} quedaron "
-                      "aprobados" + ("." if not resto else "; " + ", ".join(
+                      f"revisión. " + (f"El caso asociado, {casos[0]}, quedó aprobado" if len(casos) == 1 and not resto else
+                      f"De los {len(casos)} casos asociados a los defectos, {len(aprobados)} quedaron aprobados") +
+                      ("." if not resto else "; " + ", ".join(
                           f"{k} quedó {estado_reprueba(r, k).lower()}" for k in resto) + ".") +
                       f" {r['regresion']} La Tabla X resume los cambios y su verificación.", keep=True))
         rows = [["Defecto", "Corrección", "Casos repetidos", "Resultado"]]
