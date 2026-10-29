@@ -53,6 +53,24 @@ RONDAS = [
                      "aviso, pero BD-07 sigue bloqueado hasta ejecutarlo en Windows con SQL Server Express o "
                      "LocalDB.",
     },
+    {
+        "ronda": 3, "estado": "Verificada", "fecha": "2026-10-29", "responsable": "Tomás Ramírez",
+        "prs": [13], "origen": "en el Pull Request #13 (commit 1aba298)", "probado": "sobre la rama del Pull Request",
+        "nota": "Después de la ronda 2, QA contrastó el repositorio con el enunciado oficial del laboratorio y "
+                "registró DEF-12: el procedimiento exige el paquete Microsoft.EntityFrameworkCore.Tools y el proyecto "
+                "no lo incluía. En la primera ejecución BK-01 se había aprobado con un criterio que no lo exigía; "
+                "desde esta ronda BK-01 verifica los tres paquetes que pide el enunciado.",
+        "cambios": [
+            ("DEF-12", "Microsoft.EntityFrameworkCore.Tools 6.0.36 en el csproj y nota en el README sobre el paquete "
+                       "que usa cada forma de regenerar las entidades.", ["BK-01"], "Verificado"),
+        ],
+        "regresion": "La compilación desde una copia limpia terminó con 0 advertencias y 0 errores, y dotnet ef "
+                     "dbcontext scaffold generó las 4 entidades idénticas a las del repositorio. Los demás casos "
+                     "mantuvieron su resultado, sin regresiones, y los scripts del equipo terminaron con 62 y 215 "
+                     "comprobaciones correctas.",
+        "veredicto": "Por lo anterior, QA aprobó el Pull Request #13, que se integró en main mediante el merge "
+                     "commit f68b6a5.",
+    },
 ]
 
 

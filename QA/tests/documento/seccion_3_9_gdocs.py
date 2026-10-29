@@ -57,7 +57,7 @@ def main(docx, branch):
     s = re.sub(r"<td>", f'<td style="{cell}">', s)
     s = s.replace("<td style=\"text-align: left;\">", f'<td style="{cell}">')
     # Anchos fijos por columna (pt); el ancho util con la sangria de 36 pt es de unos 415 pt.
-    widths = iter([[130, 285], [105, 40, 55, 50, 60, 60, 45], [45, 75, 50, 185, 60], [50, 195, 100, 70], [50, 195, 100, 70]])
+    widths = iter([[130, 285], [105, 40, 55, 50, 60, 60, 45], [45, 75, 50, 185, 60], [50, 195, 100, 70], [50, 195, 100, 70], [50, 195, 100, 70]])
 
     def size_table(m):
         cols = next(widths)

@@ -139,4 +139,18 @@ DEFECTOS = [
                          "aplicar Texto normal a los parrafos de cuerpo y un estilo de pie a las figuras, y completar "
                          "las referencias en APA (ASP.NET Core MVC, EF Core, SQL Server, Swashbuckle).",
     },
+    {
+        "id": "DEF-12", "casos": ["BK-01"], "req": "R03", "area": "Backend y DAO", "fecha": "2026-10-28",
+        "posterior": True,
+        "descripcion": "El proyecto no incluye el paquete Microsoft.EntityFrameworkCore.Tools que exige el "
+                       "procedimiento del enunciado.",
+        "pasos": "1. Revisar los PackageReference de personapi-dotnet/personapi-dotnet.csproj. 2. Contrastar con el "
+                 "paso 8.8 del enunciado (Microsoft.EntityFrameworkCore, .SqlServer y .Tools).",
+        "esperado": "Esperado: los tres paquetes del enunciado. Obtenido: EntityFrameworkCore, SqlServer y Design; "
+                    "falta Tools, que aporta Scaffold-DbContext en la Consola del Administrador de paquetes.",
+        "severidad": "Baja", "responsable": "Tomás", "evidencia": "EV-BK-01.txt",
+        "observaciones": "Detectado al contrastar el repositorio con el enunciado oficial, recibido despues de la "
+                         "primera ejecucion; BK-01 se habia aprobado con un criterio que no incluia Tools. "
+                         "Propuesta: agregar Microsoft.EntityFrameworkCore.Tools 6.0.36.",
+    },
 ]
