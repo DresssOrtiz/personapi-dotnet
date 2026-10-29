@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using personapi_dotnet.Interfaces;
 using personapi_dotnet.Models.Entities;
@@ -33,6 +35,30 @@ if (!app.Environment.IsDevelopment())
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+// La API responde 503 con un mensaje controlado si no hay conexión con la base de datos;
+// la traza queda solo en el registro del servidor.
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api"), api =>
+{
+    api.Use(async (context, next) =>
+    {
+        try
+        {
+            await next();
+        }
+        catch (SqlException ex) when (!context.Response.HasStarted)
+        {
+            context.RequestServices.GetRequiredService<ILoggerFactory>()
+                .CreateLogger("Api").LogError(ex, "Error de acceso a datos en la API");
+            context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+            await context.Response.WriteAsJsonAsync(new ProblemDetails
+            {
+                Status = StatusCodes.Status503ServiceUnavailable,
+                Title = "La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde."
+            }, options: null, contentType: "application/problem+json");
+        }
+    });
+});
 
 app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), mvc =>
 {
