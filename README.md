@@ -111,7 +111,12 @@ Publicación local de la aplicación:
 
 ```bash
 dotnet publish personapi-dotnet/personapi-dotnet.csproj -c Release -o publish
-ASPNETCORE_URLS=http://localhost:5025 dotnet publish/personapi-dotnet.dll
+cd publish
+ASPNETCORE_URLS=http://localhost:5025 dotnet personapi-dotnet.dll
 ```
+
+La aplicación debe ejecutarse desde dentro de `publish/`: lee `appsettings.json` del directorio de trabajo y,
+si se lanza desde la raíz del repositorio, no encuentra la cadena de conexión y la API responde 500. Como
+alternativa se puede definir la variable de entorno `ConnectionStrings__PersonaDb`.
 
 La base de datos debe estar disponible con la cadena de conexión configurada.

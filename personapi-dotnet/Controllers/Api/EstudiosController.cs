@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using personapi_dotnet.Interfaces;
 using personapi_dotnet.Models.Dtos;
 
@@ -49,13 +50,21 @@ namespace personapi_dotnet.Controllers.Api
         {
             var error = await ValidateReferencesAsync(dto);
             if (error != null) return BadRequest(error);
+            var conflict = new ProblemDetails
+            {
+                Title = $"Ya existe un estudio para la profesion {dto.IdProf} y la persona {dto.CcPer}."
+            };
             if (await _estudios.ExistsAsync(dto.IdProf, dto.CcPer))
-                return Conflict(new ProblemDetails
-                {
-                    Title = $"Ya existe un estudio para la profesion {dto.IdProf} y la persona {dto.CcPer}."
-                });
+                return Conflict(conflict);
 
-            await _estudios.AddAsync(dto.ToEntity());
+            try
+            {
+                await _estudios.AddAsync(dto.ToEntity());
+            }
+            catch (DbUpdateException ex) when (ex.IsDuplicateKey())
+            {
+                return Conflict(conflict);
+            }
             return CreatedAtAction(nameof(GetById), new { idProf = dto.IdProf, ccPer = dto.CcPer }, dto);
         }
 
