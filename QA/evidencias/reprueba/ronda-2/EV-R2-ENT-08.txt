@@ -1,0 +1,22 @@
+Caso: ENT-08
+Fecha: 2026-10-28 23:48:19
+
+git clone -> 0 
+
+$ dotnet publish personapi-dotnet/personapi-dotnet.csproj -c Release -o publish -> 0
+MSBuild version 17.3.4+a400405ba for .NET
+  Determinando los proyectos que se van a restaurar...
+  Se ha restaurado /private/var/folders/4q/z352g3hx0zv6d0q9hxjszmp00000gn/T/qa-publish-8ir7wpxw/personapi-dotnet/personapi-dotnet.csproj (en 138 ms).
+  personapi-dotnet -> /private/var/folders/4q/z352g3hx0zv6d0q9hxjszmp00000gn/T/qa-publish-8ir7wpxw/personapi-dotnet/bin/Release/net6.0/personapi-dotnet.dll
+  personapi-dotnet -> /private/var/folders/4q/z352g3hx0zv6d0q9hxjszmp00000gn/T/qa-publish-8ir7wpxw/publish/
+
+$ cd publish && ASPNETCORE_URLS=http://localhost:5027 dotnet personapi-dotnet.dll (README)
+GET /api/personas -> 200 [{"cc":1001,"nombre":"Andres","apellido":"Ortiz","genero":"M","edad":21},{"cc":1002,"nombre":"Tomas","apellido":"Ramirez","genero":"M","edad":22},{"cc":1003,"nombre":"Santiago","apellido":"Hernandez","genero":"M","edad":21},{"cc":1004,"nombre":"Laura","apellido":"Gomez","genero":"F","edad":30},{"cc"
+GET /swagger -> 200
+Lineas relevantes del log:
+      Hosting environment: Production
+      Content root path: /private/var/folders/4q/z352g3hx0zv6d0q9hxjszmp00000gn/T/qa-publish-8ir7wpxw/publish/
+
+$ cd publish && ASPNETCORE_URLS=http://localhost:5027 dotnet personapi-dotnet.dll
+GET /api/personas -> 200 (5 registros)
+GET /swagger -> 200 (entorno Production)

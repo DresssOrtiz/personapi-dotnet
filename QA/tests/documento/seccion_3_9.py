@@ -21,7 +21,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "matriz"))
-from correcciones import RONDAS  # noqa: E402
+from correcciones import RONDAS, prs_texto  # noqa: E402
 from defectos import DEFECTOS  # noqa: E402
 from lib import EVID, RESULTS, record, write_evidence  # noqa: E402
 
@@ -322,6 +322,11 @@ def build_section(st, rows, tot, rids):
     return "".join(x)
 
 
+def estado_reprueba(ronda, caso):
+    f = os.path.join(RESULTS, "..", "reprueba", f"ronda-{ronda['ronda']}", f"{caso}.json")
+    return json.load(open(f, encoding="utf-8"))["estado"]
+
+
 def correcciones_section():
     """Seccion 3.9.7: rondas de correccion posteriores; lo anterior queda como primera ejecucion."""
     x = [heading("3.9.7. Correcciones y re-pruebas", 3)]
@@ -329,7 +334,8 @@ def correcciones_section():
                   "se conservan sin cambios. Después de esa ejecución, los responsables de cada defecto realizaron "
                   "correcciones en rondas, y QA repitió los casos afectados y la suite completa como regresión. En "
                   "la matriz, cada caso repetido conserva su estado original y suma una nota de re-prueba en "
-                  "Observaciones, y cada defecto verificado pasa al estado Verificado. Las evidencias de cada ronda "
+                  "Observaciones, y cada defecto pasa al estado Verificado o, si la re-prueba no cubre todos los entornos, "
+                  "Corregido. Las evidencias de cada ronda "
                   "están en QA/evidencias/reprueba/."))
     for r in RONDAS:
         if r["estado"] == "Pendiente":
@@ -341,23 +347,26 @@ def correcciones_section():
             continue
         f = r["fecha"].split("-")
         fecha = f"{int(f[2])} de {MESES[int(f[1])]} de {f[0]}"
-        defs = [d for d, _, _ in r["cambios"]]
-        n_casos = sum(len(c) for _, _, c in r["cambios"])
-        x.append(para([(f"Ronda {r['ronda']}. Correcciones de {r['responsable']} (Pull Request #{r['pr']})", True)],
+        defs = [c[0] for c in r["cambios"]]
+        casos = [k for c in r["cambios"] for k in c[2]]
+        aprobados = [k for k in casos if estado_reprueba(r, k) == "Aprobado"]
+        resto = [k for k in casos if k not in aprobados]
+        x.append(para([(f"Ronda {r['ronda']}. Correcciones de {r['responsable']} ({prs_texto(r['prs'])})", True)],
                       keep=True))
-        x.append(para(f"{r['responsable']} corrigió {', '.join(defs[:-1])} y {defs[-1]} en la rama {r['rama']} "
-                      f"(commit {r['commit']}). El {fecha}, QA repitió sobre esa rama la suite completa desde un "
-                      f"contenedor limpio y los casos de revisión. Los {n_casos} casos asociados a los defectos "
-                      f"quedaron aprobados. {r['regresion']} La Tabla X resume los cambios y su verificación.",
-                      keep=True))
+        x.append(para(f"{r['responsable']} corrigió {', '.join(defs[:-1])} y {defs[-1]} {r['origen']}. El {fecha}, "
+                      f"QA repitió {r['probado']} la suite completa desde un contenedor limpio y los casos de "
+                      f"revisión. De los {len(casos)} casos asociados a los defectos, {len(aprobados)} quedaron "
+                      "aprobados" + ("." if not resto else "; " + ", ".join(
+                          f"{k} quedó {estado_reprueba(r, k).lower()}" for k in resto) + ".") +
+                      f" {r['regresion']} La Tabla X resume los cambios y su verificación.", keep=True))
         rows = [["Defecto", "Corrección", "Casos repetidos", "Resultado"]]
-        for d, cambio, casos in r["cambios"]:
-            rows.append([d, cambio, ", ".join(casos), "Aprobado; defecto verificado"])
+        for d, cambio, cs, est in r["cambios"]:
+            res = "; ".join(sorted({estado_reprueba(r, k) for k in cs}))
+            rows.append([d, cambio, ", ".join(cs), f"{res}; defecto {est.lower()}"])
         x.append(table(rows, [1000, 3909, 2000, 1400], size=20, align=["left", "left", "left", "left"]))
         x.append(caption(f"Tabla X. Defectos corregidos en la ronda {r['ronda']} y casos repetidos. Fuente: "
                          "elaboración propia."))
-        x.append(para(f"Por lo anterior, QA aprobó el Pull Request #{r['pr']}. Los defectos del documento asignados "
-                      f"al mismo responsable (DEF-08 y DEF-11) siguen abiertos."))
+        x.append(para(r["veredicto"]))
     return x
 
 

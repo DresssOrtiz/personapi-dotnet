@@ -26,7 +26,7 @@ import openpyxl
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.dirname(__file__))
-from correcciones import casos_reprobados, verificados  # noqa: E402
+from correcciones import casos_reprobados, estados, prs_texto  # noqa: E402
 from defectos import DEFECTOS  # noqa: E402
 from lib import RESULTS  # noqa: E402
 
@@ -169,7 +169,7 @@ def nota_reprueba(cid, ronda):
     f = os.path.join(RESULTS, "..", "reprueba", f"ronda-{ronda['ronda']}", f"{cid}.json")
     estado = json.load(open(f, encoding="utf-8"))["estado"]
     d = datetime.date.fromisoformat(ronda["fecha"])
-    return (f"Re-prueba ronda {ronda['ronda']} ({d:%d/%m/%Y}, Pull Request #{ronda['pr']}): {estado}. "
+    return (f"Re-prueba ronda {ronda['ronda']} ({d:%d/%m/%Y}, {prs_texto(ronda['prs'])}): {estado}. "
             f"Evidencia en reprueba/ronda-{ronda['ronda']}/EV-R{ronda['ronda']}-{cid}.*.")
 
 
@@ -183,17 +183,20 @@ def update_defects(sheet_xml, today):
         idx = rnum - 2
         if 0 <= idx < len(DEFECTOS):
             d = DEFECTOS[idx]
-            ver = verificados().get(d["id"])
+            estado, ver = estados().get(d["id"], ("Abierto", None))
             obs = accent(d["observaciones"])
             if ver:
                 f = datetime.date.fromisoformat(ver["fecha"])
-                obs += (f" Corregido por {ver['responsable']} en el Pull Request #{ver['pr']} (commit {ver['commit']}) "
-                        f"y verificado por QA el {f:%d/%m/%Y} en la re-prueba ronda {ver['ronda']}.")
+                obs += (f" Corregido por {ver['responsable']} ({prs_texto(ver['prs'])}) y " + (
+                        f"verificado por QA el {f:%d/%m/%Y}" if estado == "Verificado" else
+                        f"comprobado por QA el {f:%d/%m/%Y} solo en parte") + f" en la re-prueba ronda {ver['ronda']}.")
+                if d["id"] == "DEF-05" and estado == "Corregido":
+                    obs += " Falta ejecutar BD-07 en Windows con SQL Server Express o LocalDB."
             for c in "ABCDEFGHIJKLM":
                 body = set_style(body, f"{c}{rnum}", normal[c])
             vals = {"A": d["id"], "C": ", ".join(d["casos"]), "D": d["req"], "E": d["area"],
                     "F": accent(d["descripcion"]), "G": accent(d["pasos"]), "H": accent(d["esperado"]),
-                    "I": d["severidad"], "J": "Verificado" if ver else "Abierto", "K": d["responsable"],
+                    "I": d["severidad"], "J": estado, "K": d["responsable"],
                     "L": d["evidencia"], "M": obs}
             body = set_cell(body, f"B{rnum}", excel_serial(today), "num")
             for c, v in vals.items():

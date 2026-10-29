@@ -1,0 +1,8 @@
+GET /personas -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+GET /personas/1001 -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+POST /personas -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+PUT /personas/1001 -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+DELETE /telefonos/3001234567 -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+POST /telefonos -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+POST /estudios -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}
+POST /profesiones -> 503 application/problem+json | traza: False | {"title":"La base de datos no está disponible en este momento. Inténtalo de nuevo más tarde.","status":503}

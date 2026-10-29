@@ -1,0 +1,9 @@
+{
+  "id": "BD-07",
+  "estado": "Bloqueado",
+  "obtenido": "Docker (sa): DDL sin cambios, codigo 0. Login sin sysadmin: codigo 0, el DDL omite ALTER AUTHORIZATION con un aviso y crea las tablas. Express y LocalDB no disponibles en macOS.",
+  "evidencia": "EV-BD-07.txt",
+  "fecha": "2026-10-28",
+  "responsable": "Automatizado",
+  "observaciones": "Solo se pudo usar un entorno real (Docker). El README documenta LocalDB (opcion C) y el DDL ya no se detiene sin permisos sobre sa. Falta repetirlo en Windows con LocalDB o Express."
+}

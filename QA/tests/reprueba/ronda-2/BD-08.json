@@ -1,0 +1,9 @@
+{
+  "id": "BD-08",
+  "estado": "Aprobado",
+  "obtenido": "El DDL termina con codigo 0, hace DROP TABLE de las 4 tablas y deja 0 registros (persona 5 -> 0). El DML restaura los 20 registros. El README y el encabezado del DDL advierten que se borran los datos.",
+  "evidencia": "EV-BD-08.txt",
+  "fecha": "2026-10-28",
+  "responsable": "Automatizado",
+  "observaciones": "Propuesta: advertir en el README y en el encabezado del DDL que re-ejecutarlo elimina los datos, o usar IF OBJECT_ID(...) IS NULL CREATE TABLE."
+}
