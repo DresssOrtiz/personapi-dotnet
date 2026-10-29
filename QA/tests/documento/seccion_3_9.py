@@ -21,6 +21,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "matriz"))
+from correcciones import RONDAS  # noqa: E402
 from defectos import DEFECTOS  # noqa: E402
 from lib import EVID, RESULTS, record, write_evidence  # noqa: E402
 
@@ -29,6 +30,8 @@ TEXT_W = 8309          # ancho util (dxa) con la sangria izquierda de 720
 IMG_CX = TEXT_W * 635  # EMU
 AREAS = [("BD", "Base de datos"), ("BK", "Backend y DAO"), ("API", "API REST"), ("SW", "Swagger"),
          ("MVC", "Frontend MVC"), ("INT", "Integración"), ("ENT", "Repositorio y entrega")]
+MESES = [None, "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+         "noviembre", "diciembre"]
 
 
 def rpr(size=24, bold=False, italic=False):
@@ -315,7 +318,47 @@ def build_section(st, rows, tot, rids):
                       "TAG de entrega conviene corregir los defectos de severidad media DEF-01 y DEF-02, que "
                       "corresponden al backend y al README, repetir ENT-07, ENT-08 y ENT-09 sobre main con el "
                       f"frontend integrado y {cierre}."))
+    x += correcciones_section()
     return "".join(x)
+
+
+def correcciones_section():
+    """Seccion 3.9.7: rondas de correccion posteriores; lo anterior queda como primera ejecucion."""
+    x = [heading("3.9.7. Correcciones y re-pruebas", 3)]
+    x.append(para("Los resultados de las secciones 3.9.3 a 3.9.6 corresponden a la primera ejecución de la matriz y "
+                  "se conservan sin cambios. Después de esa ejecución, los responsables de cada defecto realizaron "
+                  "correcciones en rondas, y QA repitió los casos afectados y la suite completa como regresión. En "
+                  "la matriz, cada caso repetido conserva su estado original y suma una nota de re-prueba en "
+                  "Observaciones, y cada defecto verificado pasa al estado Verificado. Las evidencias de cada ronda "
+                  "están en QA/evidencias/reprueba/."))
+    for r in RONDAS:
+        if r["estado"] == "Pendiente":
+            defs = ", ".join(r["defectos"][:-1]) + " y " + r["defectos"][-1]
+            x.append(para([(f"Ronda {r['ronda']}. Correcciones de {r['responsable']}", True)], keep=True))
+            x.append(para(f"Pendiente. Esta ronda corresponde a los defectos asignados a {r['responsable']} "
+                          f"({defs}). Se completará cuando se integren sus correcciones y QA repita los casos "
+                          "afectados."))
+            continue
+        f = r["fecha"].split("-")
+        fecha = f"{int(f[2])} de {MESES[int(f[1])]} de {f[0]}"
+        defs = [d for d, _, _ in r["cambios"]]
+        n_casos = sum(len(c) for _, _, c in r["cambios"])
+        x.append(para([(f"Ronda {r['ronda']}. Correcciones de {r['responsable']} (Pull Request #{r['pr']})", True)],
+                      keep=True))
+        x.append(para(f"{r['responsable']} corrigió {', '.join(defs[:-1])} y {defs[-1]} en la rama {r['rama']} "
+                      f"(commit {r['commit']}). El {fecha}, QA repitió sobre esa rama la suite completa desde un "
+                      f"contenedor limpio y los casos de revisión. Los {n_casos} casos asociados a los defectos "
+                      f"quedaron aprobados. {r['regresion']} La Tabla X resume los cambios y su verificación.",
+                      keep=True))
+        rows = [["Defecto", "Corrección", "Casos repetidos", "Resultado"]]
+        for d, cambio, casos in r["cambios"]:
+            rows.append([d, cambio, ", ".join(casos), "Aprobado; defecto verificado"])
+        x.append(table(rows, [1000, 3909, 2000, 1400], size=20, align=["left", "left", "left", "left"]))
+        x.append(caption(f"Tabla X. Defectos corregidos en la ronda {r['ronda']} y casos repetidos. Fuente: "
+                         "elaboración propia."))
+        x.append(para(f"Por lo anterior, QA aprobó el Pull Request #{r['pr']}. Los defectos del documento asignados "
+                      f"al mismo responsable (DEF-08 y DEF-11) siguen abiertos."))
+    return x
 
 
 def check_document(path):

@@ -1,0 +1,9 @@
+{
+  "id": "MVC-PER-01",
+  "estado": "Aprobado",
+  "obtenido": "El menu abre /Personas; lista 5 registros (base: 5) con columnas Cédula, Nombre, Apellido, Género, Edad.",
+  "evidencia": "EV-MVC-PER-01.png, EV-MVC-PER-01.txt",
+  "fecha": "2026-10-28",
+  "responsable": "Automatizado",
+  "observaciones": "Sin datos: ver EV-MVC-LISTADO-VACIO.png."
+}

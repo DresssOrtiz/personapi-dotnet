@@ -1,0 +1,19 @@
+Caso: MVC-TEL-05
+Fecha: 2026-10-28 18:51:53
+
+Detalle: http://localhost:5025/Telefonos/Details?num=0000000000
+Teléfonos / Detalles
+
+Administración de registros · Teléfonos
+
+Detalles de teléfono
+Número (num)
+3001112233
+Operador (oper)
+Claro
+Propietario (duenio / persona)
+1001 · Andres Ortiz
+Editar
+Volver al listado
+
+Clave inexistente /Telefonos/Details?num=0000000000 -> 404; longitud del cuerpo 1516; pagina propia de la aplicacion: True

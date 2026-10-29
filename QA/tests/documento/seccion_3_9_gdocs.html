@@ -383,3 +383,72 @@ DEF-01 y DEF-02, que corresponden al backend y al README, repetir ENT-08
 y ENT-09 y ejecutar BD-07 en un equipo Windows con SQL Server Express o
 LocalDB.</p>
 
+<h3 style="font-family:'Times New Roman',serif;font-size:12pt">3.9.7. Correcciones y re-pruebas</h3>
+
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Los resultados de las secciones 3.9.3 a 3.9.6 corresponden a la
+primera ejecución de la matriz y se conservan sin cambios. Después de
+esa ejecución, los responsables de cada defecto realizaron correcciones
+en rondas, y QA repitió los casos afectados y la suite completa como
+regresión. En la matriz, cada caso repetido conserva su estado original
+y suma una nota de re-prueba en Observaciones, y cada defecto verificado
+pasa al estado Verificado. Las evidencias de cada ronda están en
+QA/evidencias/reprueba/.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt"><strong>Ronda 1. Correcciones de Andrés Ortiz (Pull Request
+#7)</strong></p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Andrés Ortiz corrigió DEF-06, DEF-07 y DEF-09 en la rama
+fix/def-06-07-09 (commit 6a0edac). El 28 de octubre de 2026, QA repitió
+sobre esa rama la suite completa desde un contenedor limpio y los casos
+de revisión. Los 7 casos asociados a los defectos quedaron aprobados.
+Los demás casos mantuvieron su resultado, sin regresiones, y los scripts
+del equipo tests/mvc-defects.ps1 y tests/mvc-smoke.ps1 terminaron con 62
+y 215 comprobaciones correctas. La Tabla X resume los cambios y su
+verificación.</p>
+
+<table style="border-collapse:collapse;width:415pt;table-layout:fixed">
+
+
+<tr>
+<th width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Defecto</strong></p></th>
+<th width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Corrección</strong></p></th>
+<th width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Casos repetidos</strong></p></th>
+<th width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;background-color:#d9d9d9;text-align:center"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:center"><strong>Resultado</strong></p></th>
+</tr>
+
+
+<tr>
+<td width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">DEF-06</p></td>
+<td width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Página 404 propia con el layout y enlace
+al inicio (Program.cs, HomeController.cs,
+Views/Home/PageNotFound.cshtml); las rutas /api conservan su 404.</p></td>
+<td width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">MVC-PER-05, MVC-TEL-05, MVC-PRO-05,
+MVC-EST-05, MVC-GEN-07</p></td>
+<td width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Aprobado; defecto verificado</p></td>
+</tr>
+<tr>
+<td width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">DEF-07</p></td>
+<td width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Columna Edad en el listado de personas,
+con «—» para edades nulas.</p></td>
+<td width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">MVC-PER-01</p></td>
+<td width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Aprobado; defecto verificado</p></td>
+</tr>
+<tr>
+<td width="67" style="width:50pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">DEF-09</p></td>
+<td width="260" style="width:195pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Las claves vacías de los formularios de
+creación de personas y profesiones se marcan como válidas al
+abrirlos.</p></td>
+<td width="133" style="width:100pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">MVC-GEN-04</p></td>
+<td width="93" style="width:70pt;border:1px solid #808080;padding:2pt 4pt;font-family:'Times New Roman',serif;font-size:10pt;"><p style="margin:0;text-indent:0;font-family:'Times New Roman',serif;font-size:10pt;text-align:left">Aprobado; defecto verificado</p></td>
+</tr>
+
+</table>
+
+<p style="font-family:'Times New Roman',serif;font-size:11pt;text-align:center">Tabla X. Defectos corregidos en la ronda 1 y casos repetidos. Fuente:
+elaboración propia.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Por lo anterior, QA aprobó el Pull Request #7. Los defectos del
+documento asignados al mismo responsable (DEF-08 y DEF-11) siguen
+abiertos.</p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt"><strong>Ronda 2. Correcciones de Tomás Ramírez</strong></p>
+<p style="font-family:'Times New Roman',serif;font-size:12pt;margin-left:36pt">Pendiente. Esta ronda corresponde a los defectos asignados a Tomás
+Ramírez (DEF-01, DEF-02, DEF-03, DEF-04, DEF-05 y DEF-10). Se completará
+cuando se integren sus correcciones y QA repita los casos afectados.</p>
+

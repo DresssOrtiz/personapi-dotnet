@@ -1,0 +1,9 @@
+{
+  "id": "MVC-GEN-04",
+  "estado": "Aprobado",
+  "obtenido": "En 1366, 768 y 375 px ninguna página desborda horizontalmente; en tableta y móvil el menú lateral pasa a la parte superior, los formularios quedan en una columna y las tablas se desplazan dentro de su contenedor. El texto es legible (letra mínima 12 px).",
+  "evidencia": "EV-MVC-GEN-04-*.png, , EV-MVC-GEN-04.txt",
+  "fecha": "2026-10-28",
+  "responsable": "Automatizado",
+  "observaciones": "En móvil la columna Acciones de los listados queda fuera de la vista y requiere desplazar la tabla; no hay indicación visual de que se puede desplazar. Ningún formulario muestra un recuadro de error vacío. Revisión asistida: confirmar el criterio con el responsable de QA."
+}

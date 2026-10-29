@@ -1,0 +1,15 @@
+Caso: MVC-GEN-07
+Fecha: 2026-10-28 18:52:02
+
+GET /RutaQueNoExiste/Accion -> 404
+Cuerpo (1516 caracteres):
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada · Gestión de personas</title>
+    <link rel="stylesheet" href="/css/site.css?v=vpyRoPB2pFazSVPL87m9T_DV2gdazWq9AFmSPn6vjx0">
+</head>
+<body>
+    <a b-2mmqce7wem="" class="skip-link" href="#contenido">Ir al contenido</a>
+    <aside b-2mmqce7wem="" class="sidebar">
+        <a class="brand" href="/"><strong b-2mmqce7wem="">GESTIÓN

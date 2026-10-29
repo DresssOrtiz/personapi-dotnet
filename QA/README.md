@@ -59,8 +59,21 @@ debe confirmar.
 Los pasos para reproducir, el resultado esperado frente al obtenido y la corrección propuesta de cada
 defecto están en la hoja Defectos de la matriz.
 
+## Correcciones y re-pruebas
+
+Los resultados anteriores son los de la primera ejecución y no se modifican. Cada ronda de correcciones se
+registra en `tests/matriz/correcciones.py`; en la matriz, los casos repetidos suman una nota de re-prueba en
+Observaciones y los defectos verificados pasan a Verificado. Las evidencias están en `evidencias/reprueba/`.
+
+| Ronda | Responsable | Pull Request | Defectos | Casos repetidos | Resultado |
+|---|---|---|---|---|---|
+| 1 (28/10/2026) | Andrés | #7 (6a0edac) | DEF-06, DEF-07, DEF-09 | MVC-PER-01, MVC-*-05, MVC-GEN-07, MVC-GEN-04 | Aprobados; defectos verificados, sin regresiones |
+| 2 | Tomás | Pendiente | DEF-01, DEF-02, DEF-03, DEF-04, DEF-05, DEF-10 | Pendiente | Pendiente |
+
+DEF-08 y DEF-11 (documento, Andrés) siguen abiertos.
+
 ## Pendientes
 
 - Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB) y ENT-09 (TAG de entrega).
 - Confirmar el criterio de las revisiones asistidas MVC-GEN-03, MVC-GEN-04, SW-09 y ENT-12.
-- Antes del TAG: corregir DEF-01 y DEF-02 y repetir ENT-08 y ENT-09.
+- Ronda 2 (Tomás): corregir DEF-01 y DEF-02 y repetir ENT-08 y ENT-09.
