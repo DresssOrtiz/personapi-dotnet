@@ -5,9 +5,11 @@ namespace personapi_dotnet.Models.Dtos
 {
     public class TelefonoDto
     {
+        /// <summary>Numero telefonico (clave primaria).</summary>
         [Required, StringLength(15)]
         public string Num { get; set; } = null!;
 
+        /// <summary>Operador de telefonia.</summary>
         [Required, StringLength(45)]
         public string Oper { get; set; } = null!;
 

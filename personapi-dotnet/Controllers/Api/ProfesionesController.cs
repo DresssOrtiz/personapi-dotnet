@@ -17,6 +17,7 @@ namespace personapi_dotnet.Controllers.Api
             _profesiones = profesiones;
         }
 
+        /// <summary>Lista todas las profesiones.</summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ProfesionDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ProfesionDto>>> GetAll()
@@ -25,6 +26,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(profesiones.Select(ProfesionDto.FromEntity));
         }
 
+        /// <summary>Obtiene una profesion por su identificador.</summary>
+        /// <param name="id">Identificador de la profesion.</param>
         [HttpGet("{id:int}")]
         [ProducesResponseType(typeof(ProfesionDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -35,6 +38,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(ProfesionDto.FromEntity(profesion));
         }
 
+        /// <summary>Crea una profesion. Responde 409 si ya existe una con el mismo identificador.</summary>
+        /// <param name="dto">Datos de la profesion a crear.</param>
         [HttpPost]
         [ProducesResponseType(typeof(ProfesionDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -56,6 +61,9 @@ namespace personapi_dotnet.Controllers.Api
             return CreatedAtAction(nameof(GetById), new { id = dto.Id }, dto);
         }
 
+        /// <summary>Actualiza una profesion existente.</summary>
+        /// <param name="id">Identificador de la profesion; debe coincidir con el del cuerpo.</param>
+        /// <param name="dto">Nuevos datos de la profesion.</param>
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,6 +78,8 @@ namespace personapi_dotnet.Controllers.Api
             return NoContent();
         }
 
+        /// <summary>Elimina una profesion. Responde 409 si tiene estudios asociados.</summary>
+        /// <param name="id">Identificador de la profesion.</param>
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

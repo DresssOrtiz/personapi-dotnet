@@ -13,8 +13,10 @@ namespace personapi_dotnet.Models.Dtos
         [Range(1, int.MaxValue)]
         public int CcPer { get; set; }
 
+        /// <summary>Fecha del estudio; opcional.</summary>
         public DateTime? Fecha { get; set; }
 
+        /// <summary>Universidad donde se realizo el estudio; opcional.</summary>
         [StringLength(50)]
         public string? Univer { get; set; }
 

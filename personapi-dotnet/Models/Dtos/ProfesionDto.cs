@@ -5,12 +5,15 @@ namespace personapi_dotnet.Models.Dtos
 {
     public class ProfesionDto
     {
+        /// <summary>Identificador de la profesion (clave primaria).</summary>
         [Range(1, int.MaxValue)]
         public int Id { get; set; }
 
+        /// <summary>Nombre de la profesion.</summary>
         [Required, StringLength(90)]
         public string Nom { get; set; } = null!;
 
+        /// <summary>Descripcion de la profesion; opcional.</summary>
         public string? Des { get; set; }
 
         public static ProfesionDto FromEntity(Profesion p) => new()
