@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using personapi_dotnet.Interfaces;
 using personapi_dotnet.Models.Dtos;
 
@@ -44,10 +45,18 @@ namespace personapi_dotnet.Controllers.Api
         {
             if (!await _personas.ExistsAsync(dto.Duenio))
                 return BadRequest(new ProblemDetails { Title = $"No existe una persona con cc {dto.Duenio}." });
+            var conflict = new ProblemDetails { Title = $"Ya existe el telefono {dto.Num}." };
             if (await _telefonos.ExistsAsync(dto.Num))
-                return Conflict(new ProblemDetails { Title = $"Ya existe el telefono {dto.Num}." });
+                return Conflict(conflict);
 
-            await _telefonos.AddAsync(dto.ToEntity());
+            try
+            {
+                await _telefonos.AddAsync(dto.ToEntity());
+            }
+            catch (DbUpdateException ex) when (ex.IsDuplicateKey())
+            {
+                return Conflict(conflict);
+            }
             return CreatedAtAction(nameof(GetById), new { num = dto.Num }, dto);
         }
 

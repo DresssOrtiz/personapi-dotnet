@@ -41,10 +41,18 @@ namespace personapi_dotnet.Controllers.Api
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<ActionResult<PersonaDto>> Create(PersonaDto dto)
         {
+            var conflict = new ProblemDetails { Title = $"Ya existe una persona con cc {dto.Cc}." };
             if (await _personas.ExistsAsync(dto.Cc))
-                return Conflict(new ProblemDetails { Title = $"Ya existe una persona con cc {dto.Cc}." });
+                return Conflict(conflict);
 
-            await _personas.AddAsync(dto.ToEntity());
+            try
+            {
+                await _personas.AddAsync(dto.ToEntity());
+            }
+            catch (DbUpdateException ex) when (ex.IsDuplicateKey())
+            {
+                return Conflict(conflict);
+            }
             return CreatedAtAction(nameof(GetById), new { cc = dto.Cc }, dto);
         }
 
