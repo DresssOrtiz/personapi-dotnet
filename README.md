@@ -8,7 +8,7 @@ Monolito ASP.NET Core MVC con patrón DAO/Repository, SQL Server y API REST docu
 | Componente | Versión |
 |---|---|
 | .NET / ASP.NET Core | 6.0 (el enunciado menciona 7 en el stack y 6 en el procedimiento; se usa 6.0) |
-| Entity Framework Core | 6.0.36 (Database First) |
+| Entity Framework Core | 6.0.36 (Database First). Paquetes: `Microsoft.EntityFrameworkCore`, `.SqlServer`, `.Tools` y `.Design` |
 | Base de datos | Microsoft SQL Server 2022 |
 | Documentación API | Swagger / OpenAPI (Swashbuckle.AspNetCore 6.5.0) |
 
@@ -85,7 +85,10 @@ También se puede sobrescribir sin editar el archivo con la variable de entorno
 
 ### 4. Entidades (ya generadas)
 
-Las entidades se generaron con Database First. Para regenerarlas:
+Las entidades se generaron con Database First. Para regenerarlas, el comando `Scaffold-DbContext` de la
+Consola del Administrador de paquetes requiere el paquete `Microsoft.EntityFrameworkCore.Tools`, que ya está
+incluido en el proyecto y se instala al restaurar los paquetes. La CLI `dotnet ef` usa
+`Microsoft.EntityFrameworkCore.Design` y la herramienta `dotnet-ef` (ver Requisitos).
 
 ```bash
 # Consola del Administrador de paquetes (Visual Studio)
