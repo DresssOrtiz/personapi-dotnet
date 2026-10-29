@@ -35,6 +35,7 @@ public class PersonasController : MvcControllerBase
     {
         await LoadLookups();
         ModelState.SetModelValue(nameof(PersonaDto.Cc), "", "");
+        ModelState.MarkFieldValid(nameof(PersonaDto.Cc));
         return View(new PersonaDto());
     }
 

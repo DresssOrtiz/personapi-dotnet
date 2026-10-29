@@ -35,6 +35,7 @@ public class ProfesionesController : MvcControllerBase
     {
         await LoadLookups();
         ModelState.SetModelValue(nameof(ProfesionDto.Id), "", "");
+        ModelState.MarkFieldValid(nameof(ProfesionDto.Id));
         return View(new ProfesionDto());
     }
 
