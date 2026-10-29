@@ -274,7 +274,9 @@ def main():
     ok_restore = rc2 == 0 and restored == {"persona": "5", "profesion": "4", "telefono": "5", "estudios": "6"}
     record("BD-08", "Aprobado" if (ok_restore and documented) else "Fallido",
            f"El DDL termina con codigo {rc1}, hace DROP TABLE de las 4 tablas y deja 0 registros (persona {before} -> "
-           f"{after['persona']}). El DML restaura los 20 registros. El README no advierte que se borran los datos.",
+           f"{after['persona']}). El DML restaura los 20 registros. " + (
+               "El README y el encabezado del DDL advierten que se borran los datos." if documented else
+               "El README no advierte que se borran los datos."),
            ev, "Propuesta: advertir en el README y en el encabezado del DDL que "
                "re-ejecutarlo elimina los datos, o usar IF OBJECT_ID(...) IS NULL CREATE TABLE.")
 

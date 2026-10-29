@@ -68,12 +68,13 @@ Observaciones y los defectos verificados pasan a Verificado. Las evidencias est�
 | Ronda | Responsable | Pull Request | Defectos | Casos repetidos | Resultado |
 |---|---|---|---|---|---|
 | 1 (28/10/2026) | Andrés | #7 (6a0edac) | DEF-06, DEF-07, DEF-09 | MVC-PER-01, MVC-*-05, MVC-GEN-07, MVC-GEN-04 | Aprobados; defectos verificados, sin regresiones |
-| 2 | Tomás | Pendiente | DEF-01, DEF-02, DEF-03, DEF-04, DEF-05, DEF-10 | Pendiente | Pendiente |
+| 2 (28/10/2026) | Tomás | #9, #10, #11 (main a05612c) | DEF-01, DEF-02, DEF-03, DEF-04, DEF-05, DEF-10 | API-GEN-05, ENT-08, BK-09, INT-08, BD-08, BD-07, SW-09 | Aprobados salvo BD-07 (bloqueado, requiere Windows); DEF-05 en Corregido, los demás verificados, sin regresiones |
 
-DEF-08 y DEF-11 (documento, Andrés) siguen abiertos.
+Los Pull Request #9, #10 y #11 se integraron en main antes de la revisión de QA; la re-prueba se hizo sobre main
+integrada. DEF-08 y DEF-11 (documento, Andrés) siguen abiertos.
 
 ## Pendientes
 
 - Casos bloqueados: BD-07 (requiere Windows con SQL Server Express o LocalDB) y ENT-09 (TAG de entrega).
 - Confirmar el criterio de las revisiones asistidas MVC-GEN-03, MVC-GEN-04, SW-09 y ENT-12.
-- Ronda 2 (Tomás): corregir DEF-01 y DEF-02 y repetir ENT-08 y ENT-09.
+- Crear el TAG de entrega y repetir ENT-09.

@@ -159,12 +159,19 @@ def main():
 
     # ENT-06 scripts versionados sin modificaciones
     rc, st = sh(["git", "status", "--porcelain", "db/"], cwd=REPO)
-    rc2, diff_fe = sh(["git", "diff", "--stat", "main", "origin/feature/frontend-mvc", "--", "db/"], cwd=REPO)
-    ev = write_evidence("ENT-06", f"git status db/: '{st}'\ngit diff main..feature/frontend-mvc -- db/: '{diff_fe}'\n"
-                                   "Los casos BD-01 y BD-09 ejecutaron estos archivos tal como estan en main.")
+    # Mientras el PR #2 no este integrado se compara su rama con main; despues, la rama ya forma parte de HEAD.
+    integrado = sh(["git", "merge-base", "--is-ancestor", "origin/feature/frontend-mvc", "HEAD"], cwd=REPO)[0] == 0
+    diff_fe = "" if integrado else sh(["git", "diff", "--stat", "main", "origin/feature/frontend-mvc", "--", "db/"],
+                                      cwd=REPO)[1]
+    ddl = open(os.path.join(REPO, "db", "01_ddl.sql"), encoding="utf-8").read()
+    ev = write_evidence("ENT-06", f"git status db/: '{st}'\nfeature/frontend-mvc integrada en HEAD: {integrado}\n"
+                                   f"git diff main..feature/frontend-mvc -- db/: '{diff_fe}'\n"
+                                   "Los casos BD-01 y BD-09 ejecutaron estos archivos tal como estan versionados.")
     record("ENT-06", "Aprobado" if not st and not diff_fe else "Fallido",
-           "db/01_ddl.sql y db/02_dml.sql del repositorio se ejecutaron sin cambios locales en Docker (BD-01, BD-09); "
-           "la rama del PR no los modifica.", ev,
+           "db/01_ddl.sql y db/02_dml.sql del repositorio se ejecutaron sin cambios locales en Docker (BD-01, BD-09)"
+           + ("." if integrado else "; la rama del PR no los modifica."), ev,
+           "El DDL versionado omite ALTER AUTHORIZATION con un aviso cuando no hay permisos, por lo que ya no hace "
+           "falta una version local." if "BEGIN TRY" in ddl else
            "El documento (sec. 3.2 y 3.8) indica que en el equipo de Andres se uso una version local del DDL sin "
            "ALTER AUTHORIZATION, no versionada.")
 
@@ -202,14 +209,19 @@ def main():
         rc, out = sh([DOTNET, "publish", "personapi-dotnet/personapi-dotnet.csproj", "-c", "Release", "-o", "publish"],
                      cwd=tmp, env=ENV)
         log.append(f"$ dotnet publish personapi-dotnet/personapi-dotnet.csproj -c Release -o publish -> {rc}\n{out[-800:]}")
-        # Comando literal del README, desde la raiz del repositorio
+        # Comando literal del README vigente: desde la raiz o, si el README lo indica, desde publish/
+        readme = open(os.path.join(tmp, "README.md"), encoding="utf-8").read()
+        desde_publish = re.search(r"^cd publish\s*$", readme, re.M) is not None
         f1 = open(os.path.join(tmp, "run1.log"), "w")
-        p = subprocess.Popen([DOTNET, "publish/personapi-dotnet.dll"], cwd=tmp, stdout=f1, stderr=subprocess.STDOUT,
-                             env={**ENV, "ASPNETCORE_URLS": "http://localhost:5027"})
+        p = subprocess.Popen([DOTNET, "personapi-dotnet.dll" if desde_publish else "publish/personapi-dotnet.dll"],
+                             cwd=os.path.join(tmp, "publish") if desde_publish else tmp, stdout=f1,
+                             stderr=subprocess.STDOUT, env={**ENV, "ASPNETCORE_URLS": "http://localhost:5027"})
         r1 = wait_http("http://localhost:5027/api/personas", 40)
         r1sw = requests.get("http://localhost:5027/swagger/index.html", timeout=10).status_code if r1 is not None else None
         p.terminate(); p.wait(timeout=30)
-        log.append(f"$ ASPNETCORE_URLS=http://localhost:5027 dotnet publish/personapi-dotnet.dll (cwd = raiz)\n"
+        log.append(("$ cd publish && ASPNETCORE_URLS=http://localhost:5027 dotnet personapi-dotnet.dll (README)\n"
+                    if desde_publish else
+                    "$ ASPNETCORE_URLS=http://localhost:5027 dotnet publish/personapi-dotnet.dll (README, cwd = raiz)\n") +
                    f"GET /api/personas -> {r1.status_code if r1 is not None else 'sin respuesta'} {r1.text[:300] if r1 is not None else ''}\n"
                    f"GET /swagger -> {r1sw}\nLineas relevantes del log:\n" + "\n".join(
                        l for l in open(os.path.join(tmp, 'run1.log')).read().splitlines()
@@ -229,7 +241,8 @@ def main():
     ev = write_evidence("ENT-08", "\n\n".join(log))
     ok = r1 is not None and r1.status_code == 200
     record("ENT-08", "Aprobado" if ok else "Fallido",
-           f"dotnet publish termina bien. Con el comando literal del README desde la raiz, GET /api/personas responde "
+           f"dotnet publish termina bien. Con el comando literal del README "
+           f"({'desde publish/' if desde_publish else 'desde la raiz'}), GET /api/personas responde "
            f"{r1.status_code if r1 is not None else 'sin respuesta'}; ejecutando desde la carpeta publish responde "
            f"{r2.status_code if r2 is not None else 'sin respuesta'}. Swagger responde {r2sw} en Production.", ev,
            "Swagger queda expuesto fuera de Development porque UseSwagger/UseSwaggerUI no estan condicionados al "

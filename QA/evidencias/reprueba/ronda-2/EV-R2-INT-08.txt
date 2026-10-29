@@ -1,0 +1,6 @@
+Caso: INT-08
+Fecha: 2026-10-28 23:46:38
+
+Durante la caida: vista 503, API 503
+docker start persona-sql
+Sin reiniciar la aplicacion: vista 200 con 7 filas, API 200

@@ -118,7 +118,8 @@ def sw09():
     props = [(n, k, v) for n, s in spec["components"]["schemas"].items() if n.endswith("Dto")
              for k, v in s.get("properties", {}).items()]
     props_desc = sum(1 for *_, v in props if v.get("description"))
-    cryptic = [k for _, k, _ in props if k in ("nom", "des", "oper", "duenio", "univer", "idProf", "ccPer", "cc", "num")]
+    cryptic = [k for _, k, v in props if k in ("nom", "des", "oper", "duenio", "univer", "idProf", "ccPer", "cc", "num")
+               and not v.get("description")]
     csproj = open(os.path.join(ROOT, "..", "personapi-dotnet", "personapi-dotnet.csproj"), encoding="utf-8-sig").read()
     xmldoc = "GenerateDocumentationFile" in csproj
     summaries = sum(len(re.findall(r"/// <summary>", open(f, encoding="utf-8-sig").read()))
@@ -129,13 +130,21 @@ def sw09():
                                   f"Nombres abreviados sin descripcion: {cryptic}\n"
                                   f"Comentarios /// <summary> en los DTO: {summaries}; GenerateDocumentationFile: {xmldoc}\n"
                                   f"Codigos de respuesta documentados: si (ver SW-06)")
-    record("SW-09", "Fallido" if with_summary == 0 and props_desc == 0 else "Aprobado",
-           f"Las {len(ops)} operaciones se agrupan por recurso y documentan sus códigos, pero ninguna tiene resumen ni "
-           f"descripción, y ninguna de las {len(props)} propiedades de los DTO se describe. Campos como "
-           f"{', '.join(sorted(set(cryptic))[:6])} no se explican.",
-           f"EV-SW-01.png, {ev}",
-           f"El código ya tiene {summaries} comentarios /// <summary> en los DTO, pero el proyecto no genera el archivo "
-           "XML de documentación, por lo que Swagger no los muestra." + NOTA)
+    completo = with_summary == len(ops) and props_desc == len(props) and params_desc == params
+    if with_summary == 0 and props_desc == 0:
+        obtenido = (f"Las {len(ops)} operaciones se agrupan por recurso y documentan sus códigos, pero ninguna tiene "
+                    f"resumen ni descripción, y ninguna de las {len(props)} propiedades de los DTO se describe. Campos "
+                    f"como {', '.join(sorted(set(cryptic))[:6])} no se explican.")
+        obs = (f"El código ya tiene {summaries} comentarios /// <summary> en los DTO, pero el proyecto no genera el "
+               "archivo XML de documentación, por lo que Swagger no los muestra.")
+    else:
+        obtenido = (f"Las {len(ops)} operaciones se agrupan por recurso y documentan sus códigos; {with_summary} de "
+                    f"{len(ops)} tienen resumen, {params_desc} de {params} parámetros y {props_desc} de {len(props)} "
+                    "propiedades de los DTO tienen descripción.")
+        obs = ("Swagger muestra los comentarios /// de controladores y DTO (GenerateDocumentationFile: "
+               f"{'sí' if xmldoc else 'no'})." + ("" if not cryptic else
+               f" Sin descripción: {', '.join(sorted(set(cryptic)))}."))
+    record("SW-09", "Aprobado" if completo else "Fallido", obtenido, f"EV-SW-01.png, {ev}", obs + NOTA)
 
 
 DOC_URL = os.environ.get("QA_DOC_URL", "https://docs.google.com/document/d/"

@@ -37,6 +37,7 @@ def main():
     rc, out = run_as_login(DDL)
     log.append(f"Entorno 2 - DDL sin cambios con login no sysadmin -> codigo {rc}\n{out}")
     auth_error = "ALTER AUTHORIZATION" in out or "Cannot find the principal" in out or "permission" in out.lower()
+    omitido = rc == 0 and "Aviso: no se asigno la propiedad" in out
 
     _, out = sqlcmd("IF DB_ID('persona_db') IS NOT NULL BEGIN ALTER DATABASE persona_db SET SINGLE_USER "
                     "WITH ROLLBACK IMMEDIATE; DROP DATABASE persona_db; END; "
@@ -46,12 +47,19 @@ def main():
     log.append(f"Entorno 1 - DDL como sa -> codigo {rc1}\n{out1}\nDML como sa -> codigo {rc2}\n{out2}")
 
     ev = write_evidence("BD-07", "\n".join(log))
+    readme = open(os.path.join(REPO, "README.md"), encoding="utf-8").read()
+    localdb = "(localdb)" in readme.lower()
     record("BD-07", "Bloqueado",
-           f"Docker (sa): DDL sin cambios, codigo {rc1}. Login sin sysadmin: codigo {rc}"
-           f"{', falla en ALTER AUTHORIZATION' if auth_error else ''}. Express y LocalDB no disponibles en macOS.",
+           f"Docker (sa): DDL sin cambios, codigo {rc1}. Login sin sysadmin: codigo {rc}" + (
+               ", el DDL omite ALTER AUTHORIZATION con un aviso y crea las tablas" if omitido else
+               ", falla en ALTER AUTHORIZATION" if auth_error else "") +
+           ". Express y LocalDB no disponibles en macOS.",
            ev,
-           "Solo se pudo usar un entorno real (Docker). El documento (sec. 3.2) indica que en LocalDB se ejecuto "
-           "el DDL quitando ALTER AUTHORIZATION ... TO sa, y el README no documenta ese ajuste. "
+           "Solo se pudo usar un entorno real (Docker). " + (
+               "El README documenta LocalDB (opcion C) y el DDL ya no se detiene sin permisos sobre sa. "
+               if localdb and omitido else
+               "El documento (sec. 3.2) indica que en LocalDB se ejecuto el DDL quitando ALTER AUTHORIZATION ... "
+               "TO sa, y el README no documenta ese ajuste. ") +
            "Falta repetirlo en Windows con LocalDB o Express.")
 
 

@@ -224,8 +224,9 @@ def main():
                                      f"Detalles internos en la API: {leaks}\nTiempo de ambas solicitudes: {elapsed:.1f} s")
         record("BK-09", "Fallido" if leaks or view_leaks else "Aprobado",
                f"La vista responde {resp.status} con la pagina 'No se pudo acceder a los registros' sin detalles. "
-               f"La API responde {api_r.status_code} ({api_r.headers.get('Content-Type')}) con la traza de la excepcion "
-               f"({', '.join(leaks)}); no expone credenciales.",
+               f"La API responde {api_r.status_code} ({api_r.headers.get('Content-Type')}) " + (
+                   f"con la traza de la excepcion ({', '.join(leaks)}); no expone credenciales." if leaks else
+                   "con un mensaje controlado, sin traza ni credenciales."),
                f"EV-BK-09-vista.png, {ev}",
                "Ejecutado como indica el README (dotnet run, entorno Development, pagina de excepciones del "
                "desarrollador). En Production la API devolveria la vista HTML /Home/Error. Propuesta: manejar el error "
@@ -237,7 +238,8 @@ def main():
                f"Durante la caida la vista muestra un error controlado ({resp.status}); al volver SQL Server la vista "
                f"({resp2.status}, {rows_after} filas) y la API ({api2}) funcionan sin reiniciar la aplicacion.",
                f"EV-BK-09-vista.png, EV-INT-08-recuperacion.png, {ev}",
-               f"La API durante la caida responde {api_r.status_code} con la traza (ver BK-09).")
+               f"La API durante la caida responde {api_r.status_code} " + (
+                   "con la traza (ver BK-09)." if leaks else "con un mensaje controlado (ver BK-09)."))
         browser.close()
     cleanup()
 
