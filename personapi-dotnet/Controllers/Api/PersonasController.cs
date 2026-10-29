@@ -17,6 +17,7 @@ namespace personapi_dotnet.Controllers.Api
             _personas = personas;
         }
 
+        /// <summary>Lista todas las personas.</summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<PersonaDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
@@ -25,6 +26,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(personas.Select(PersonaDto.FromEntity));
         }
 
+        /// <summary>Obtiene una persona por su cedula.</summary>
+        /// <param name="cc">Cedula de la persona.</param>
         [HttpGet("{cc:int}")]
         [ProducesResponseType(typeof(PersonaDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -35,6 +38,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(PersonaDto.FromEntity(persona));
         }
 
+        /// <summary>Crea una persona. Responde 409 si ya existe una con la misma cedula.</summary>
+        /// <param name="dto">Datos de la persona a crear.</param>
         [HttpPost]
         [ProducesResponseType(typeof(PersonaDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -56,6 +61,9 @@ namespace personapi_dotnet.Controllers.Api
             return CreatedAtAction(nameof(GetById), new { cc = dto.Cc }, dto);
         }
 
+        /// <summary>Actualiza una persona existente.</summary>
+        /// <param name="cc">Cedula de la persona; debe coincidir con la del cuerpo.</param>
+        /// <param name="dto">Nuevos datos de la persona.</param>
         [HttpPut("{cc:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,6 +78,8 @@ namespace personapi_dotnet.Controllers.Api
             return NoContent();
         }
 
+        /// <summary>Elimina una persona. Responde 409 si tiene telefonos o estudios asociados.</summary>
+        /// <param name="cc">Cedula de la persona.</param>
         [HttpDelete("{cc:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

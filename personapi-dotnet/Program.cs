@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,10 @@ builder.Services.AddSwaggerGen(options =>
 {
     // Solo documenta la API REST; las acciones MVC que devuelven vistas quedan fuera.
     options.DocInclusionPredicate((_, api) => api.RelativePath?.StartsWith("api/") == true);
+
+    // Resúmenes y descripciones tomados de los comentarios /// de controladores y DTO.
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+    if (File.Exists(xmlPath)) options.IncludeXmlComments(xmlPath);
 });
 
 var app = builder.Build();

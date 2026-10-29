@@ -24,6 +24,7 @@ namespace personapi_dotnet.Controllers.Api
             _profesiones = profesiones;
         }
 
+        /// <summary>Lista todos los estudios.</summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<EstudioDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<EstudioDto>>> GetAll()
@@ -32,6 +33,9 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(estudios.Select(EstudioDto.FromEntity));
         }
 
+        /// <summary>Obtiene un estudio por la profesion y la persona.</summary>
+        /// <param name="idProf">Identificador de la profesion.</param>
+        /// <param name="ccPer">Cedula de la persona.</param>
         [HttpGet("{idProf:int}/{ccPer:int}")]
         [ProducesResponseType(typeof(EstudioDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -42,6 +46,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(EstudioDto.FromEntity(estudio));
         }
 
+        /// <summary>Crea un estudio que vincula una persona con una profesion. Responde 400 si alguna no existe y 409 si el estudio ya existe.</summary>
+        /// <param name="dto">Datos del estudio a crear.</param>
         [HttpPost]
         [ProducesResponseType(typeof(EstudioDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -68,6 +74,10 @@ namespace personapi_dotnet.Controllers.Api
             return CreatedAtAction(nameof(GetById), new { idProf = dto.IdProf, ccPer = dto.CcPer }, dto);
         }
 
+        /// <summary>Actualiza un estudio existente.</summary>
+        /// <param name="idProf">Identificador de la profesion; debe coincidir con el del cuerpo.</param>
+        /// <param name="ccPer">Cedula de la persona; debe coincidir con la del cuerpo.</param>
+        /// <param name="dto">Nuevos datos del estudio.</param>
         [HttpPut("{idProf:int}/{ccPer:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -82,6 +92,9 @@ namespace personapi_dotnet.Controllers.Api
             return NoContent();
         }
 
+        /// <summary>Elimina un estudio.</summary>
+        /// <param name="idProf">Identificador de la profesion.</param>
+        /// <param name="ccPer">Cedula de la persona.</param>
         [HttpDelete("{idProf:int}/{ccPer:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

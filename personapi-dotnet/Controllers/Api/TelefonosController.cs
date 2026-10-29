@@ -19,6 +19,7 @@ namespace personapi_dotnet.Controllers.Api
             _personas = personas;
         }
 
+        /// <summary>Lista todos los telefonos.</summary>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<TelefonoDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<TelefonoDto>>> GetAll()
@@ -27,6 +28,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(telefonos.Select(TelefonoDto.FromEntity));
         }
 
+        /// <summary>Obtiene un telefono por su numero.</summary>
+        /// <param name="num">Numero telefonico.</param>
         [HttpGet("{num}")]
         [ProducesResponseType(typeof(TelefonoDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -37,6 +40,8 @@ namespace personapi_dotnet.Controllers.Api
             return Ok(TelefonoDto.FromEntity(telefono));
         }
 
+        /// <summary>Crea un telefono asociado a una persona. Responde 400 si la persona no existe y 409 si el numero ya existe.</summary>
+        /// <param name="dto">Datos del telefono a crear.</param>
         [HttpPost]
         [ProducesResponseType(typeof(TelefonoDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -60,6 +65,9 @@ namespace personapi_dotnet.Controllers.Api
             return CreatedAtAction(nameof(GetById), new { num = dto.Num }, dto);
         }
 
+        /// <summary>Actualiza un telefono existente.</summary>
+        /// <param name="num">Numero telefonico; debe coincidir con el del cuerpo.</param>
+        /// <param name="dto">Nuevos datos del telefono.</param>
         [HttpPut("{num}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -76,6 +84,8 @@ namespace personapi_dotnet.Controllers.Api
             return NoContent();
         }
 
+        /// <summary>Elimina un telefono.</summary>
+        /// <param name="num">Numero telefonico.</param>
         [HttpDelete("{num}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
