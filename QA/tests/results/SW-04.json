@@ -1,9 +1,0 @@
-{
-  "id": "SW-04",
-  "estado": "Aprobado",
-  "obtenido": "En los 4 recursos: POST 201, PUT 204 con el cambio visible en persona_db, DELETE 204 y GET posterior 404.",
-  "evidencia": "EV-SW-04-POST.png, EV-SW-04-DELETE.png, EV-SW-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

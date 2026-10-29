@@ -1,9 +1,0 @@
-{
-  "id": "SW-05",
-  "estado": "Aprobado",
-  "obtenido": "Los 4 DTO muestran todos sus campos con tipo; obligatorios: PersonaDto (nombre, apellido, genero), TelefonoDto (num, oper), ProfesionDto (nom).",
-  "evidencia": "EV-SW-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Las claves enteras (cc, id, idProf, ccPer, duenio) no figuran como required aunque la API las exige (Range >= 1); fecha aparece como string/date-time. Las restricciones Range y StringLength si se publican."
-}

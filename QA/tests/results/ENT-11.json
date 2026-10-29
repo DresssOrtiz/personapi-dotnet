@@ -1,9 +1,0 @@
-{
-  "id": "ENT-11",
-  "estado": "Fallido",
-  "obtenido": "Quedan 8 marcadores de captura sin completar fuera de la sección 3.9 y 6 pies de figura con 'Figura X'.",
-  "evidencia": "EV-ENT-11.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "La sección 3.9 incluye sus capturas, que corresponden a pruebas ejecutadas."
-}

@@ -1,9 +1,0 @@
-{
-  "id": "SW-09",
-  "estado": "Aprobado",
-  "obtenido": "Las 20 operaciones se agrupan por recurso y documentan sus códigos; 20 de 20 tienen resumen, 15 de 15 parámetros y 15 de 15 propiedades de los DTO tienen descripción.",
-  "evidencia": "EV-SW-01.png, EV-SW-09.txt",
-  "fecha": "2026-10-28",
-  "responsable": "Automatizado",
-  "observaciones": "Swagger muestra los comentarios /// de controladores y DTO (GenerateDocumentationFile: sí). Revisión asistida: confirmar el criterio con el responsable de QA."
-}

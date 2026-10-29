@@ -1,9 +1,0 @@
-{
-  "id": "API-TEL-15",
-  "estado": "Aprobado",
-  "obtenido": "10 digitos: 201; 16 caracteres: 400; con letras 'ABC123': 201.",
-  "evidencia": "EV-API-TEL-15.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "La API acepta numeros con letras: TelefonoDto solo valida longitud (StringLength 15), sin formato. Mejora sugerida: [RegularExpression(\"^[0-9]{7,15}$\")]."
-}

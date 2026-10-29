@@ -1,8 +1,0 @@
-Caso: API-TEL-14-frontend
-Fecha: 2026-10-27 00:22:29
-
-> PUT /api/telefonos/3990000131 {"num": "3990000131", "oper": "Claro", "duenio": 999999}
-< 400 application/json; charset=utf-8
-{"title":"No existe una persona con cc 999999.","status":400}
-
-[OK] 400

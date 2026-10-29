@@ -1,8 +1,0 @@
-Caso: MVC-EST-01
-Fecha: 2026-10-27 00:23:01
-
-URL: http://localhost:5025/Estudios
-Encabezados: ['Persona', 'Profesión', 'Fecha', 'Universidad', 'Acciones']
-Filas: 6; filas en la base: 6
-Columnas esperadas no mostradas: []
-Captura: EV-MVC-EST-01.png

@@ -1,9 +1,0 @@
-{
-  "id": "API-PER-13",
-  "estado": "Aprobado",
-  "obtenido": "Edad ausente, 0 y 150: [201, 201, 201]; edad 151: 400.",
-  "evidencia": "EV-API-PER-13.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

@@ -1,9 +1,0 @@
-Caso: BD-19
-Fecha: 2026-10-27 00:21:27
-
--- DELETE persona 1001
-DELETE FROM dbo.persona WHERE cc = 1001
-=> rechazado (esperado: rechazado)
-Msg 547, Level 16, State 1, Server 43ba5b875a51, Line 1
-The DELETE statement conflicted with the REFERENCE constraint "FK_telefono_persona". The conflict occurred in database "persona_db", table "dbo.telefono", column 'duenio'.
-The statement has been terminated.

@@ -1,9 +1,0 @@
-{
-  "id": "MVC-GEN-06",
-  "estado": "Aprobado",
-  "obtenido": "POST de creacion y de eliminacion sin token responden 400 y 400; no se modifican datos (6 -> 6).",
-  "evidencia": "EV-MVC-GEN-06.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

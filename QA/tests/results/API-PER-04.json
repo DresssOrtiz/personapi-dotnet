@@ -1,9 +1,0 @@
-{
-  "id": "API-PER-04",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 201, Location http://localhost:5025/api/personas/2001; registro 2001 guardado en persona_db.",
-  "evidencia": "EV-API-PER-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Control adicional: 'José Muñoz' se conserva; 'Nguyễn Łukasz' responde 201 pero se guarda como 'Nguy?n Lukasz' sin aviso (columnas VARCHAR, ver BD-23)."
-}

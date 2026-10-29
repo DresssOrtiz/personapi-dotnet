@@ -1,9 +1,0 @@
-{
-  "id": "ENT-04",
-  "estado": "Aprobado",
-  "obtenido": "Siguiendo solo el README (opcion Docker) se crea la base, se compila y se ejecuta; la aplicacion y Swagger funcionan (BD-01, BD-09, BK-02, BK-03 y SW-01 aprobados).",
-  "evidencia": "EV-ENT-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "La seccion Despliegue del README falla con el comando literal (ENT-08). Requiere instalar el SDK de .NET 6, fuera de soporte. No se probo la opcion B (SQL Server Express en Windows)."
-}

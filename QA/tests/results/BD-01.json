@@ -1,9 +1,0 @@
-{
-  "id": "BD-01",
-  "estado": "Aprobado",
-  "obtenido": "DDL ejecutado con codigo 0, sin mensajes de error; persona_db creada (propietario sa).",
-  "evidencia": "EV-BD-01.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Ejecutado en SQL Server 2022 en Docker con el usuario sa, segun la opcion A del README."
-}

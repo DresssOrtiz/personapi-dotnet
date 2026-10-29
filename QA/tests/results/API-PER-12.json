@@ -1,9 +1,0 @@
-{
-  "id": "API-PER-12",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 409: \"No se puede eliminar la persona porque tiene telefonos o estudios asociados.\"; la persona 1001 y sus dependientes (telefonos/estudios 2/1) permanecen.",
-  "evidencia": "EV-API-PER-12.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "El catch de DbUpdateException devuelve este mismo mensaje ante cualquier error de escritura, no solo por dependencias (revision de codigo)."
-}

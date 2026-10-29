@@ -1,6 +1,0 @@
-Caso: MVC-GEN-06
-Fecha: 2026-10-27 00:23:05
-
-POST /Personas/Create sin token -> 400
-POST /Personas/Delete?originalCc=1005 sin token -> 400
-Personas antes/despues: 6/6

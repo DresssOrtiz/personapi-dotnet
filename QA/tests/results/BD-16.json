@@ -1,9 +1,0 @@
-{
-  "id": "BD-16",
-  "estado": "Aprobado",
-  "obtenido": "duenio 999999: rechazado (Msg 547, FK_telefono_persona).",
-  "evidencia": "EV-BD-16.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

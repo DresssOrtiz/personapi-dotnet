@@ -1,9 +1,0 @@
-{
-  "id": "BD-22",
-  "estado": "Aprobado",
-  "obtenido": "Longitud maxima aceptada y maxima + 1 rechazada (Msg 2628, truncamiento) en los 6 campos.",
-  "evidencia": "EV-BD-22.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

@@ -1,2 +1,0 @@
-CORRECTO: 62 comprobaciones de DEF-06, DEF-07 y DEF-09.
-CORRECTO: 215 comprobaciones HTTP. CRUD de las cuatro entidades, validación, CSRF, duplicados, relaciones, claves y limpieza de datos.

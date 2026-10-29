@@ -1,9 +1,0 @@
-{
-  "id": "ENT-06",
-  "estado": "Aprobado",
-  "obtenido": "db/01_ddl.sql y db/02_dml.sql del repositorio se ejecutaron sin cambios locales en Docker (BD-01, BD-09); la rama del PR no los modifica.",
-  "evidencia": "EV-ENT-06.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "El documento (sec. 3.2 y 3.8) indica que en el equipo de Andres se uso una version local del DDL sin ALTER AUTHORIZATION, no versionada."
-}

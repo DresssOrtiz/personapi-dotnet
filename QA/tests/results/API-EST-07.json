@@ -1,9 +1,0 @@
-{
-  "id": "API-EST-07",
-  "estado": "Aprobado",
-  "obtenido": "idProf inexistente: 400 \"No existe una profesion con id 999.\"; ccPer inexistente: 400 \"No existe una persona con cc 999999.\".",
-  "evidencia": "EV-API-EST-07.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

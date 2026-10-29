@@ -1,9 +1,0 @@
-{
-  "id": "BK-03",
-  "estado": "Aprobado",
-  "obtenido": "La aplicacion inicia en http://localhost:5025; la pagina de inicio responde 200 y el listado de personas 200 con 5 registros de persona_db.",
-  "evidencia": "EV-BK-03.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

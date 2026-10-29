@@ -1,8 +1,0 @@
-Caso: API-PRO-09
-Fecha: 2026-10-27 00:21:45
-
-> PUT /api/profesiones/9999 {"id": 9999, "nom": "Profesion QA", "des": "Descripcion de prueba"}
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-d8162799faded6809e167bec79de8e68-06bae31cd0cea5ed-00"}
-
-[OK] 404

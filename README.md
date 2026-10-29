@@ -24,6 +24,7 @@ personapi-dotnet/
   Repositories/               Implementaciones con EF Core
   Controllers/Api/            Controladores REST (/api/...)
   Controllers/                Controladores MVC (vistas)
+tests/pruebas.ps1             Pruebas automatizadas sobre la aplicación en ejecución
 ```
 
 ## Configuración del ambiente
@@ -125,6 +126,32 @@ Códigos de respuesta: `200` consulta, `201` creado, `204` actualizado/eliminado
 inválida (validación, clave de ruta distinta a la del cuerpo, persona o profesión inexistente),
 `404` no encontrado y `409` conflicto (clave duplicada o registro con dependencias, p. ej. eliminar una
 persona con teléfonos o estudios).
+
+## Pruebas
+
+`tests/pruebas.ps1` recorre las operaciones CRUD de las cuatro entidades desde los formularios MVC y comprueba
+la persistencia con la API REST. También verifica las validaciones del servidor, el token antifalsificación,
+las claves duplicadas y las claves foráneas inexistentes, la eliminación con registros dependientes, las páginas
+404 (MVC y `/api`), la columna Edad y las rutas publicadas en Swagger. Los registros de prueba se eliminan al
+terminar y se comprueba que los datos iniciales se conservan.
+
+Requisitos: base cargada con `db/01_ddl.sql` y `db/02_dml.sql`, y la aplicación en ejecución en
+<http://localhost:5025>.
+
+```powershell
+pwsh ./tests/pruebas.ps1
+# Otro puerto:
+pwsh ./tests/pruebas.ps1 -BaseUrl http://127.0.0.1:5026
+```
+
+Sin PowerShell instalado (macOS o Linux), con Docker:
+
+```bash
+docker run --rm -v "$PWD/tests:/t" mcr.microsoft.com/powershell:7.4-ubuntu-22.04 \
+  pwsh -NoProfile -File /t/pruebas.ps1 -BaseUrl http://host.docker.internal:5025
+```
+
+El script termina con `CORRECTO: N comprobaciones HTTP...` o se detiene en la primera comprobación que falla.
 
 ## Despliegue
 

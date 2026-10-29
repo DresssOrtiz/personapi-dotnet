@@ -1,9 +1,0 @@
-{
-  "id": "BD-21",
-  "estado": "Aprobado",
-  "obtenido": "Telefono, estudio, profesion y persona temporales creados y eliminados sin errores.",
-  "evidencia": "EV-BD-21.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

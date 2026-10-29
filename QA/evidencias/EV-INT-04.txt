@@ -1,5 +1,0 @@
-Caso: INT-04
-Fecha: 2026-10-27 00:23:09
-
-Eliminada 2401 en la vista (sin error) -> GET API 404
-DELETE /api/personas/2402 -> 204; aparece en el listado: False

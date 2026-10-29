@@ -1,9 +1,0 @@
-{
-  "id": "MVC-PRO-01",
-  "estado": "Aprobado",
-  "obtenido": "El menu abre /Profesiones; lista 4 registros (base: 4) con columnas ID, Nombre, Descripción.",
-  "evidencia": "EV-MVC-PRO-01.png, EV-MVC-PRO-01.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Sin datos: ver EV-MVC-LISTADO-VACIO.png."
-}

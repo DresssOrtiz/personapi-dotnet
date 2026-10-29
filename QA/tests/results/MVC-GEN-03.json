@@ -1,9 +1,0 @@
-{
-  "id": "MVC-GEN-03",
-  "estado": "Aprobado",
-  "obtenido": "Las 21 pantallas siguen el diseño de Figma: menú lateral oscuro con la opción activa, título 'Módulo / Acción' con subtítulo, tarjeta blanca, campos en dos columnas, botón principal azul y confirmación de eliminación en recuadro rojo claro. Las diferencias son de texto y de controles de formulario.",
-  "evidencia": "figma/EV-MVC-GEN-03-comparacion-*.png, figma/EV-MVC-GEN-03-figma-*.png, EV-MVC-GEN-03.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Diferencias registradas en la evidencia: enlace Eliminar en los listados, títulos y preguntas de eliminación, títulos de tarjeta en singular y listas desplegables en lugar de campos de texto. El recuadro de error vacío ya está registrado como DEF-09. Revisión asistida: confirmar el criterio con el responsable de QA."
-}

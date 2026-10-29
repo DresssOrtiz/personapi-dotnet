@@ -1,9 +1,0 @@
-{
-  "id": "API-TEL-04",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 201, Location http://localhost:5025/api/telefonos/3990000001; registro guardado.",
-  "evidencia": "EV-API-TEL-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

@@ -1,8 +1,0 @@
-Caso: API-GEN-04
-Fecha: 2026-10-27 00:21:46
-
-> DELETE /api/personas 
-< 405 
-
-
-[OK] 405

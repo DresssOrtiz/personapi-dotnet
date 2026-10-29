@@ -1,9 +1,0 @@
-{
-  "id": "BK-02",
-  "estado": "Aprobado",
-  "obtenido": "dotnet build (SDK 6.0.428): codigo 0, 0 errores y 0 advertencias.",
-  "evidencia": "EV-BK-02.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

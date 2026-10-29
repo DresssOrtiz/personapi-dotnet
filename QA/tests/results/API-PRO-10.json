@@ -1,9 +1,0 @@
-{
-  "id": "API-PRO-10",
-  "estado": "Aprobado",
-  "obtenido": "DELETE HTTP 204; GET posterior HTTP 404.",
-  "evidencia": "EV-API-PRO-10.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

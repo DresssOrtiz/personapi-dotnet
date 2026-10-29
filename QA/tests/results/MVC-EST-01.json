@@ -1,9 +1,0 @@
-{
-  "id": "MVC-EST-01",
-  "estado": "Aprobado",
-  "obtenido": "El menu abre /Estudios; lista 6 registros (base: 6) con columnas Persona, Profesión, Fecha, Universidad.",
-  "evidencia": "EV-MVC-EST-01.png, EV-MVC-EST-01.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Sin datos: ver EV-MVC-LISTADO-VACIO.png."
-}

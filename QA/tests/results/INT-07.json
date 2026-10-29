@@ -1,9 +1,0 @@
-{
-  "id": "INT-07",
-  "estado": "Aprobado",
-  "obtenido": "Tras detener y reiniciar la aplicacion, los registros creados desde la vista (2420) y la API (2421) siguen en el listado.",
-  "evidencia": "EV-INT-07.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

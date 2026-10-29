@@ -1,9 +1,0 @@
-{
-  "id": "MVC-GEN-05",
-  "estado": "Aprobado",
-  "obtenido": "El flujo completo (inicio, validacion, alta con selectores y fecha, edicion, detalle, rechazo por dependientes y eliminacion) se comporta igual en: Chromium (Chrome/Edge) 156.0.8078.4: 10/10 pasos; Firefox 157.0: 10/10 pasos; WebKit (Safari) 27.2: 10/10 pasos. Sin errores de consola.",
-  "evidencia": "EV-MVC-GEN-05-*.png, EV-MVC-GEN-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Chrome y Edge no estan instalados en el equipo de pruebas; se usaron los motores de Playwright: Chromium (el de Chrome y Edge), Firefox y WebKit (el de Safari), sin interfaz grafica."
-}

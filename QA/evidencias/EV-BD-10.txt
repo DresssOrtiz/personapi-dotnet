@@ -1,8 +1,0 @@
-Caso: BD-10
-Fecha: 2026-10-27 00:21:24
-
-persona: 5
-profesion: 4
-telefono: 5
-estudios: 6
-Esperado segun 02_dml.sql: persona 5, profesion 4, telefono 5, estudios 6

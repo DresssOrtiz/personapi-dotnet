@@ -1,8 +1,0 @@
-Caso: MVC-PRO-01
-Fecha: 2026-10-27 00:22:58
-
-URL: http://localhost:5025/Profesiones
-Encabezados: ['ID', 'Nombre', 'Descripción', 'Acciones']
-Filas: 4; filas en la base: 4
-Columnas esperadas no mostradas: []
-Captura: EV-MVC-PRO-01.png

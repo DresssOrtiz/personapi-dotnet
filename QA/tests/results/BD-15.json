@@ -1,9 +1,0 @@
-{
-  "id": "BD-15",
-  "estado": "Aprobado",
-  "obtenido": "persona 1001: rechazado; telefono 3001112233: rechazado; profesion 1: rechazado (Msg 2627, PRIMARY KEY).",
-  "evidencia": "EV-BD-15.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}
