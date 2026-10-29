@@ -1,8 +1,0 @@
-Caso: API-TEL-05
-Fecha: 2026-10-27 00:21:43
-
-> POST /api/telefonos {"num": "3990000001", "oper": "Tigo", "duenio": 1003}
-< 409 application/json; charset=utf-8
-{"title":"Ya existe el telefono 3990000001.","status":409}
-
-[OK] 409

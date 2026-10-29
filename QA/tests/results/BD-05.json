@@ -1,9 +1,0 @@
-{
-  "id": "BD-05",
-  "estado": "Aprobado",
-  "obtenido": "FK_telefono_persona: telefono.duenio -> persona.cc.",
-  "evidencia": "EV-BD-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

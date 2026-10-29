@@ -1,9 +1,0 @@
-{
-  "id": "BK-06",
-  "estado": "Aprobado",
-  "obtenido": "4 interfaces (IPersona, ITelefono, IProfesion, IEstudio) con las 6 operaciones: GetAllAsync, GetByIdAsync, ExistsAsync, AddAsync, UpdateAsync, DeleteAsync.",
-  "evidencia": "EV-BK-06.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

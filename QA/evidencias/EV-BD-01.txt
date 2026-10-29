@@ -1,9 +1,0 @@
-Caso: BD-01
-Fecha: 2026-10-27 00:21:22
-
-DB_ID antes: NULL
-sqlcmd -b -i db/01_ddl.sql -> codigo 0
-Changed database context to 'persona_db'.
-
-DB_ID despues: 5
-Propietario: sa

@@ -1,8 +1,0 @@
-Caso: API-PER-11
-Fecha: 2026-10-27 00:21:42
-
-> DELETE /api/personas/999999 
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-d07c6ae35550ccdf309bb54a6b7c9f54-f3d8e2144f844d7d-00"}
-
-[OK] 404

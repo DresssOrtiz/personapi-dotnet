@@ -1,8 +1,0 @@
-Caso: API-PRO-08
-Fecha: 2026-10-27 00:21:45
-
-> PUT /api/profesiones/901 {"id": 1, "nom": "Profesion QA", "des": "Descripcion de prueba"}
-< 400 application/json; charset=utf-8
-{"title":"El id de la ruta no coincide con el del cuerpo.","status":400}
-
-[OK] 400

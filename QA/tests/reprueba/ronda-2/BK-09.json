@@ -1,9 +1,0 @@
-{
-  "id": "BK-09",
-  "estado": "Aprobado",
-  "obtenido": "La vista responde 503 con la pagina 'No se pudo acceder a los registros' sin detalles. La API responde 503 (application/problem+json) con un mensaje controlado, sin traza ni credenciales.",
-  "evidencia": "EV-BK-09-vista.png, EV-BK-09.txt",
-  "fecha": "2026-10-28",
-  "responsable": "Automatizado",
-  "observaciones": "Ejecutado como indica el README (dotnet run, entorno Development, pagina de excepciones del desarrollador). En Production la API devolveria la vista HTML /Home/Error. Propuesta: manejar el error en la API con ProblemDetails (503) en todos los entornos."
-}

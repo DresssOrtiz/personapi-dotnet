@@ -1,9 +1,0 @@
-{
-  "id": "API-PRO-05",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 409: \"Ya existe una profesion con id 901.\"; original intacto.",
-  "evidencia": "EV-API-PRO-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

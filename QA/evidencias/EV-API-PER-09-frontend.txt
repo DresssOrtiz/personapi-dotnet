@@ -1,8 +1,0 @@
-Caso: API-PER-09-frontend
-Fecha: 2026-10-27 00:22:27
-
-> PUT /api/personas/999999 {"cc": 999999, "nombre": "Prueba", "apellido": "QA", "genero": "F", "edad": 33}
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-c32f2f7619a6cab9613c865587cd54d4-0345274d1299bbe3-00"}
-
-[OK] 404

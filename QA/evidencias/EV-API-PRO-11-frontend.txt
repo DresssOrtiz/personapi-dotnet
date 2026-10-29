@@ -1,8 +1,0 @@
-Caso: API-PRO-11-frontend
-Fecha: 2026-10-27 00:22:30
-
-> DELETE /api/profesiones/9999 
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-8383f6f245eee4814e591387dfaff1b3-7d2eb74ba32bcbd0-00"}
-
-[OK] 404

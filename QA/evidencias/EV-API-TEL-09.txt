@@ -1,8 +1,0 @@
-Caso: API-TEL-09
-Fecha: 2026-10-27 00:21:43
-
-> PUT /api/telefonos/3990000001 {"num": "3001112233", "oper": "Claro", "duenio": 1003}
-< 400 application/json; charset=utf-8
-{"title":"El numero de la ruta no coincide con el del cuerpo.","status":400}
-
-[OK] 400

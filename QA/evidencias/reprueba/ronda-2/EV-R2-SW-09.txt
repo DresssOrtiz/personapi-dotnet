@@ -1,9 +1,0 @@
-Caso: SW-09
-Fecha: 2026-10-28 23:48:33
-
-Operaciones: 20; con summary o description: 20
-Parametros: 15; con descripcion: 15
-Propiedades de los DTO: 15; con descripcion: 15
-Nombres abreviados sin descripcion: []
-Comentarios /// <summary> en los DTO: 15; GenerateDocumentationFile: True
-Codigos de respuesta documentados: si (ver SW-06)

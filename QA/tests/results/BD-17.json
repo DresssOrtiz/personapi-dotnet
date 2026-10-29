@@ -1,9 +1,0 @@
-{
-  "id": "BD-17",
-  "estado": "Aprobado",
-  "obtenido": "cc_per inexistente: rechazado; id_prof inexistente: rechazado (Msg 547, FK de estudios).",
-  "evidencia": "EV-BD-17.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

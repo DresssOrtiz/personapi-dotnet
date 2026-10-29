@@ -1,9 +1,0 @@
-{
-  "id": "BD-06",
-  "estado": "Aprobado",
-  "obtenido": "FK_estudios_persona: estudios.cc_per -> persona.cc; FK_estudios_profesion: estudios.id_prof -> profesion.id.",
-  "evidencia": "EV-BD-06.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

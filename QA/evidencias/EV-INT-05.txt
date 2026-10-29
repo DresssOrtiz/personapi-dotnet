@@ -1,6 +1,0 @@
-Caso: INT-05
-Fecha: 2026-10-27 00:23:09
-
-clave duplicada (persona 1001): vista 'Ya existe un registro con ese identificador.' | API 409
-referencia inexistente (duenio 999999): vista 'Selecciona una persona existente.' | API 400
-eliminacion con dependientes (profesion 1): vista 'No se pudo guardar: hay registros relacionados o una referencia que ya no existe.' | API 409

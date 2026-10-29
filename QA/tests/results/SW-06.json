@@ -1,9 +1,0 @@
-{
-  "id": "SW-06",
-  "estado": "Aprobado",
-  "obtenido": "46 solicitudes, una por codigo documentado en cada operacion: 46 coinciden con la documentacion.",
-  "evidencia": "EV-SW-06.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Fuera de lo documentado: 405 en metodos no soportados y 500 en POST concurrentes con la misma clave (API-GEN-05)."
-}

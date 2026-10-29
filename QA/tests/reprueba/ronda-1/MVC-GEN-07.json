@@ -1,9 +1,0 @@
-{
-  "id": "MVC-GEN-07",
-  "estado": "Aprobado",
-  "obtenido": "Responde 404 con pagina propia.",
-  "evidencia": "EV-MVC-GEN-07.png, EV-MVC-GEN-07.txt",
-  "fecha": "2026-10-28",
-  "responsable": "Automatizado",
-  "observaciones": "Propuesta: app.UseStatusCodePagesWithReExecute(\"/Home/Error\") o una vista NotFound."
-}

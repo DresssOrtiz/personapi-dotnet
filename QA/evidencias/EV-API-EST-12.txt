@@ -1,8 +1,0 @@
-Caso: API-EST-12
-Fecha: 2026-10-27 00:21:46
-
-> DELETE /api/estudios/4/1003 
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-f0a2b66f2e94ea4e3ea3c20e29e642d2-7b59397fbf463ef5-00"}
-
-[OK] 404

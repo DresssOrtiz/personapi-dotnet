@@ -1,9 +1,0 @@
-{
-  "id": "MVC-PER-05",
-  "estado": "Fallido",
-  "obtenido": "El detalle muestra todos los campos. La clave inexistente responde 404 sin contenido (pagina en blanco).",
-  "evidencia": "EV-MVC-PER-05.png, EV-MVC-PER-05-inexistente.png, EV-MVC-PER-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "NotFound() sin UseStatusCodePages; la respuesta 404 no tiene cuerpo ni navegacion."
-}

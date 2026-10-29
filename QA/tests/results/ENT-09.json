@@ -1,9 +1,0 @@
-{
-  "id": "ENT-09",
-  "estado": "Bloqueado",
-  "obtenido": "El repositorio no tiene etiquetas (git ls-remote --tags vacio).",
-  "evidencia": "EV-ENT-09.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "La precondicion (trabajo integrado y aprobado) no se cumple todavia. Crear el TAG indicado en el enunciado despues del merge del PR #2."
-}

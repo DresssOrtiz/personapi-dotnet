@@ -1,9 +1,0 @@
-{
-  "id": "API-EST-02",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 200 con idProf, ccPer, fecha y univer.",
-  "evidencia": "EV-API-EST-02.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

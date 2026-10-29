@@ -1,9 +1,0 @@
-{
-  "id": "API-PER-07",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 204; el GET posterior muestra nombre 'Editada' y edad 34.",
-  "evidencia": "EV-API-PER-07.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

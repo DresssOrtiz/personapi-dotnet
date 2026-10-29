@@ -1,9 +1,0 @@
-{
-  "id": "ENT-03",
-  "estado": "Aprobado",
-  "obtenido": "El README incluye descripcion, stack, requisitos, creacion de la base (Docker y SSMS), cadena de conexion, compilacion, ejecucion, rutas de la aplicacion y de Swagger, tabla de endpoints y despliegue.",
-  "evidencia": "EV-ENT-03.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "No advierte que el DDL elimina las tablas (BD-08), no menciona el ajuste en LocalDB (BD-07) y no describe las vistas MVC porque el frontend aun no esta en main."
-}

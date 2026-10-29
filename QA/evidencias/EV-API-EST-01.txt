@@ -1,8 +1,0 @@
-Caso: API-EST-01
-Fecha: 2026-10-27 00:21:45
-
-> GET /api/estudios 
-< 200 application/json; charset=utf-8
-[{"idProf":1,"ccPer":1001,"fecha":"2026-06-15T00:00:00","univer":"Pontificia Universidad Javeriana"},{"idProf":1,"ccPer":1002,"fecha":"2026-06-15T00:00:00","univer":"Pontificia Universidad Javeriana"},{"idProf":1,"ccPer":1003,"fecha":"2026-06-15T00:00:00","univer":"Pontificia Universidad Javeriana"},{"idProf":2,"ccPer":1004,"fecha":"2018-12-10T00:00:00","univer":"Universidad de los Andes"},{"idProf":3,"ccPer":1005,"fecha":"2021-05-20T00:00:00","univer":"Universidad Nacional de Colombia"},{"idProf":4,"ccPer":1004,"fecha":"2023-11-30T00:00:00","univer":"Universidad del Rosario"}]
-
-[OK] 200 y conteo

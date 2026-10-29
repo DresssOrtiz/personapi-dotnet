@@ -1,8 +1,0 @@
-Caso: API-EST-03
-Fecha: 2026-10-27 00:21:45
-
-> GET /api/estudios/4/1001 
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-2f4b623a4d952b7e2b0c676a2256df46-a4e0c4302ef452a5-00"}
-
-[OK] 404

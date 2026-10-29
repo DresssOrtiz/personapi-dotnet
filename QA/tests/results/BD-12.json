@@ -1,9 +1,0 @@
-{
-  "id": "BD-12",
-  "estado": "Aprobado",
-  "obtenido": "sin nombre: rechazado; sin apellido: rechazado; sin genero: rechazado (Msg 515, NOT NULL).",
-  "evidencia": "EV-BD-12.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

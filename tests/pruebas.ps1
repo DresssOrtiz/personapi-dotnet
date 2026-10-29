@@ -125,6 +125,42 @@ try {
     Assert-True ($result -match 'registros relacionados') "Eliminación de profesión con dependencias controlada"
     Get-Page "/api/personas/$id" | Out-Null
     Get-Page "/api/profesiones/$id" | Out-Null
+
+    foreach ($path in @('/RutaQueNoExiste/Accion', '/Home/AccionInexistente', '/Home/PageNotFound')) {
+        $html = Get-Page $path 404
+        Assert-True ($html -match 'sidebar' -and $html -match 'Volver al inicio') "404 con layout y regreso: $path"
+    }
+    foreach ($entry in @(@('Personas','cc=2147483647'), @('Profesiones','id=2147483647'), @('Telefonos','num=inexistente'), @('Estudios','idProf=2147483647&ccPer=2147483647'))) {
+        foreach ($action in @('Details','Edit','Delete')) {
+            $html = Get-Page "/$($entry[0])/$($action)?$($entry[1])" 404
+            Assert-True ($html -match 'sidebar' -and $html -match 'Volver al inicio') "Registro inexistente con layout: $($entry[0])/$action"
+        }
+    }
+    foreach ($path in @('/api/personas/2147483647', '/api/telefonos/inexistente', '/api/profesiones/2147483647', '/api/estudios/2147483647/2147483647', '/api/RutaQueNoExiste')) {
+        $html = Get-Page $path 404
+        Assert-True ($html -notmatch 'sidebar|Volver al inicio') "La API no recibe la vista MVC: $path"
+    }
+    $html = Get-Page '/Personas/Details?cc=0' 400
+    Assert-True ($html -notmatch 'Volver al inicio') 'El error 400 MVC conserva su comportamiento'
+    foreach ($module in @('Personas','Profesiones')) {
+        $html = Get-Page "/$module/Create"
+        Assert-True ($html -notmatch 'class="validation-summary-errors"') "Sin recuadro de error inicial: $module"
+        Assert-True ($html -match 'class="validation-summary-valid"') "Resumen disponible para validación cliente: $module"
+        $key = if ($module -eq 'Personas') { 'Cc' } else { 'Id' }
+        $keyInput = [regex]::Match($html, "<input\b[^>]*name=" + '"' + $key + '"' + "[^>]*>").Value
+        Assert-True ($keyInput -match 'value=""') "La clave inicial permanece vacía: $module"
+        $result = Post-Form "/$module/Create" "/$module/Create" @{ $key='0'; Nombre=''; Nom='' } 200
+        Assert-True ($result -match 'class="validation-summary-errors"' -and $result -match 'obligatorio') "El resumen contiene errores reales: $module"
+    }
+    $people = Get-Page '/api/personas' | ConvertFrom-Json
+    $list = Get-Page '/Personas'
+    Assert-True ($list -match '<th scope="col">Edad</th>') 'Columna Edad presente'
+    foreach ($row in $people) {
+        $match = [regex]::Match($list, '(?s)<tr>\s*<td>' + $row.cc + '</td>.*?</tr>').Value
+        $cells = @([regex]::Matches($match, '(?s)<td[^>]*>(.*?)</td>') | ForEach-Object { [System.Net.WebUtility]::HtmlDecode($_.Groups[1].Value).Trim() })
+        $expected = if ($null -eq $row.edad) { '—' } else { [string]$row.edad }
+        Assert-True ($cells.Count -eq 6 -and $cells[4] -eq $expected) "Edad correcta para persona $($row.cc)"
+    }
 }
 finally {
     foreach ($entry in @(
@@ -144,4 +180,4 @@ finally {
     $client.Dispose()
     $handler.Dispose()
 }
-Write-Output "CORRECTO: $checks comprobaciones HTTP. CRUD de las cuatro entidades, validación, CSRF, duplicados, relaciones, claves y limpieza de datos."
+Write-Output "CORRECTO: $checks comprobaciones HTTP. CRUD de las cuatro entidades, validación, CSRF, duplicados, relaciones, páginas 404, columna Edad y limpieza de datos."

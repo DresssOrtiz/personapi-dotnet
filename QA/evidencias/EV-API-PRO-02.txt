@@ -1,8 +1,0 @@
-Caso: API-PRO-02
-Fecha: 2026-10-27 00:21:44
-
-> GET /api/profesiones/1 
-< 200 application/json; charset=utf-8
-{"id":1,"nom":"Ingeniero de Sistemas","des":"Diseno, desarrollo y mantenimiento de sistemas de software"}
-
-[OK] 200 con 3 campos

@@ -1,9 +1,0 @@
-{
-  "id": "SW-09",
-  "estado": "Fallido",
-  "obtenido": "Las 20 operaciones se agrupan por recurso y documentan sus códigos, pero ninguna tiene resumen ni descripción, y ninguna de las 15 propiedades de los DTO se describe. Campos como cc, ccPer, des, duenio, idProf, nom no se explican.",
-  "evidencia": "EV-SW-01.png, EV-SW-09.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "El código ya tiene 4 comentarios /// <summary> en los DTO, pero el proyecto no genera el archivo XML de documentación, por lo que Swagger no los muestra. Revisión asistida: confirmar el criterio con el responsable de QA."
-}

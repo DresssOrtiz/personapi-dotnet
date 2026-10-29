@@ -1,9 +1,0 @@
-{
-  "id": "API-EST-09",
-  "estado": "Aprobado",
-  "obtenido": "HTTP 400: \"La clave de la ruta no coincide con la del cuerpo.\".",
-  "evidencia": "EV-API-EST-09.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

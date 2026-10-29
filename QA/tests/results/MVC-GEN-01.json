@@ -1,9 +1,0 @@
-{
-  "id": "MVC-GEN-01",
-  "estado": "Aprobado",
-  "obtenido": "Inicio y 5 enlaces del menu responden 200: Inicio; Personas; Teléfonos; Profesiones; Estudios; Marca (Inicio).",
-  "evidencia": "EV-MVC-GEN-01.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

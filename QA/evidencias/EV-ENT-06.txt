@@ -1,6 +1,0 @@
-Caso: ENT-06
-Fecha: 2026-10-27 00:22:05
-
-git status db/: ''
-git diff main..feature/frontend-mvc -- db/: ''
-Los casos BD-01 y BD-09 ejecutaron estos archivos tal como estan en main.

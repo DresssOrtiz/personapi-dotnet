@@ -1,9 +1,0 @@
-{
-  "id": "INT-04",
-  "estado": "Aprobado",
-  "obtenido": "Eliminada en la vista: la API responde 404. Eliminada con la API (204): desaparece del listado.",
-  "evidencia": "EV-INT-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

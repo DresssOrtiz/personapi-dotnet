@@ -63,12 +63,12 @@ La interfaz está en http://127.0.0.1:5025 y Swagger en /swagger.
 Con la aplicación en ejecución y PowerShell 7:
 
 ```powershell
-./tests/mvc-smoke.ps1
+./tests/pruebas.ps1
 # Otro puerto:
-./tests/mvc-smoke.ps1 -BaseUrl http://127.0.0.1:5026
+./tests/pruebas.ps1 -BaseUrl http://127.0.0.1:5026
 ```
 
-El script crea registros temporales identificados aleatoriamente, ejecuta los cuatro CRUD por formularios MVC y verifica la persistencia mediante GET de la API. Comprueba las acciones reales de los formularios Razor, duplicados, referencias inexistentes, campos inválidos, campos opcionales, tokens antifalsificación, bloqueo de cambios de claves, restricciones al eliminar y disponibilidad de Swagger.
+El script crea registros temporales identificados aleatoriamente, ejecuta los cuatro CRUD por formularios MVC y verifica la persistencia mediante GET de la API. Comprueba las acciones reales de los formularios Razor, duplicados, referencias inexistentes, campos inválidos, campos opcionales, tokens antifalsificación, bloqueo de cambios de claves, restricciones al eliminar, páginas 404, columna Edad y disponibilidad de Swagger.
 
 La limpieza se ejecuta en finally, exclusivamente sobre los registros creados durante la prueba. Al terminar compara las respuestas originales de los cuatro listados REST para comprobar que los datos iniciales se conservaron. No ejecutar concurrentemente con otras escrituras sobre la misma base.
 

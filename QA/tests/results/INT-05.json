@@ -1,9 +1,0 @@
-{
-  "id": "INT-05",
-  "estado": "Aprobado",
-  "obtenido": "Ambos canales rechazan los 3 casos: duplicado (vista con mensaje, API 409), referencia inexistente (vista con mensaje, API 400) y eliminacion con dependientes (vista con mensaje, API 409).",
-  "evidencia": "EV-INT-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

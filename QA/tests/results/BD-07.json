@@ -1,9 +1,0 @@
-{
-  "id": "BD-07",
-  "estado": "Bloqueado",
-  "obtenido": "Docker (sa): DDL sin cambios, codigo 0. Login sin sysadmin: codigo 1, falla en ALTER AUTHORIZATION. Express y LocalDB no disponibles en macOS.",
-  "evidencia": "EV-BD-07.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "Solo se pudo usar un entorno real (Docker). El documento (sec. 3.2) indica que en LocalDB se ejecuto el DDL quitando ALTER AUTHORIZATION ... TO sa, y el README no documenta ese ajuste. Falta repetirlo en Windows con LocalDB o Express."
-}

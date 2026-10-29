@@ -1,9 +1,0 @@
-{
-  "id": "BD-20",
-  "estado": "Aprobado",
-  "obtenido": "DELETE profesion 1: rechazado (Msg 547, FK_estudios_profesion).",
-  "evidencia": "EV-BD-20.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

@@ -1,8 +1,0 @@
-Caso: API-PER-03
-Fecha: 2026-10-27 00:21:41
-
-> GET /api/personas/999999 
-< 404 application/json; charset=utf-8
-{"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-bad027c1c1cb3ccb1ee542bc69bc3004-bb33086acc2f51c8-00"}
-
-[OK] 404

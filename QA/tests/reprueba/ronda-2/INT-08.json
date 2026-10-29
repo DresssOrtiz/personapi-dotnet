@@ -1,9 +1,0 @@
-{
-  "id": "INT-08",
-  "estado": "Aprobado",
-  "obtenido": "Durante la caida la vista muestra un error controlado (503); al volver SQL Server la vista (200, 7 filas) y la API (200) funcionan sin reiniciar la aplicacion.",
-  "evidencia": "EV-BK-09-vista.png, EV-INT-08-recuperacion.png, EV-INT-08.txt",
-  "fecha": "2026-10-28",
-  "responsable": "Automatizado",
-  "observaciones": "La API durante la caida responde 503 con un mensaje controlado (ver BK-09)."
-}

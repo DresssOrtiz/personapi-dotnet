@@ -1,9 +1,0 @@
-{
-  "id": "BK-01",
-  "estado": "Aprobado",
-  "obtenido": "net6.0, Microsoft.NET.Sdk.Web (ASP.NET Core MVC), EF Core 6.0.36 con Design, SqlServer, Tools, Swashbuckle 6.5.0. El README justifica .NET 6 frente al 7 del stack del enunciado.",
-  "evidencia": "EV-BK-01.txt",
-  "fecha": "2026-10-29",
-  "responsable": "Automatizado",
-  "observaciones": ".NET 6 esta fuera de soporte desde noviembre de 2024; con SDK recientes se emite la advertencia NETSDK1138."
-}

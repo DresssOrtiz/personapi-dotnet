@@ -1,9 +1,0 @@
-{
-  "id": "BK-04",
-  "estado": "Aprobado",
-  "obtenido": "persona_dbContext mapea 4 entidades (Estudio, Persona, Profesion, Telefono), clave compuesta (IdProf, CcPer) y las 3 relaciones FK_estudios_persona, FK_estudios_profesion, FK_telefono_persona.",
-  "evidencia": "EV-BK-04.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "El DbSet de profesion se llama 'Profesions' (pluralizacion del scaffold); no afecta el funcionamiento."
-}

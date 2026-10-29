@@ -1,9 +1,0 @@
-{
-  "id": "MVC-TEL-02",
-  "estado": "Aprobado",
-  "obtenido": "Tras guardar redirige a /Telefonos con el aviso 'Registro creado correctamente.'; el registro aparece en el listado y en la base ('Claro').",
-  "evidencia": "EV-MVC-TEL-02-formulario.png, EV-MVC-TEL-02.png",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}

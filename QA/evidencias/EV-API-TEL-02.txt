@@ -1,8 +1,0 @@
-Caso: API-TEL-02
-Fecha: 2026-10-27 00:21:43
-
-> GET /api/telefonos/3001112233 
-< 200 application/json; charset=utf-8
-{"num":"3001112233","oper":"Claro","duenio":1001}
-
-[OK] 200 con 3 campos

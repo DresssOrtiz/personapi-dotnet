@@ -1,9 +1,0 @@
-{
-  "id": "ENT-05",
-  "estado": "Aprobado",
-  "obtenido": "No hay bin/, obj/ ni archivos temporales versionados en main ni en feature/frontend-mvc. La unica credencial es la contrasena de ejemplo del contenedor Docker del README (usuario sa) en appsettings.json.",
-  "evidencia": "EV-ENT-05.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": "La contrasena coincide con el ejemplo del README, pero el archivo no la identifica como valor de ejemplo. Mejora sugerida: dejar la cadena sin contrasena y usar ConnectionStrings__PersonaDb o user-secrets, y un usuario distinto de sa."
-}

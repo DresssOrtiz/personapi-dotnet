@@ -1,9 +1,0 @@
-{
-  "id": "BK-08",
-  "estado": "Aprobado",
-  "obtenido": "Ninguno de los 5 controladores referencia el DbContext; dependen de las interfaces DAO.",
-  "evidencia": "EV-BK-08.txt",
-  "fecha": "2026-10-27",
-  "responsable": "Automatizado",
-  "observaciones": ""
-}
