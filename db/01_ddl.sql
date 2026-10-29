@@ -1,6 +1,8 @@
 -- Laboratorio 1 - personapi-dotnet
 -- DDL para SQL Server (adaptado del modelo MySQL del laboratorio)
 -- Ejecutar conectado a la instancia (base master).
+-- ADVERTENCIA: este script elimina y recrea las tablas estudios, telefono, profesion y persona;
+-- si ya existen, se pierden todos sus datos. Volver a cargar db/02_dml.sql después.
 
 IF DB_ID(N'persona_db') IS NULL
     CREATE DATABASE persona_db;

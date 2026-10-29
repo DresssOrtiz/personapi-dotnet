@@ -51,6 +51,11 @@ docker exec -i persona-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '
 en SSMS conectado a `localhost\SQLEXPRESS` y ejecutarlos en ese orden. El DDL crea `persona_db`
 y le asigna la propiedad al usuario `sa`.
 
+> **Advertencia:** `db/01_ddl.sql` elimina y vuelve a crear las tablas `estudios`, `telefono`, `profesion` y
+> `persona`, por lo que **borra todos los datos que contengan**. Ejecútalo solo en una instalación nueva o cuando
+> quieras reiniciar la base, y vuelve a correr `db/02_dml.sql` después. Si necesitas conservar los datos, haz
+> una copia de seguridad antes o ejecuta solo las sentencias `CREATE TABLE`.
+
 ### 3. Cadena de conexión
 
 Está en `personapi-dotnet/appsettings.json` (clave `ConnectionStrings:PersonaDb`). Por defecto apunta
